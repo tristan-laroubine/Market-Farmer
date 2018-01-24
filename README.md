@@ -2,7 +2,7 @@
 
 ### IUT d’Aix-Marseille – Département Informatique Aix-en-Provence
 
-# TD2 : Patrons de conception
+# Séance 3 : Patrons de conception
 
 
 * Le support du cours est disponible [ici](https://github.com/IUTInfoAix-M3105/Ressources)
