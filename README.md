@@ -7,7 +7,7 @@
 
 * Le support du cours est disponible [ici](https://github.com/IUTInfoAix-M3105/Ressources)
 * Le [forum Piazza](https://piazza.com/univ-amu.fr/fall2017/m3105/home) de ce cours pour poser vos questions
-* Pour faire le fork correctement vous devez accepter l'affectation sur GitHub Classroom : https://classroom.github.com/a/M0oW8K-u
+* Pour faire le fork correctement vous devez accepter l'affectation sur GitHub Classroom : https://classroom.github.com/a/Pe8rd7r9
 
 ### Instructions
 * Pour chaque exercice vous allez travailler dans un package différent. Pour réaliser les fonctionnalités demandées dans l'exercice `n` vous copierez dans le package correspondant le code obtenu pour l'exercice `n-1` et vous __ajouterez__ le code qui manque. Attention _ajouter_ ne veut pas dire _modifier_
