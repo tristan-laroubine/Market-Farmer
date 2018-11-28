@@ -1,5 +1,6 @@
 package fr.univamu.iut.exo5;
 
+import fr.univamu.iut.exo1.Color;
 import fr.univamu.iut.exo3.Fax;
 import fr.univamu.iut.exo3.Imprimante;
 import fr.univamu.iut.exo3.ImprimanteLocale;
@@ -49,7 +50,7 @@ public class AppliDomotique {
         Iterator<Connectable> it = objets.iterator();
         while (it.hasNext()) {
             Connectable objet = it.next();
-            System.out.println("Voulez vous éteindre " + objet + "? ");
+            System.out.println(Color.ANSI_GREEN + "Voulez vous éteindre " + Color.ANSI_CYAN + objet + Color.ANSI_PURPLE + "? ");
             Scanner sc = new Scanner(System.in);
             System.out.println("Veuillez saisir une reponse :");
             String str = sc.nextLine();

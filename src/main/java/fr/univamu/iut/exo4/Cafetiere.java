@@ -1,6 +1,8 @@
 package fr.univamu.iut.exo4;
 
 
+import fr.univamu.iut.exo1.Color;
+
 public class Cafetiere implements Connectable {
     @Override
     public void equiper(String gadget) {
@@ -14,6 +16,6 @@ public class Cafetiere implements Connectable {
 
     @Override
     public String toString() {
-        return "Cafetiere";
+        return Color.ANSI_GREEN + "Cafetiere";
     }
 }
