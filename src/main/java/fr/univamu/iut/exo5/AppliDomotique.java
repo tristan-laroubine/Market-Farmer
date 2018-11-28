@@ -17,9 +17,10 @@ public class AppliDomotique {
         collection.add(new Radiateur());
         collection.add(new Cafetiere());
         collection.add(new Radio());
+
         Imprimante imprimante = new Fax(new Photocopieur(new ImprimanteLocale()));
-        imprimante = new AdaptaterImprimante(imprimante);
-        collection.add((Connectable) imprimante);
+        collection.add(new AdaptaterImprimante(imprimante));
+
         for (Connectable c : collection
         ) {
             System.out.println("Voulez attacher " + c + " ? (oui / non)");
