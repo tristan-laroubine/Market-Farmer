@@ -23,10 +23,15 @@ public class AppliDomotique {
     public static void connecter(int type) {
         switch (type) {
             case 1:
-                /* A completer */
+                Radio objetTemp = new Radio();
+                objetTemp.equiper("le gadget");
+                objets.add(objetTemp);
                 break;
             case 2:
-                /* A completer */
+
+                Cafetiere objetTemp2 = new Cafetiere();
+                objetTemp2.equiper("le gadget");
+                objets.add(objetTemp2);
                 break;
         }
     }
