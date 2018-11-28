@@ -2,7 +2,11 @@ package fr.univamu.iut.exo3;
 
 public class ImprimanteReseau extends Imprimante {
     @Override
-    void imprimer() {
+    public void imprimer() {
         System.out.println("Je suis une Imprimante Reseau");
+    }
+    @Override
+    public String toString() {
+        return "imprimanteReseau ";
     }
 }

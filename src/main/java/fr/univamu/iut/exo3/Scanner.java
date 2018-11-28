@@ -5,9 +5,14 @@ public class Scanner extends Multifonction {
         this.imprimante = imprimante;
     }
     @Override
-    void imprimer() {
+    public void imprimer() {
         imprimante.imprimer();
         System.out.println("La fonction Scanner est activé");
 
+    }
+
+    @Override
+    public String toString() {
+        return imprimante + ", mode scanner";
     }
 }

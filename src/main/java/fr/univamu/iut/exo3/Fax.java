@@ -6,8 +6,12 @@ public class Fax extends Multifonction {
     }
 
     @Override
-    void imprimer() {
+    public void imprimer() {
         imprimante.imprimer();
         System.out.println("La Fonction Fax est activé");
+    }
+    @Override
+    public String toString() {
+        return imprimante + ", mode Fax";
     }
 }

@@ -10,17 +10,17 @@ public class Demarreur {
     }
 
     Collection<Connectable> objets = new ArrayList<>();
-    void demarrerLesActivés()
+    public void demarrerLesActivés()
     {
         for (Connectable objet: objets
              ) {
             objet.demarrer();
         }
     }
-    void attacher(Connectable objet){
+    public void attacher(Connectable objet){
         objets.add(objet);
     }
-    void detacher(Connectable objet){
+    public void detacher(Connectable objet){
         objets.remove(objet);
     }
 
