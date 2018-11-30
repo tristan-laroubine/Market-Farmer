@@ -1,11 +1,13 @@
-package fr.univamu.iut.ProduitFermier;
+package fr.univamu.iut.ProduitFermier.ProduitApiculteur;
+
+import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Miel extends ProduitFermier{
+public class Miel extends ProduitApiculteur {
 
 
     List<String> labels = new ArrayList<>();
@@ -74,13 +76,13 @@ public class Miel extends ProduitFermier{
         if (datePeremption.compareTo(LocalDate.now()) <= 0)
         {
             this.certifier = true;
-            System.out.println("Je suis périmer");
+            System.out.println("Je suis périmé");
 
         }
         else
         {
             this.certifier = false;
-            System.out.println("Je ne sui pas périmer");
+            System.out.println("Je ne suis pas périmé");
         }
 
     }

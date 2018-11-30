@@ -1,10 +1,12 @@
-package fr.univamu.iut.ProduitFermier;
+package fr.univamu.iut.ProduitFermier.ProduitViande;
+
+import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Vache extends ProduitFermier{
+public class Vache extends ProduitViande {
     List<String> labels = new ArrayList<>();
     Date datePeremption = new Date();
     int poids;
@@ -66,7 +68,7 @@ public class Vache extends ProduitFermier{
     boolean certifier = false;
 
     @Override
-    void valider() {
+    protected void valider() {
 
     }
 }

@@ -1,11 +1,10 @@
 package fr.univamu.iut;
 
 
-import fr.univamu.iut.ProduitFermier.*;
+import fr.univamu.iut.ProduitFermier.ProduitApiculteur.Miel;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args){
