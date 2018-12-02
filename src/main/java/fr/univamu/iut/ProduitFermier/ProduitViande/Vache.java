@@ -8,21 +8,21 @@ import java.util.List;
 
 public class Vache extends ProduitViande {
     List<String> labels = new ArrayList<>();
-    Date datePeremption = new Date();
+
     int poids;
 
-    public Vache(Date datePeremption) {
-        this.datePeremption = datePeremption;
+    public Vache(List<String> labels) {
+
     }
 
     public Vache(List<String> labels, Date datePeremption, int poids) {
         this.labels = labels;
-        this.datePeremption = datePeremption;
+
         this.poids = poids;
     }
 
     public Vache(Date datePeremption, int poids) {
-        this.datePeremption = datePeremption;
+
         this.poids = poids;
     }
 
@@ -32,14 +32,6 @@ public class Vache extends ProduitViande {
 
     public void setLabels(List<String> labels) {
         this.labels = labels;
-    }
-
-    public Date getDatePeremption() {
-        return datePeremption;
-    }
-
-    public void setDatePeremption(Date datePeremption) {
-        this.datePeremption = datePeremption;
     }
 
     public int getPoids() {
@@ -68,7 +60,7 @@ public class Vache extends ProduitViande {
     boolean certifier = false;
 
     @Override
-    protected void valider() {
-
+    public void valider() {
+        setCertifier(true);
     }
 }
