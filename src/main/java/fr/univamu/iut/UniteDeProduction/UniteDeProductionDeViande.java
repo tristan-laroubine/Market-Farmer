@@ -12,66 +12,48 @@ import java.util.ArrayList;
 
 public class UniteDeProductionDeViande extends UniteDeProduction {
 
-    public ProduitViande produitProduit(String type) {
+    private ProduitViande produitProduitSpe(String type) {
         try{
             Class<?> classe = Class.forName("fr.univamu.iut.ProduitFermier.ProduitViande."+type);
-            // Récupération du constructeur prenant en paramètre une chaîne de caractères
-            java.lang.reflect.Constructor constructeur =
-                    classe.getConstructor (new Class [] {});
-            constructeur.newInstance (new Object [] {});
-            return (ProduitViande) constructeur.newInstance (new Object [] {});
+            java.lang.reflect.Constructor constructeur = classe.getConstructor ();
+            ProduitViande produitViande = (ProduitViande) constructeur.newInstance ();
+            produitViande.valider();
+            if (produitViande.isCertifier()) return produitViande;
         }
-        catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        catch (InstantiationException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
         return null;
     }
-    public ProduitViande produitProduit(String type, String[] args, Object... arguments) {
+    private ProduitViande produitProduitSpe(String type, String[] args, Object... arguments) {
         try{
             Class<?> classe = Class.forName("fr.univamu.iut.ProduitFermier.ProduitViande."+type);
             // Récupération du constructeur prenant en paramètre une chaîne de caractères
-            Constructor constructors[] =
-                    classe.getConstructors();
+            Constructor constructors[] = classe.getConstructors();
             for (Constructor constructor : constructors)
             {
-                if ((Boolean) isRightConstructor(constructor,args))
-                    return (ProduitViande) constructor.newInstance (arguments);
+                if ((Boolean) isRightConstructor(constructor,args)) {
+                    ProduitViande produitViande = (ProduitViande) constructor.newInstance (arguments);
+                    produitViande.valider();
+                    if (produitViande.isCertifier()) return produitViande;
+                }
             }
 
         }
-        catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        catch (InstantiationException | ClassNotFoundException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
         return null;
     }
-    private boolean isRightConstructor(Constructor constructor, String[] args){
-        Class[] params = constructor.getParameterTypes();
-        if (params.length != args.length) return false;
-        for (int i = 0; i < params.length; i++) {
-            try {
-                System.out.println("Parametre => " + params[i]);
-                if (params[i] != Class.forName(args[i])) {
-                    return false;
-                }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
-        return true;
+
+
+    @Override
+    public ProduitFermier produitProduit(String type) {
+        return produitProduitSpe(type);
+    }
+
+    @Override
+    public ProduitFermier produitProduit(String type, String[] args, Object... arguments) {
+        return produitProduitSpe(type, args, arguments);
     }
 }

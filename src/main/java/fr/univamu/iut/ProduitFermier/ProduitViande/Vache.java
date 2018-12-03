@@ -56,20 +56,7 @@ public class Vache extends ProduitViande {
     public void removeLabel(String label){
         this.labels.remove(label);
     }
-    public boolean isCertifier() {
-        return certifier;
-    }
 
-    public void setCertifier(boolean certifier) {
-        this.certifier = certifier;
-    }
-
-    boolean certifier = false;
-
-    @Override
-    public void valider() {
-        setCertifier(true);
-    }
 
 
 }

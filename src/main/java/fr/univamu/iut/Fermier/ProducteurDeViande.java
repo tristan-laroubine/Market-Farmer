@@ -5,15 +5,15 @@ import fr.univamu.iut.ProduitFermier.ProduitViande.*;
 public class ProducteurDeViande {
 
 
-    UniteDeProductionDeViande uniteDeProductionDeViande;
+    private UniteDeProductionDeViande uniteDeProductionDeViande;
 
 
     public ProduitViande produitProduit(String type){
-        return uniteDeProductionDeViande.produitProduit(type);
+        return (ProduitViande) uniteDeProductionDeViande.produitProduit(type);
     }
 
     public ProduitViande produitProduit(String type, String[] arg, Object... arguments){
-        return uniteDeProductionDeViande.produitProduit(type,arg, arguments);
+        return (ProduitViande) uniteDeProductionDeViande.produitProduit(type,arg, arguments);
     }
 
 

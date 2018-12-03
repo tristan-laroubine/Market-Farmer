@@ -16,7 +16,7 @@ public class Cochon extends ProduitViande {
 
     }
     public Cochon(){
-        System.out.println("Création de la vache");
+
     }
 
     public Cochon(List<String> labels, Date datePeremption, int poids) {

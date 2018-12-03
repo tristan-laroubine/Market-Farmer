@@ -69,7 +69,7 @@ public class Pomme extends ProduitArboriculteur {
     boolean certifier = false;
 
     @Override
-    protected void valider() {
+    public void valider() {
 
     }
 }
