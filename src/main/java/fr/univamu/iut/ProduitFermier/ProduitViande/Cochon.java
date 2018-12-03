@@ -7,28 +7,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Vache extends ProduitViande {
+public class Cochon extends ProduitViande {
     List<String> labels = new ArrayList<>();
 
     int poids;
 
-    public Vache(List<String> labels) {
+    public Cochon(List<String> labels) {
 
     }
-    public Vache(){
-
-    }
-    public Vache(String string){
-        System.out.println("Vache crée avec une string => " + string);
+    public Cochon(){
+        System.out.println("Création de la vache");
     }
 
-    public Vache(List<String> labels, Date datePeremption, int poids) {
+    public Cochon(List<String> labels, Date datePeremption, int poids) {
         this.labels = labels;
 
         this.poids = poids;
     }
 
-    public Vache(Date datePeremption, int poids) {
+    public Cochon(Date datePeremption, int poids) {
 
         this.poids = poids;
     }
