@@ -39,6 +39,7 @@ public class Miel extends ProduitApiculteur {
         this.poids = poids;
     }
 
+
     public List<String> getLabels() {
         return labels;
     }
@@ -75,13 +76,13 @@ public class Miel extends ProduitApiculteur {
     public void valider() {
         if (datePeremption.compareTo(LocalDate.now()) <= 0)
         {
-            this.certifier = true;
+            this.certifier = false;
             System.out.println("Je suis périmé");
 
         }
         else
         {
-            this.certifier = false;
+            this.certifier = true;
             System.out.println("Je ne suis pas périmé");
         }
 

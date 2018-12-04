@@ -17,14 +17,12 @@ public class Main {
 //        Miel miel = new Miel( LocalDate.of(2018, Month.NOVEMBER, 22));
 //        miel.valider();
 
-
         ProducteurDeViande producteurDeViande = new ProducteurDeViande();
         producteurDeViande.setUniteDeProductionDeViande(new UniteDeProductionDeViande());
 //        Vache vache = (Vache) producteurDeViande.produitProduit("Vache");
-
-        Cochon cochon = (Cochon) producteurDeViande.produitProduit("Cochon");
+        String url = "fr.univamu.iut.ProduitFermier.ProduitViande.";
+        Cochon cochon = (Cochon) producteurDeViande.produitProduit(url + "Cochon");
         System.out.println(cochon);
-
 
 //        String[] arg = {"java.lang.String"};
 //        Vache vache1 = (Vache) producteurDeViande.produitProduit("Vache", arg,"String");
