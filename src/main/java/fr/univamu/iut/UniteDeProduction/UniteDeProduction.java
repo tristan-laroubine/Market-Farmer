@@ -22,7 +22,8 @@ abstract class UniteDeProduction {
     }
     protected ProduitFermier produitProduit(String type, String[] args, Object... arguments){
         try{
-            Class<?> classe = Class.forName("fr.univamu.iut.ProduitFermier.ProduitViande."+type);
+
+            Class<?> classe = Class.forName(type);
             // Récupération du constructeur prenant en paramètre une chaîne de caractères
             Constructor constructors[] = classe.getConstructors();
             for (Constructor constructor : constructors)
@@ -33,7 +34,6 @@ abstract class UniteDeProduction {
                     if (produitFermier.isCertifier()) return produitFermier;
                 }
             }
-
         }
         catch (InstantiationException | ClassNotFoundException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
@@ -45,7 +45,6 @@ abstract class UniteDeProduction {
         if (params.length != args.length) return false;
         for (int i = 0; i < params.length; i++) {
             try {
-                System.out.println("Parametre => " + params[i]);
                 if (params[i] != Class.forName(args[i])) {
                     return false;
                 }

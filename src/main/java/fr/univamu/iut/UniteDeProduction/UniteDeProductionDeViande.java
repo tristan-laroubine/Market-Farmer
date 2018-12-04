@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class UniteDeProductionDeViande extends UniteDeProduction {
 
-
-
     @Override
     public ProduitFermier produitProduit(String type) {
         return (ProduitFermier)(ProduitViande) super.produitProduit(type);
@@ -21,6 +19,7 @@ public class UniteDeProductionDeViande extends UniteDeProduction {
 
     @Override
     public ProduitFermier produitProduit(String type, String[] args, Object... arguments) {
+
         return (ProduitFermier)(ProduitViande) super.produitProduit(type, args, arguments);
     }
 }

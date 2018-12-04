@@ -6,11 +6,10 @@ import fr.univamu.iut.ProduitFermier.ProduitApiculteur.Miel;
 import fr.univamu.iut.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.ProduitFermier.ProduitViande.Vache;
 import fr.univamu.iut.UniteDeProduction.UniteDeProductionDeViande;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Date;
+
 
 public class Main {
     public static void main(String[] args){
@@ -20,15 +19,11 @@ public class Main {
         ProducteurDeViande producteurDeViande = new ProducteurDeViande();
         producteurDeViande.setUniteDeProductionDeViande(new UniteDeProductionDeViande());
 //        Vache vache = (Vache) producteurDeViande.produitProduit("Vache");
-        String url = "fr.univamu.iut.ProduitFermier.ProduitViande.";
-        Cochon cochon = (Cochon) producteurDeViande.produitProduit(url + "Cochon");
+        String url = "";
+        String[] arg = {"java.time.LocalDate","java.lang.Integer"};
+        String[] arguments = {"java.lang.String","java.time.LocalDate"};
+        Cochon cochon = (Cochon) producteurDeViande.produitProduit("fr.univamu.iut.ProduitFermier.ProduitViande.Cochon",arg,LocalDate.of(2018, Month.NOVEMBER, 22),50);
         System.out.println(cochon);
-
-//        String[] arg = {"java.lang.String"};
-//        Vache vache1 = (Vache) producteurDeViande.produitProduit("Vache", arg,"String");
-//        System.out.println("Vache 1 =>" + vache1);
-
-
-
     }
+
 }

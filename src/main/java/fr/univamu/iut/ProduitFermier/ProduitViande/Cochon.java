@@ -3,6 +3,7 @@ package fr.univamu.iut.ProduitFermier.ProduitViande;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.lang.reflect.Constructor;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,13 +20,13 @@ public class Cochon extends ProduitViande {
 
     }
 
-    public Cochon(List<String> labels, Date datePeremption, int poids) {
+    public Cochon(List<String> labels, LocalDate datePeremption, int poids) {
         this.labels = labels;
 
         this.poids = poids;
     }
 
-    public Cochon(Date datePeremption, int poids) {
+    public Cochon(LocalDate datePeremption, Integer poids) {
 
         this.poids = poids;
     }
