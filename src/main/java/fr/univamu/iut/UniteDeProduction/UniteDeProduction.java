@@ -12,8 +12,7 @@ abstract class UniteDeProduction {
             Class<?> classe = Class.forName(type);
             java.lang.reflect.Constructor constructeur = classe.getConstructor ();
             ProduitFermier produitFermier = (ProduitFermier) constructeur.newInstance ();
-            produitFermier.valider();
-            if (produitFermier.isCertifier()) return produitFermier;
+            if (produitFermier.valider()) return produitFermier;
         }
         catch (InstantiationException | ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
@@ -30,8 +29,7 @@ abstract class UniteDeProduction {
             {
                 if ((Boolean) isRightConstructor(constructor,args)) {
                     ProduitFermier produitFermier = (ProduitFermier) constructor.newInstance (arguments);
-                    produitFermier.valider();
-                    if (produitFermier.isCertifier()) return produitFermier;
+                    if (produitFermier.valider()) return produitFermier;
                 }
             }
         }

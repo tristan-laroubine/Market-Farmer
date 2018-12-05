@@ -1,11 +1,7 @@
 package fr.univamu.iut.ProduitFermier.ProduitViande;
 
-import fr.univamu.iut.ProduitFermier.ProduitFermier;
-
-import java.lang.reflect.Constructor;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Cochon extends ProduitViande {
@@ -13,9 +9,7 @@ public class Cochon extends ProduitViande {
 
     int poids;
 
-    public Cochon(List<String> labels) {
 
-    }
     public Cochon(){
 
     }
@@ -54,19 +48,13 @@ public class Cochon extends ProduitViande {
     public void removeLabel(String label){
         this.labels.remove(label);
     }
-    public boolean isCertifier() {
-        return certifier;
-    }
-
-    public void setCertifier(boolean certifier) {
-        this.certifier = certifier;
-    }
-
-    boolean certifier = false;
 
     @Override
-    public void valider() {
-        setCertifier(true);
+    public boolean valider() {
+        if (1==1){
+            return true;
+        }
+        return false;
     }
 
 

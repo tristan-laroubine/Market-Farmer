@@ -1,9 +1,6 @@
 package fr.univamu.iut.ProduitFermier.ProduitApiculteur;
 
-import fr.univamu.iut.ProduitFermier.ProduitFermier;
-
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +70,7 @@ public class Miel extends ProduitApiculteur {
     }
 
     @Override
-    public void valider() {
+    public boolean valider() {
         if (datePeremption.compareTo(LocalDate.now()) <= 0)
         {
             this.certifier = false;

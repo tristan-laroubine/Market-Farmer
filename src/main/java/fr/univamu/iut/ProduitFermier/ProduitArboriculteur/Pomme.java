@@ -1,7 +1,5 @@
 package fr.univamu.iut.ProduitFermier.ProduitArboriculteur;
 
-import fr.univamu.iut.ProduitFermier.ProduitFermier;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -69,7 +67,7 @@ public class Pomme extends ProduitArboriculteur {
     boolean certifier = false;
 
     @Override
-    public void valider() {
+    public boolean valider() {
 
     }
 }
