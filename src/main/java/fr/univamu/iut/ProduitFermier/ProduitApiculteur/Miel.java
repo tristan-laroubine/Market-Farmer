@@ -8,8 +8,7 @@ public class Miel extends ProduitApiculteur {
 
 
     List<String> labels = new ArrayList<>();
-    LocalDate datePeremption;
-    int poids;
+
 
     public boolean isCertifier() {
         return certifier;
@@ -53,13 +52,6 @@ public class Miel extends ProduitApiculteur {
         this.datePeremption = datePeremption;
     }
 
-    public int getPoids() {
-        return poids;
-    }
-
-    public void setPoids(int poids) {
-        this.poids = poids;
-    }
 
     public void addLabel(String label){
         this.labels.add(label);

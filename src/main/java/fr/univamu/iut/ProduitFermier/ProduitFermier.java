@@ -4,6 +4,15 @@ public abstract class ProduitFermier {
     public boolean valider(){
         return true;
     }
-    int prix;
+    protected  int prix;
+    protected  int poids;
+
+    public int getPoids() {
+        return poids;
+    }
+
+    public void setPoids(int poids) {
+        this.poids = poids;
+    }
 
 }
