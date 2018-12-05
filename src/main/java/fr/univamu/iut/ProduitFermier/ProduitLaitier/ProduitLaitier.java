@@ -6,6 +6,6 @@ import fr.univamu.iut.ProduitFermier.ProduitPeremption;
 import java.time.LocalDate;
 import java.util.Date;
 
-abstract class ProduitLaitier  extends ProduitPeremption {
+public abstract class ProduitLaitier  extends ProduitPeremption {
 
 }
