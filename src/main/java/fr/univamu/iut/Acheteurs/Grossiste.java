@@ -10,6 +10,11 @@ public class Grossiste extends Acheteur {
 
     }
 
+    @Override
+    public void debiter() {
+
+    }
+
     public void acheterGrandeQuantitee(){
 
     }

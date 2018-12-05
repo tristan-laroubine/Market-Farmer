@@ -21,6 +21,11 @@ public class CentraleAchat extends Acheteur {
 
     }
 
+    @Override
+    public void debiter() {
+
+    }
+
     public void choixProduits(){
 
     }
