@@ -1,7 +1,6 @@
 package fr.univamu.iut.UniteDeProduction;
 
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
-import fr.univamu.iut.ProduitFermier.ProduitViande.ProduitViande;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

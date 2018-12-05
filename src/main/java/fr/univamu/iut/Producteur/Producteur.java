@@ -1,4 +1,4 @@
-package fr.univamu.iut.Fermier;
+package fr.univamu.iut.Producteur;
 
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 

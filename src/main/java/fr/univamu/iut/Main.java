@@ -1,14 +1,11 @@
 package fr.univamu.iut;
 
 
-import fr.univamu.iut.Fermier.ProducteurDeViande;
-import fr.univamu.iut.ProduitFermier.ProduitApiculteur.Miel;
+import fr.univamu.iut.Producteur.ProducteurDeViande;
 import fr.univamu.iut.ProduitFermier.ProduitViande.Cochon;
-import fr.univamu.iut.ProduitFermier.ProduitViande.Vache;
 import fr.univamu.iut.UniteDeProduction.UniteDeProductionDeViande;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
 
 
 public class Main {
