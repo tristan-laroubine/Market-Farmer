@@ -11,14 +11,14 @@ public class Miel extends ProduitApiculteur {
         this.datePeremption = datePeremption;
     }
 
-    public Miel(List<String> labels, LocalDate datePeremption, int poids, int prix) {
+    public Miel(List<String> labels, LocalDate datePeremption, Integer poids, Integer prix) {
         this.labels = labels;
         this.datePeremption = datePeremption;
         this.poids = poids;
         this.prix = prix;
     }
 
-    public Miel(LocalDate datePeremption, int poids) {
+    public Miel(LocalDate datePeremption, Integer poids) {
         this.datePeremption = datePeremption;
         this.poids = poids;
     }

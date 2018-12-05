@@ -10,14 +10,14 @@ public class Lait extends ProduitLaitier {
         this.datePeremption = datePeremption;
     }
 
-    public Lait(List<String> labels, LocalDate datePeremption, int poids, int prix) {
+    public Lait(List<String> labels, LocalDate datePeremption, Integer poids, Integer prix) {
         this.labels = labels;
         this.datePeremption = datePeremption;
         this.poids = poids;
         this.prix = prix;
     }
 
-    public Lait(LocalDate datePeremption, int poids) {
+    public Lait(LocalDate datePeremption, Integer poids) {
         this.datePeremption = datePeremption;
         this.poids = poids;
     }

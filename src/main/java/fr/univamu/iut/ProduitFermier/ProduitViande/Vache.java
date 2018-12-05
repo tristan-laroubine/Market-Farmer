@@ -20,13 +20,13 @@ public class Vache extends ProduitViande {
         System.out.println("Vache crée avec une string => " + string);
     }
 
-    public Vache(List<String> labels, Date datePeremption, int poids) {
+    public Vache(List<String> labels, Date datePeremption, Integer poids) {
         this.labels = labels;
 
         this.poids = poids;
     }
 
-    public Vache(int poids) {
+    public Vache(Integer poids) {
 
         this.poids = poids;
     }
