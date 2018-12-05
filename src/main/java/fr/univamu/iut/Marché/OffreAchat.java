@@ -1,6 +1,6 @@
 package fr.univamu.iut.Marché;
 
-import fr.univamu.iut.Acheteurs.Acheteur;
+import fr.univamu.iut.Acteur.Acheteur;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.time.LocalDate;
@@ -23,7 +23,10 @@ public class OffreAchat {
 
     public void effectuerTransaction(){
 
-        //debiter et crediter
+        a.debiter();
+
+        produitFermier.getProprietaire().crediter();
+
 
     }
 

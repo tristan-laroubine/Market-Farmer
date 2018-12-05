@@ -1,6 +1,6 @@
-package fr.univamu.iut.Acheteurs;
+package fr.univamu.iut.Acteur;
 
-public abstract class Acheteur {
+public abstract class Acheteur extends Proprietaire{
 
     protected String nom;
     protected double solde;

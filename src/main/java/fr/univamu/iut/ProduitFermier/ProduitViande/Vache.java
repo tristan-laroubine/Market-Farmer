@@ -1,5 +1,6 @@
 package fr.univamu.iut.ProduitFermier.ProduitViande;
 
+import fr.univamu.iut.Producteur.Producteur;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.lang.reflect.Constructor;
@@ -20,10 +21,12 @@ public class Vache extends ProduitViande {
         System.out.println("Vache crée avec une string => " + string);
     }
 
-    public Vache(List<String> labels, Date datePeremption, Integer poids) {
+    public Vache(List<String> labels, Date datePeremption, Integer poids, Producteur producteur) {
         this.labels = labels;
 
         this.poids = poids;
+
+        this.proprietaire = producteur;
     }
 
     public Vache(Integer poids) {

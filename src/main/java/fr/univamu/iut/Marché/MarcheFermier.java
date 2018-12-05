@@ -1,12 +1,10 @@
 package fr.univamu.iut.Marché;
 
-import fr.univamu.iut.Acheteurs.Acheteur;
+import fr.univamu.iut.Acteur.Acheteur;
 import fr.univamu.iut.Controleur;
 import fr.univamu.iut.Producteur.Producteur;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
-import sun.reflect.generics.tree.Tree;
 
-import java.util.ArrayList;
 import java.util.TreeSet;
 
 public class MarcheFermier extends Marche {
