@@ -2,7 +2,7 @@ package fr.univamu.iut.Fermier;
 
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.UniteDeProduction.UniteDeProductionDeViande;
-import fr.univamu.iut.ProduitFermier.ProduitViande.*;
+
 public class ProducteurDeViande extends Producteur {
 
 
