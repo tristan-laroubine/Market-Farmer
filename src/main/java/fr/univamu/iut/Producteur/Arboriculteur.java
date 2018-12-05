@@ -1,13 +1,14 @@
 package fr.univamu.iut.Producteur;
 
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.UniteDeProduction.UniteDeProductionArboriculteur;
 import fr.univamu.iut.UniteDeProduction.UniteDeProductionDeViande;
 
-public class Arboriculteur {
+public class Arboriculteur extends Producteur {
     private UniteDeProductionArboriculteur uniteDeProductionArboriculteur;
 
-    public UUniteDeProductionArboriculteur getUniteDeProductionArboriculteur() {
-        return UniteDeProductionArboriculteur;
+    public UniteDeProductionArboriculteur getUniteDeProductionArboriculteur() {
+        return uniteDeProductionArboriculteur;
     }
 
     public void setUniteDeProductionArboriculteur(UniteDeProductionArboriculteur uniteDeProductionArboriculteur) {

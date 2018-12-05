@@ -1,6 +1,7 @@
 package fr.univamu.iut.Producteur;
 
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.UniteDeProduction.UniteDeProductionDeViande;
 
 public class ProducteurLaitier extends Producteur{
     private UniteDeProductionDeViande uniteDeProductionDeViande;
