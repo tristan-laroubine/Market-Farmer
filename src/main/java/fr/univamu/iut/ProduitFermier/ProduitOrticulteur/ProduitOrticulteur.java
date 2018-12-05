@@ -1,34 +1,11 @@
 package fr.univamu.iut.ProduitFermier.ProduitOrticulteur;
 
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.ProduitFermier.ProduitPeremption;
 
 import java.time.LocalDate;
 import java.util.Date;
 
-abstract class ProduitOrticulteur extends ProduitFermier {
-    Date datePeremption;
+abstract class ProduitOrticulteur extends ProduitPeremption {
 
-    @Override
-    public boolean valider() {
-        if (datePeremption.compareTo(LocalDate.now()) <= 0)
-        {
-            System.out.println("Je suis périmé");
-            return false;
-
-        }
-        else
-        {
-            System.out.println("Je ne suis pas périmé");
-            return true;
-        }
-
-    }
-
-    public Date getDatePeremption() {
-        return datePeremption;
-    }
-
-    public void setDatePeremption(Date datePeremption) {
-        this.datePeremption = datePeremption;
-    }
 }
