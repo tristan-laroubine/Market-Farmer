@@ -1,7 +1,6 @@
 package fr.univamu.iut.UniteDeProduction;
 
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
-import fr.univamu.iut.ProduitFermier.ProduitLaitier.ProduitLaitier;
 import fr.univamu.iut.ProduitFermier.ProduitOrticulteur.ProduitOrticulteur;
 
 public class UniteDeProductionOrticulteur extends UniteDeProduction{
@@ -17,4 +16,4 @@ public class UniteDeProductionOrticulteur extends UniteDeProduction{
     }
 }
 
-}
+
