@@ -7,27 +7,15 @@ import java.util.List;
 public class Miel extends ProduitApiculteur {
 
 
-    List<String> labels = new ArrayList<>();
-
-
-    public boolean isCertifier() {
-        return certifier;
-    }
-
-    public void setCertifier(boolean certifier) {
-        this.certifier = certifier;
-    }
-
-    boolean certifier = false;
-
     public Miel(LocalDate datePeremption) {
         this.datePeremption = datePeremption;
     }
 
-    public Miel(List<String> labels, LocalDate datePeremption, int poids) {
+    public Miel(List<String> labels, LocalDate datePeremption, int poids, int prix) {
         this.labels = labels;
         this.datePeremption = datePeremption;
         this.poids = poids;
+        this.prix = prix;
     }
 
     public Miel(LocalDate datePeremption, int poids) {
@@ -36,13 +24,6 @@ public class Miel extends ProduitApiculteur {
     }
 
 
-    public List<String> getLabels() {
-        return labels;
-    }
-
-    public void setLabels(List<String> labels) {
-        this.labels = labels;
-    }
 
     public LocalDate getDatePeremption() {
         return datePeremption;
@@ -53,27 +34,5 @@ public class Miel extends ProduitApiculteur {
     }
 
 
-    public void addLabel(String label){
-        this.labels.add(label);
-    }
 
-    public void removeLabel(String label){
-        this.labels.remove(label);
-    }
-
-    @Override
-    public boolean valider() {
-        if (datePeremption.compareTo(LocalDate.now()) <= 0)
-        {
-            this.certifier = false;
-            System.out.println("Je suis périmé");
-
-        }
-        else
-        {
-            this.certifier = true;
-            System.out.println("Je ne suis pas périmé");
-        }
-
-    }
 }
