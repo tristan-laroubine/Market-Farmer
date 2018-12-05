@@ -2,8 +2,6 @@ package fr.univamu.iut.Acteur;
 
 public class Grossiste extends Acheteur {
 
-    private int prixMax;
-    private int prixMin;
 
     @Override
     public void acheter() {
@@ -15,7 +13,7 @@ public class Grossiste extends Acheteur {
 
     }
 
-    public void acheterGrandeQuantitee(){
+    public void acheterGrandeQuantitee(String type, Double prixMin, Double prixMax){
 
     }
 
