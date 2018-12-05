@@ -2,25 +2,26 @@ package fr.univamu.iut.Producteur;
 
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.UniteDeProduction.UniteDeProductionDeViande;
+import fr.univamu.iut.UniteDeProduction.UniteDeProductionLaitier;
 
 public class ProducteurLaitier extends Producteur{
-    private UniteDeProductionDeViande uniteDeProductionDeViande;
+    private UniteDeProductionLaitier uniteDeProductionLaitier;
 
-    public UniteDeProductionDeViande getUniteDeProductionDeViande() {
-        return uniteDeProductionDeViande;
+    public UniteDeProductionLaitier getUniteDeProductionLaitier() {
+        return uniteDeProductionLaitier;
     }
 
-    public void setUniteDeProductionDeViande(UniteDeProductionDeViande uniteDeProductionDeViande) {
-        this.uniteDeProductionDeViande = uniteDeProductionDeViande;
+    public void setUniteDeProductionLaitier(UniteDeProductionLaitier uniteDeProductionLaitier) {
+        this.uniteDeProductionLaitier = uniteDeProductionLaitier;
     }
 
     @Override
     public ProduitFermier produitProduit(String type) {
-        return uniteDeProductionDeViande.produitProduit(type);
+        return uniteDeProductionLaitier.produitProduit(type);
     }
 
     @Override
     public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
-        return uniteDeProductionDeViande.produitProduit(type,arg,arguments);
+        return uniteDeProductionLaitier.produitProduit(type,arg,arguments);
     }
 }
