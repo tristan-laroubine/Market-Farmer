@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class ProduitFermier {
 
     protected List<String> labels = new ArrayList<>();
-    protected  int prix;
+    protected  double prix;
     protected  int poids;
 
 
@@ -30,7 +30,7 @@ public abstract class ProduitFermier {
         this.labels.remove(label);
     }
 
-    public int getPrix() {
+    public double getPrix() {
         return prix;
     }
 

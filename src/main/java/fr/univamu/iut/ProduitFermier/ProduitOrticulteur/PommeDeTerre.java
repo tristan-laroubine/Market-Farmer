@@ -12,7 +12,7 @@ public class PommeDeTerre extends ProduitOrticulteur {
         this.datePeremption = datePeremption;
     }
 
-    public PommeDeTerre(List<String> labels, LocalDate datePeremption, Integer poids, Integer prix) {
+    public PommeDeTerre(List<String> labels, LocalDate datePeremption, Integer poids, double prix) {
         this.labels = labels;
         this.datePeremption = datePeremption;
         this.poids = poids;
