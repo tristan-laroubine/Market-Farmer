@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public abstract class ProduitApiculteur extends ProduitFermier {
-    LocalDate datePeremption;
+    Date datePeremption;
 
     @Override
     public boolean valider() {
@@ -24,7 +24,7 @@ public abstract class ProduitApiculteur extends ProduitFermier {
 
     }
 
-    public Date getDatePeremption() {
+    public LocalDate getDatePeremption() {
         return datePeremption;
     }
 
