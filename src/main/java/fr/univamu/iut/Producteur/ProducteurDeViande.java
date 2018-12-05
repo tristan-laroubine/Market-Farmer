@@ -18,11 +18,20 @@ public class ProducteurDeViande extends Producteur {
 
     @Override
     public ProduitFermier produitProduit(String type) {
-        return uniteDeProductionDeViande.produitProduit(type);
+        ProduitFermier produitFermier = uniteDeProductionDeViande.produitProduit(type);
+        addProduitFermiers(produitFermier);
+        return produitFermier;
     }
 
     @Override
     public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
-        return uniteDeProductionDeViande.produitProduit(type,arg,arguments);
+        ProduitFermier produitFermier = uniteDeProductionDeViande.produitProduit(type,arg,arguments);
+        addProduitFermiers(produitFermier);
+        return produitFermier;
+    }
+
+    @Override
+    public String toString() {
+        return "ProducteurDeViande";
     }
 }

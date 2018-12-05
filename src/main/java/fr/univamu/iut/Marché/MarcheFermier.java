@@ -78,4 +78,9 @@ public class MarcheFermier extends Marche {
     {
         produitsFermier.addAll(pFermiers);
     }
+
+    @Override
+    public String toString() {
+        return "MarcheFermier";
+    }
 }

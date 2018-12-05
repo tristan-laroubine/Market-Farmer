@@ -23,4 +23,9 @@ public class Orticulteur extends Producteur{
     public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
         return uniteDeProductionOrticulteur.produitProduit(type,arg,arguments);
     }
+
+    @Override
+    public String toString() {
+        return "Orticulteur";
+    }
 }

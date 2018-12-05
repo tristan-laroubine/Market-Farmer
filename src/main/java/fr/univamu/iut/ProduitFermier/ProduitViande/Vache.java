@@ -34,5 +34,8 @@ public class Vache extends ProduitViande {
         this.poids = poids;
     }
 
-
+    @Override
+    public String toString() {
+        return "Vache";
+    }
 }

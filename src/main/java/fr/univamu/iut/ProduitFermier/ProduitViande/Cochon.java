@@ -24,7 +24,8 @@ public class Cochon extends ProduitViande {
     }
 
 
-
-
-
+    @Override
+    public String toString() {
+        return "Cochon";
+    }
 }

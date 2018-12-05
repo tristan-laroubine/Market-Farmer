@@ -22,5 +22,8 @@ public class Miel extends ProduitApiculteur {
         this.poids = poids;
     }
 
-
+    @Override
+    public String toString() {
+        return "Miel";
+    }
 }

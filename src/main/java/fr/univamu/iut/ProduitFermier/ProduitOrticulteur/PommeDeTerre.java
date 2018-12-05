@@ -22,4 +22,9 @@ public class PommeDeTerre extends ProduitOrticulteur {
         this.datePeremption = datePeremption;
         this.poids = poids;
     }
+
+    @Override
+    public String toString() {
+        return "PommeDeTerre";
+    }
 }

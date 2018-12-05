@@ -20,4 +20,9 @@ public class Lait extends ProduitLaitier {
         this.datePeremption = datePeremption;
         this.poids = poids;
     }
+
+    @Override
+    public String toString() {
+        return "Lait";
+    }
 }

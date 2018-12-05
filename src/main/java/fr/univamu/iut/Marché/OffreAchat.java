@@ -25,12 +25,13 @@ public class OffreAchat {
 
         a.debiter();
 
-        produitFermier.getProprietaire().crediter();
+        produitFermier.getProprietaire().crediter(50.0);
 
 
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Offre Achat";
+    }
 }

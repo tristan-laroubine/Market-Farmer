@@ -21,5 +21,8 @@ public class Pomme extends ProduitArboriculteur {
         this.poids = poids;
     }
 
-
+    @Override
+    public String toString() {
+        return "Pomme";
+    }
 }

@@ -20,4 +20,5 @@ public class Grossiste extends Acheteur {
     public void revendre(){
 
     }
+
 }

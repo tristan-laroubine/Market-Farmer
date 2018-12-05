@@ -12,5 +12,8 @@ public class Tradeur extends Acheteur {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "Tradeur";
+    }
 }
