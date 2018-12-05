@@ -5,13 +5,29 @@ import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.time.LocalDate;
 
-public class OffreAchat {
+public class OffreAchat implements Comparable{
 
     private ProduitFermier produitFermier;
     private Proprietaire acheteur;
+
+    public LocalDate getDateOffre() {
+        return dateOffre;
+    }
+
+    public void setDateOffre(LocalDate dateOffre) {
+        this.dateOffre = dateOffre;
+    }
+
     private LocalDate dateOffre;
     private double prix;
 
+    public ProduitFermier getProduitFermier() {
+        return produitFermier;
+    }
+
+    public Proprietaire getAcheteur() {
+        return acheteur;
+    }
 
     public OffreAchat(Proprietaire acheteur, ProduitFermier produitFermier) {
         this.acheteur = acheteur;
@@ -22,6 +38,12 @@ public class OffreAchat {
     }
     @Override
     public String toString() {
-        return "Offre Achat";
+        return "Offre Achat" + dateOffre;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        OffreAchat offreAchat = (OffreAchat) o;
+        return -offreAchat.getDateOffre().compareTo(dateOffre);
     }
 }

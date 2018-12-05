@@ -3,6 +3,7 @@ package fr.univamu.iut;
 
 import fr.univamu.iut.Acteur.Proprietaire;
 import fr.univamu.iut.Marché.MarcheFermier;
+import fr.univamu.iut.Marché.OffreAchat;
 import fr.univamu.iut.Producteur.ProducteurDeViande;
 import fr.univamu.iut.Producteur.ProducteurLaitier;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
@@ -66,8 +67,10 @@ public class Main {
         System.out.println("Sold du propriétaire " + proprietaire1.getSolde());
         System.out.println("Produit " + vache + " | prix : "+ vache.getPrix());
         System.out.println("Transaction");
+        producteurLaitier.proposerOffre(marcheFermier,vache);
+        producteurLaitier.proposerOffre(marcheFermier,cochon);
 
-        marcheFermier.transaction(vache,producteurLaitier);
+        marcheFermier.checkOffreAchatVente();
         System.out.println("Sold du producteurLaitier " + producteurLaitier.getSolde());
         System.out.println("Sold du propriétaire " + proprietaire1.getSolde());
         System.out.println("Reserve du proprietaire : ");

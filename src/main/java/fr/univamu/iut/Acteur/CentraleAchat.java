@@ -2,29 +2,15 @@ package fr.univamu.iut.Acteur;
 
 import java.util.ArrayList;
 
-public class CentraleAchat extends Acheteur {
+public class CentraleAchat {
 
-    private ArrayList <Acheteur> acheteurs;
+    private ArrayList <Proprietaire> acheteurs;
     private int promotion;
     private int quantitee;
 
-    public CentraleAchat(String nom)
-    {
-        this.nom = nom;
-    }
 
 
-    @Override
-    public void acheter() {
-        //négociation des achats
 
-
-    }
-
-    @Override
-    public void debiter() {
-
-    }
 
     public void choixProduits(){
 

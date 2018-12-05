@@ -15,6 +15,15 @@ public class MarcheFermier extends Marche {
     private TreeSet<Producteur> vendeurs = new TreeSet<>();
     private PriorityQueue <Proprietaire>  acheteurs = new PriorityQueue<>();
     private PriorityQueue<ProduitFermier> produitsFermier = new PriorityQueue<>();
+
+    public PriorityQueue<OffreAchat> getOffreAchats() {
+        return offreAchats;
+    }
+
+    public void setOffreAchats(PriorityQueue<OffreAchat> offreAchats) {
+        this.offreAchats = offreAchats;
+    }
+
     private PriorityQueue<OffreAchat> offreAchats = new PriorityQueue<>();
 
 
@@ -25,6 +34,14 @@ public class MarcheFermier extends Marche {
         super.controleur = controleur;
     }
 
+    public void checkOffreAchatVente(){
+        for (ProduitFermier produifermier: produitsFermier
+             ) {
+            if(controleur.choisirAcheteur(offreAchats,produifermier) != null){
+                transaction(produifermier,controleur.choisirAcheteur(offreAchats,produifermier).getAcheteur());
+            }
+        }
+    }
 
     public void addOffreToOffreAchats(OffreAchat offreAchat){
         offreAchats.add(offreAchat);
