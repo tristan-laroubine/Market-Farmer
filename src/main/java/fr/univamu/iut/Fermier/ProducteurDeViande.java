@@ -1,21 +1,12 @@
 package fr.univamu.iut.Fermier;
 
+import fr.univamu.iut.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.UniteDeProduction.UniteDeProductionDeViande;
 import fr.univamu.iut.ProduitFermier.ProduitViande.*;
-public class ProducteurDeViande {
+public class ProducteurDeViande extends Producteur {
 
 
     private UniteDeProductionDeViande uniteDeProductionDeViande;
-
-
-    public ProduitViande produitProduit(String type){
-        return (ProduitViande) uniteDeProductionDeViande.produitProduit(type);
-    }
-
-    public ProduitViande produitProduit(String type, String[] arg, Object... arguments){
-        return (ProduitViande) uniteDeProductionDeViande.produitProduit(type,arg, arguments);
-    }
-
 
     public UniteDeProductionDeViande getUniteDeProductionDeViande() {
         return uniteDeProductionDeViande;
@@ -25,4 +16,13 @@ public class ProducteurDeViande {
         this.uniteDeProductionDeViande = uniteDeProductionDeViande;
     }
 
+    @Override
+    public ProduitFermier produitProduit(String type) {
+        return uniteDeProductionDeViande.produitProduit(type);
+    }
+
+    @Override
+    public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
+        return uniteDeProductionDeViande.produitProduit(type,arg,arguments);
+    }
 }
