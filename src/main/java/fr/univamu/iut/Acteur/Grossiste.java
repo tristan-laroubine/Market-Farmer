@@ -1,4 +1,4 @@
-package fr.univamu.iut.Acheteurs;
+package fr.univamu.iut.Acteur;
 
 public class Grossiste extends Acheteur {
 

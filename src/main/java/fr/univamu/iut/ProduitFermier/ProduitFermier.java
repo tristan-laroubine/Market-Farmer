@@ -1,5 +1,8 @@
 package fr.univamu.iut.ProduitFermier;
 
+import fr.univamu.iut.Acteur.Proprietaire;
+import fr.univamu.iut.Producteur.Producteur;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +11,15 @@ public abstract class ProduitFermier {
     protected List<String> labels = new ArrayList<>();
     protected  int prix;
     protected  int poids;
+    protected Proprietaire proprietaire;
 
+    public Proprietaire getProprietaire() {
+        return proprietaire;
+    }
+
+    public void setProprietaire(Proprietaire proprietaire) {
+        this.proprietaire = proprietaire;
+    }
 
     public boolean valider(){
         return true;

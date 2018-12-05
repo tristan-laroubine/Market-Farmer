@@ -1,7 +1,6 @@
 package fr.univamu.iut.ProduitFermier.ProduitLaitier;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class Lait extends ProduitLaitier {

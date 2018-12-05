@@ -1,7 +1,6 @@
 package fr.univamu.iut.ProduitFermier.ProduitApiculteur;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Miel extends ProduitApiculteur {

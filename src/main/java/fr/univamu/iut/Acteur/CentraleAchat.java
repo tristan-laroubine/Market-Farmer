@@ -1,4 +1,4 @@
-package fr.univamu.iut.Acheteurs;
+package fr.univamu.iut.Acteur;
 
 import java.util.ArrayList;
 
