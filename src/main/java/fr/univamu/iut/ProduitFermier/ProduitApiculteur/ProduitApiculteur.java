@@ -3,6 +3,7 @@ package fr.univamu.iut.ProduitFermier.ProduitApiculteur;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public abstract class ProduitApiculteur extends ProduitFermier {
     LocalDate datePeremption;
@@ -21,5 +22,13 @@ public abstract class ProduitApiculteur extends ProduitFermier {
             return true;
         }
 
+    }
+
+    public Date getDatePeremption() {
+        return datePeremption;
+    }
+
+    public void setDatePeremption(Date datePeremption) {
+        this.datePeremption = datePeremption;
     }
 }

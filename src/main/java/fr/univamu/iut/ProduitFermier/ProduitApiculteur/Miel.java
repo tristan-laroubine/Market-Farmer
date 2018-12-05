@@ -24,15 +24,4 @@ public class Miel extends ProduitApiculteur {
     }
 
 
-
-    public LocalDate getDatePeremption() {
-        return datePeremption;
-    }
-
-    public void setDatePeremption(LocalDate datePeremption) {
-        this.datePeremption = datePeremption;
-    }
-
-
-
 }
