@@ -5,7 +5,6 @@ public class Tradeur extends Acheteur {
 
     @Override
     public void acheter() {
-
     }
 
 

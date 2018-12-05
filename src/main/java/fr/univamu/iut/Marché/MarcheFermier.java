@@ -1,7 +1,7 @@
 package fr.univamu.iut.Marché;
 
+import fr.univamu.iut.Acheteurs.Acheteur;
 import fr.univamu.iut.Controleur;
-import fr.univamu.iut.Fermier.Producteur;
 import fr.univamu.iut.Producteur.Producteur;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 import sun.reflect.generics.tree.Tree;
