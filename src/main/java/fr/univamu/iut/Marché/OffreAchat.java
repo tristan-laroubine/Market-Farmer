@@ -1,6 +1,6 @@
 package fr.univamu.iut.Marché;
 
-import fr.univamu.iut.Acteur.Acheteur;
+import fr.univamu.iut.Acteur.Proprietaire;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.time.LocalDate;
@@ -8,28 +8,18 @@ import java.time.LocalDate;
 public class OffreAchat {
 
     private ProduitFermier produitFermier;
-    private Marche marche;
-    private Acheteur a;
+    private Proprietaire acheteur;
     private LocalDate dateOffre;
+    private double prix;
 
 
-    public OffreAchat(Acheteur a, ProduitFermier produitFermier, Marche marche, LocalDate dateOffre) {
-        this.a = a;
+    public OffreAchat(Proprietaire acheteur, ProduitFermier produitFermier) {
+        this.acheteur = acheteur;
         this.produitFermier = produitFermier;
-        this.marche = marche;
-        this.dateOffre = dateOffre;
+        this.dateOffre = LocalDate.now();
+        this.prix = produitFermier.getPrix();
 
     }
-
-    public void effectuerTransaction(){
-
-        a.debiter();
-
-        produitFermier.getProprietaire().crediter(50.0);
-
-
-    }
-
     @Override
     public String toString() {
         return "Offre Achat";

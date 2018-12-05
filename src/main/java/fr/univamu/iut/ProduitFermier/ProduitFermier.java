@@ -6,10 +6,12 @@ import fr.univamu.iut.Producteur.Producteur;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ProduitFermier {
+import static javax.swing.RowFilter.ComparisonType.BEFORE;
+
+public abstract class ProduitFermier implements Comparable {
 
     protected List<String> labels = new ArrayList<>();
-    protected  double prix;
+    protected  double prix = 50;
     protected  int poids;
     protected Proprietaire proprietaire;
 
@@ -56,6 +58,14 @@ public abstract class ProduitFermier {
 
     public void setPoids(int poids) {
         this.poids = poids;
+    }
+
+    public int compareTo(Object that){
+        ProduitFermier produitFermier = (ProduitFermier) that;
+        if (prix - produitFermier.getPrix()!=0){
+            return (int) (prix - produitFermier.getPrix());
+        }
+        return 0;
     }
 
 }

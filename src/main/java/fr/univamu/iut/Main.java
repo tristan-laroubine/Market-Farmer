@@ -4,10 +4,13 @@ package fr.univamu.iut;
 import fr.univamu.iut.Acteur.Proprietaire;
 import fr.univamu.iut.Marché.MarcheFermier;
 import fr.univamu.iut.Producteur.ProducteurDeViande;
+import fr.univamu.iut.Producteur.ProducteurLaitier;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.ProduitFermier.ProduitViande.Vache;
 import fr.univamu.iut.UniteDeProduction.UniteDeProductionDeViande;
+
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -42,12 +45,41 @@ public class Main {
         proprietaire1.setUniteDeProductionDeViande(new UniteDeProductionDeViande());
         Cochon cochon = (Cochon) proprietaire1.produitProduit("fr.univamu.iut.ProduitFermier.ProduitViande.Cochon");
         Vache vache = (Vache) proprietaire1.produitProduit("fr.univamu.iut.ProduitFermier.ProduitViande.Vache");
-        cochon.setProprietaire(proprietaire1);
+        vache.setPrix(50);
+        marcheFermier.addProduit(cochon);
+        marcheFermier.addProduit(vache);
 
+        ProducteurLaitier producteurLaitier = new ProducteurLaitier();
+        System.out.println("Bien sur le marche : ");
+        for ( ProduitFermier produitFermier : marcheFermier.getProduitsFermier()
+        ) {
+            System.out.println(produitFermier + " prix =" + produitFermier.getPrix());
+
+        }
+        System.out.println("Reserve du proprietaire : ");
+        for ( ProduitFermier produitFermier : proprietaire1.getProduitFermiers()
+        ) {
+            System.out.println(produitFermier);
+
+        }
+        System.out.println("Sold du producteurLaitier " + producteurLaitier.getSolde());
+        System.out.println("Sold du propriétaire " + proprietaire1.getSolde());
+        System.out.println("Produit " + vache + " | prix : "+ vache.getPrix());
+        System.out.println("Transaction");
+
+        marcheFermier.transaction(vache,producteurLaitier);
+        System.out.println("Sold du producteurLaitier " + producteurLaitier.getSolde());
+        System.out.println("Sold du propriétaire " + proprietaire1.getSolde());
+        System.out.println("Reserve du proprietaire : ");
         for ( ProduitFermier produitFermier : proprietaire1.getProduitFermiers()
              ) {
             System.out.println(produitFermier);
 
+        }
+        System.out.println("Reserve du producteurLaitier : ");
+        for ( ProduitFermier produitFermier : producteurLaitier.getProduitFermiers()
+        ) {
+            System.out.println(produitFermier);
         }
 
     }

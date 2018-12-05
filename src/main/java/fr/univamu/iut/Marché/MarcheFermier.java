@@ -1,38 +1,47 @@
 package fr.univamu.iut.Marché;
 
-import fr.univamu.iut.Acteur.Acheteur;
+import fr.univamu.iut.Acteur.Proprietaire;
 import fr.univamu.iut.Controleur;
 import fr.univamu.iut.Producteur.Producteur;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
+import java.util.List;
+import java.util.PriorityQueue;
 import java.util.TreeSet;
 
 public class MarcheFermier extends Marche {
 
-    private Controleur c;
 
-    private TreeSet<Producteur> vendeurs;
-    private TreeSet <Acheteur>  acheteurs;
-    private TreeSet <ProduitFermier> produitsFermier;
+    private TreeSet<Producteur> vendeurs = new TreeSet<>();
+    private PriorityQueue <Proprietaire>  acheteurs = new PriorityQueue<>();
+    private PriorityQueue<ProduitFermier> produitsFermier = new PriorityQueue<>();
+    private PriorityQueue<OffreAchat> offreAchats = new PriorityQueue<>();
 
 
-
-    public MarcheFermier(String nom, String region, Controleur c)
+    public MarcheFermier(String nom, String region, Controleur controleur)
     {
         super.nom = nom;
         super.region = region;
-        this.c = c;
+        super.controleur = controleur;
+    }
+
+
+    public void addOffreToOffreAchats(OffreAchat offreAchat){
+        offreAchats.add(offreAchat);
+    }
+    public void removeOffreToOffreAchats(OffreAchat offreAchat){
+        offreAchats.remove(offreAchat);
     }
 
     public TreeSet<Producteur> getVendeurs() {
         return vendeurs;
     }
 
-    public TreeSet<Acheteur> getAcheteurs() {
+    public PriorityQueue <Proprietaire> getAcheteurs() {
         return acheteurs;
     }
 
-    public TreeSet<ProduitFermier> getProduitsFermier() {
+    public PriorityQueue<ProduitFermier> getProduitsFermier() {
         return produitsFermier;
     }
 
@@ -40,11 +49,11 @@ public class MarcheFermier extends Marche {
         this.vendeurs = vendeurs;
     }
 
-    public void setAcheteurs(TreeSet<Acheteur> acheteurs) {
+    public void setAcheteurs(PriorityQueue <Proprietaire> acheteurs) {
         this.acheteurs = acheteurs;
     }
 
-    public void setProduitsFermier(TreeSet<ProduitFermier> produitsFermier) {
+    public void setProduitsFermier(PriorityQueue<ProduitFermier> produitsFermier) {
         this.produitsFermier = produitsFermier;
     }
 
@@ -54,29 +63,40 @@ public class MarcheFermier extends Marche {
         vendeurs.add(p);
     }
 
-    public void addVendeurs(TreeSet<Producteur> vendeurs)
+    public void addVendeurs(List<Producteur> ListVendeurs)
     {
-        vendeurs.addAll(vendeurs);
+        vendeurs.addAll(ListVendeurs);
     }
 
-    public void addAcheteur(Acheteur a)
+    public void addAcheteur(Proprietaire acheteur)
     {
-        acheteurs.add(a);
+        acheteurs.add(acheteur);
     }
 
-    public void addAcheteurs(TreeSet<Acheteur> acheteurs)
+    public void addAcheteurs(List <Proprietaire> ListAcheteurs)
     {
-        acheteurs.addAll(acheteurs);
+        acheteurs.addAll(ListAcheteurs);
     }
 
-    public void addProduit(ProduitFermier pf)
+    public void addProduit(ProduitFermier produitFermier)
     {
-        produitsFermier.add(pf);
+        produitsFermier.add(produitFermier);
     }
 
-    public void addProduits(TreeSet<ProduitFermier> pFermiers)
+    public void addProduits(List<ProduitFermier> ListProduitFermiers)
     {
-        produitsFermier.addAll(pFermiers);
+        produitsFermier.addAll(ListProduitFermiers);
+    }
+
+
+
+    public void transaction(ProduitFermier produitFermier, Proprietaire acheteur){
+        Proprietaire proprietaire = produitFermier.getProprietaire();
+        if (acheteur.getSolde() <  produitFermier.getPrix()) return;
+        proprietaire.crediter(produitFermier.getPrix());
+        acheteur.crediter(-produitFermier.getPrix());
+        proprietaire.removeProduitFermiers(produitFermier);
+        acheteur.addProduitFermiers(produitFermier);
     }
 
     @Override

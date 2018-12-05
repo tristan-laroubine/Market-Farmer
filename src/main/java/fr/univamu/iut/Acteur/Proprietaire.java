@@ -1,5 +1,8 @@
 package fr.univamu.iut.Acteur;
 
+import fr.univamu.iut.Marché.Marche;
+import fr.univamu.iut.Marché.MarcheFermier;
+import fr.univamu.iut.Marché.OffreAchat;
 import fr.univamu.iut.ProduitFermier.ProduitFermier;
 
 import java.util.ArrayList;
@@ -34,6 +37,15 @@ public abstract class Proprietaire {
 
     public void crediter(double prix) {
         solde += prix;
+    }
+
+    public void proposerOffre(MarcheFermier marche, ProduitFermier produitFermier)
+    {
+        OffreAchat offreAchat = new OffreAchat(this,produitFermier);
+        if (marche.getControleur().valide(offreAchat))
+        {
+            marche.addOffreToOffreAchats(offreAchat);
+        }
     }
 
 

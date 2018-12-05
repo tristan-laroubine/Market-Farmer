@@ -25,4 +25,6 @@ public class Lait extends ProduitLaitier {
     public String toString() {
         return "Lait";
     }
+
+
 }

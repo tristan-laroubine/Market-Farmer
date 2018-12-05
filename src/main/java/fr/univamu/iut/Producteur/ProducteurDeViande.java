@@ -20,6 +20,7 @@ public class ProducteurDeViande extends Producteur {
     public ProduitFermier produitProduit(String type) {
         ProduitFermier produitFermier = uniteDeProductionDeViande.produitProduit(type);
         addProduitFermiers(produitFermier);
+        produitFermier.setProprietaire(this);
         return produitFermier;
     }
 
@@ -27,6 +28,7 @@ public class ProducteurDeViande extends Producteur {
     public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
         ProduitFermier produitFermier = uniteDeProductionDeViande.produitProduit(type,arg,arguments);
         addProduitFermiers(produitFermier);
+        produitFermier.setProprietaire(this);
         return produitFermier;
     }
 
