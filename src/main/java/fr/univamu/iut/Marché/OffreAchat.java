@@ -23,7 +23,10 @@ public class OffreAchat {
 
     public void effectuerTransaction(){
 
-        //debiter et crediter
+        a.debiter();
+
+        produitFermier.getProprietaire().crediter();
+
 
     }
 
