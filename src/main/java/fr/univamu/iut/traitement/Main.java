@@ -8,7 +8,6 @@ import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
-import fr.univamu.iut.traitement.Controleur;
 
 
 public class Main {
@@ -25,7 +24,7 @@ public class Main {
         String url = "";
         String[] arg = {"java.time.LocalDate","java.lang.Integer"};
         String[] arguments = {"java.lang.String","java.time.LocalDate"};
-//        Cochon cochon = (Cochon) producteurDeViande.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon",arg,LocalDate.of(2018, Month.NOVEMBER, 22),50);
+//        Cochon cochon = (Cochon) producteurDeViande.produitProduit("Cochon",arg,LocalDate.of(2018, Month.NOVEMBER, 22),50);
         Cochon cochon = (Cochon) producteurDeViande.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
         System.out.println(cochon);
 

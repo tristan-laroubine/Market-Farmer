@@ -5,7 +5,7 @@ import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-abstract class UniteDeProduction {
+public abstract class UniteDeProduction {
     protected ProduitFermier produitProduit(String type){
         try{
             Class<?> classe = Class.forName(type);

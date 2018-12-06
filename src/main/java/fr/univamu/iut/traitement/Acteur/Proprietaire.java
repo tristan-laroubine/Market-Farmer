@@ -1,16 +1,29 @@
 package fr.univamu.iut.traitement.Acteur;
 
+import fr.univamu.iut.traitement.Marché.Marche;
 import fr.univamu.iut.traitement.Marché.MarcheFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.Marché.OffreAchat;
-import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Proprietaire {
+
+    private String Prenom;
+
     private double solde = 1000;
     private List<ProduitFermier> produitFermiers = new ArrayList<>();
+
+
+    public String getPrenom() {
+        return Prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        Prenom = prenom;
+    }
+
 
     public void addProduitFermiers(ProduitFermier produitFermier){
         produitFermiers.add(produitFermier);
@@ -37,6 +50,14 @@ public abstract class Proprietaire {
 
     public void crediter(double prix) {
         solde += prix;
+    }
+
+    public void vendre(ProduitFermier produitFermier, MarcheFermier marche)
+    {
+        if(produitFermier.getProprietaire() == this) {
+            marche.addProduit(produitFermier);
+        }
+        else System.out.println("Mauvais Proprietaire" + produitFermier.getProprietaire() + this);
     }
 
     public void proposerOffre(MarcheFermier marche, ProduitFermier produitFermier)
