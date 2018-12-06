@@ -15,6 +15,7 @@ import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionLaitier;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +24,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -174,14 +174,22 @@ public class Controller implements Initializable {
         sliderPoids.setMin(0);
         sliderPoids.setMax(50);
         vBox.getChildren().addAll(labelPrix,sliderPrix,labelPoids,sliderPoids);
-        switch (str){
-            case "Vache" :
 
-
-                producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
-            case "Cochon":
-                producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
-        }
+        Button buttonValide = new Button("Produire " +  str);
+        buttonValide.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                switch (str){
+                    case "Vache" :
+                        Vache vache = (Vache) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
+                    case "Cochon":
+                        Cochon cochon = (Cochon) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+                    default:
+                }
+                pannelProprietaire(producteur);
+            }
+        });
+        vBox.getChildren().addAll(buttonValide);
 
     }
 

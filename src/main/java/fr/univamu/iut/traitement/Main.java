@@ -39,6 +39,7 @@ public class Main {
         proprietaire1.setUniteDeProductionDeViande(new UniteDeProductionDeViande());
         Cochon cochon = (Cochon) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
         Vache vache = (Vache) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
+        proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
         vache.setPrix(50);
         marcheFermier.addProduit(cochon);
         marcheFermier.addProduit(vache);
