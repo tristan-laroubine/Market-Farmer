@@ -11,21 +11,16 @@ public class Cochon extends ProduitViande {
 
     }
 
-    public Cochon(List<String> labels, Integer poids, Producteur producteur) {
+    public Cochon(List<String> labels, Integer poids, Double prix) {
         this.labels = labels;
-
+        this.prix = prix;
         this.poids = poids;
-        this.proprietaire = producteur;
+
     }
 
-    public Cochon(Integer poids) {
-
+    public Cochon(Integer poids, Double prix){
         this.poids = poids;
-    }
 
-    public Cochon(Integer poids, Integer prix, Producteur producteur){
-        this.poids = poids;
-        this.proprietaire = producteur;
         this.prix = prix;
     }
 
