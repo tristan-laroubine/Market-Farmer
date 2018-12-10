@@ -25,6 +25,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Parameter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -168,11 +169,12 @@ public class Controller implements Initializable {
         Slider sliderPrix = new Slider();
         sliderPrix.setMin(0);
         sliderPrix.setMax(100);
-
+        sliderPrix.setValue(50);
         Label labelPoids = new Label("Poids :");
         Slider sliderPoids = new Slider();
         sliderPoids.setMin(0);
         sliderPoids.setMax(50);
+        sliderPoids.setValue(25);
         vBox.getChildren().addAll(labelPrix,sliderPrix,labelPoids,sliderPoids);
 
         Button buttonValide = new Button("Produire " +  str);
@@ -180,11 +182,17 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 switch (str){
+
                     case "Vache" :
-                        Vache vache = (Vache) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
-                    case "Cochon":
-                        Cochon cochon = (Cochon) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+                        String[] parametere = {"java.lang.Integer", "java.lang.Integer"};
+                        Vache vache = (Vache) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache",parametere,sliderPoids.getValue(), sliderPrix.getValue());
+                        break;
+
+                    case "Cochon!":
+                            Cochon cochon = (Cochon) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+                            break;
                     default:
+                        break;
                 }
                 pannelProprietaire(producteur);
             }

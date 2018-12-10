@@ -18,17 +18,17 @@ public class Vache extends ProduitViande {
         System.out.println("Vache crée avec une string => " + string);
     }
 
-    public Vache(List<String> labels, Date datePeremption, Integer poids, Producteur producteur) {
+    public Vache(List<String> labels, Integer poids) {
         this.labels = labels;
 
         this.poids = poids;
 
-        this.proprietaire = producteur;
     }
 
-    public Vache(Integer poids) {
+    public Vache(Integer poids, Integer prix) {
 
         this.poids = poids;
+        this.prix = prix;
     }
 
     @Override

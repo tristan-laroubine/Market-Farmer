@@ -23,7 +23,11 @@ public class Cochon extends ProduitViande {
         this.poids = poids;
     }
 
-
+    public Cochon(Integer poids, Integer prix, Producteur producteur){
+        this.poids = poids;
+        this.proprietaire = producteur;
+        this.prix = prix;
+    }
 
     @Override
     public String toString() {

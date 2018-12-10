@@ -81,4 +81,7 @@ public class Main {
 
     }
 
+    public static void simulation3(){
+
+    }
 }
