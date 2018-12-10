@@ -17,9 +17,10 @@ public class Miel extends ProduitApiculteur {
         this.prix = prix;
     }
 
-    public Miel(LocalDate datePeremption, Integer poids) {
+    public Miel(LocalDate datePeremption, Integer poids, Double prix) {
         this.datePeremption = datePeremption;
         this.poids = poids;
+        this.prix = prix;
     }
 
     @Override

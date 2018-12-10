@@ -18,10 +18,12 @@ public class PommeDeTerre extends ProduitOrticulteur {
         this.prix = prix;
     }
 
-    public PommeDeTerre(LocalDate datePeremption, Integer poids) {
+    public PommeDeTerre(LocalDate datePeremption, Integer poids, Double prix) {
         this.datePeremption = datePeremption;
         this.poids = poids;
+        this.prix = prix;
     }
+
 
     @Override
     public String toString() {
