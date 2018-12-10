@@ -19,6 +19,11 @@ public class OffreAchat implements Comparable{
     }
 
     private LocalDate dateOffre;
+
+    public double getPrix() {
+        return this.prix;
+    }
+
     private double prix;
 
     public ProduitFermier getProduitFermier() {
