@@ -11,7 +11,7 @@ public class ProducteurTest {
 
     @Test
     public final void producteurDeViandeTest(){
-        producteur = new ProducteurDeViande();
+//        producteur = new ProducteurDeViande();
         ProduitFermier pf = producteur.produitProduit("Vache");
     }
 }

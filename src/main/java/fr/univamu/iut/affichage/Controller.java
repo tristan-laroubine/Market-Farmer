@@ -122,7 +122,7 @@ public class Controller implements Initializable {
             AdapteurProduitFermierButton vendreButton = new AdapteurProduitFermierButton();
             vendreButton.setText("Vendre");
             vendreButton.setOnAction(event -> {
-                proprietaire.vendre(produitfermier,(MarcheFermier) marche);
+                proprietaire.proposerOffre((MarcheFermier) marche,produitfermier);
             });
             produits.getChildren().addAll(labelType,labelPrix,labelPoids,vendreButton);
             if (produitfermier instanceof ProduitPeremption)

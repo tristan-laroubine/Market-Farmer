@@ -13,7 +13,9 @@ public class ProducteurDeViande extends Producteur {
     {
         this.uniteDeProductionDeViande = uniteDeProduction;
     }
-
+    public ProducteurDeViande()
+    {
+    }
     public UniteDeProductionDeViande getUniteDeProductionDeViande() {
         return uniteDeProductionDeViande;
     }

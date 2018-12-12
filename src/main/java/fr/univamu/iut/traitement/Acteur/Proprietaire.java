@@ -7,6 +7,7 @@ import fr.univamu.iut.traitement.Marché.OffreAchat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public abstract class Proprietaire {
 
@@ -62,6 +63,15 @@ public abstract class Proprietaire {
 
     public void proposerOffre(MarcheFermier marche, ProduitFermier produitFermier)
     {
+        if(produitFermier.getProprietaire() != this) {
+            System.out.println("Mauvais proprietaire");
+            return;
+        }
+        if(marche.getProduitsFermier().contains(produitFermier)) {
+            System.out.println();
+            return;
+        }
+        PriorityQueue<OffreAchat> offreAchats = marche.getOffreAchats();
         OffreAchat offreAchat = new OffreAchat(this,produitFermier);
         if (marche.getControleur().valide(offreAchat))
         {
