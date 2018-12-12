@@ -1,27 +1,34 @@
 package fr.univamu.iut.traitement.Producteur;
 
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionOrticulteur;
 
 public class Orticulteur extends Producteur{
-    private UniteDeProductionOrticulteur uniteDeProductionOrticulteur;
 
-    public UniteDeProductionOrticulteur getUniteDeProductionOrticulteur() {
-        return uniteDeProductionOrticulteur;
+    public Orticulteur()
+    {
+
+    }
+    public Orticulteur(UniteDeProduction uniteDeProduction)
+    {
+        if (uniteDeProduction instanceof UniteDeProductionOrticulteur)
+        {
+            this.uniteDeProduction = uniteDeProduction;
+        }
+        else {
+            throw new ClassCastException();
+        }
     }
 
-    public void setUniteDeProductionOrticulteur(UniteDeProductionOrticulteur uniteDeProductionOrticulteur) {
-        this.uniteDeProductionOrticulteur = uniteDeProductionOrticulteur;
-    }
-
-    @Override
-    public ProduitFermier produitProduit(String type) {
-        return uniteDeProductionOrticulteur.produitProduit(type);
-    }
-
-    @Override
-    public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
-        return uniteDeProductionOrticulteur.produitProduit(type,arg,arguments);
+    public void setUniteDeProduction(UniteDeProduction uniteDeProduction) {
+        if (uniteDeProduction instanceof UniteDeProductionOrticulteur )
+        {
+            this.uniteDeProduction = uniteDeProduction;
+        }
+        else {
+            throw new ClassCastException();
+        }
     }
 
     @Override

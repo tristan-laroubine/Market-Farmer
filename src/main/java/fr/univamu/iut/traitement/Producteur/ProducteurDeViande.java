@@ -7,38 +7,32 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 public class ProducteurDeViande extends Producteur {
 
 
-    private UniteDeProductionDeViande uniteDeProductionDeViande;
-
-    public ProducteurDeViande(UniteDeProductionDeViande uniteDeProduction)
-    {
-        this.uniteDeProductionDeViande = uniteDeProduction;
-    }
     public ProducteurDeViande()
     {
     }
-    public UniteDeProductionDeViande getUniteDeProductionDeViande() {
-        return uniteDeProductionDeViande;
+
+    public ProducteurDeViande(UniteDeProduction uniteDeProduction)
+    {
+        if (uniteDeProduction instanceof UniteDeProductionDeViande )
+        {
+            this.uniteDeProduction = uniteDeProduction;
+        }
+        else {
+            throw new ClassCastException();
+        }
     }
 
-    public void setUniteDeProductionDeViande(UniteDeProductionDeViande uniteDeProductionDeViande) {
-        this.uniteDeProductionDeViande = uniteDeProductionDeViande;
+    public void setUniteDeProduction(UniteDeProduction uniteDeProduction) {
+        if (uniteDeProduction instanceof UniteDeProductionDeViande )
+        {
+            this.uniteDeProduction = uniteDeProduction;
+        }
+        else {
+            throw new ClassCastException();
+        }
     }
 
-    @Override
-    public ProduitFermier produitProduit(String type) {
-        ProduitFermier produitFermier = uniteDeProductionDeViande.produitProduit(type);
-        addProduitFermiers(produitFermier);
-        produitFermier.setProprietaire(this);
-        return produitFermier;
-    }
 
-    @Override
-    public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
-        ProduitFermier produitFermier = uniteDeProductionDeViande.produitProduit(type,arg,arguments);
-        addProduitFermiers(produitFermier);
-        produitFermier.setProprietaire(this);
-        return produitFermier;
-    }
 
     @Override
     public String toString() {

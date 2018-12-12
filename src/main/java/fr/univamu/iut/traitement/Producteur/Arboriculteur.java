@@ -1,28 +1,36 @@
 package fr.univamu.iut.traitement.Producteur;
 
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionArboriculteur;
+import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 
 public class Arboriculteur extends Producteur {
-    private UniteDeProductionArboriculteur uniteDeProductionArboriculteur;
 
-    public UniteDeProductionArboriculteur getUniteDeProductionArboriculteur() {
-        return uniteDeProductionArboriculteur;
+    public Arboriculteur(){
+
+    }
+    public Arboriculteur(UniteDeProduction uniteDeProduction)
+    {
+        if (uniteDeProduction instanceof UniteDeProductionArboriculteur)
+        {
+            this.uniteDeProduction = uniteDeProduction;
+        }
+        else {
+            throw new ClassCastException();
+        }
     }
 
-    public void setUniteDeProductionArboriculteur(UniteDeProductionArboriculteur uniteDeProductionArboriculteur) {
-        this.uniteDeProductionArboriculteur = uniteDeProductionArboriculteur;
+    public void setUniteDeProduction(UniteDeProduction uniteDeProduction) {
+        if (uniteDeProduction instanceof UniteDeProductionArboriculteur )
+        {
+            this.uniteDeProduction = uniteDeProduction;
+        }
+        else {
+            throw new ClassCastException();
+        }
     }
 
-    @Override
-    public ProduitFermier produitProduit(String type) {
-        return uniteDeProductionArboriculteur.produitProduit(type);
-    }
-
-    @Override
-    public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
-        return uniteDeProductionArboriculteur.produitProduit(type,arg,arguments);
-    }
 
     @Override
     public String toString() {

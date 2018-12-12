@@ -6,7 +6,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public abstract class UniteDeProduction {
-    protected ProduitFermier produitProduit(String type){
+    public ProduitFermier produitProduit(String type){
         try{
             Class<?> classe = Class.forName(type);
             java.lang.reflect.Constructor constructeur = classe.getConstructor ();
@@ -18,7 +18,7 @@ public abstract class UniteDeProduction {
         }
         return null;
     }
-    protected ProduitFermier produitProduit(String type, String[] args, Object... arguments){
+    public ProduitFermier produitProduit(String type, String[] args, Object... arguments){
         try{
 
             Class<?> classe = Class.forName(type);
