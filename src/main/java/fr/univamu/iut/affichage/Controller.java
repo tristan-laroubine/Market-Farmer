@@ -139,6 +139,7 @@ public class Controller implements Initializable {
         if(proprietaire instanceof Producteur)
         {
             Button produireProduitButton = new Button("Produire");
+            produireProduitButton.setId("produire");
             produireProduitButton.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
                 @Override
                 public void handle(javafx.event.ActionEvent event) {
