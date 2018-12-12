@@ -68,9 +68,9 @@ public abstract class Proprietaire {
             System.out.println("Mauvais proprietaire");
             return;
         }
-        for (ProduitFermier ignored : marche.getProduitsFermier()
+        for (OffreAchat offreAchat: marche.getOffreAchats()
              ) {
-            if(ignored == produitFermier)
+            if (offreAchat.getProduitFermier() == produitFermier)
             {
                 System.out.println("Offre déja en vente");
                 return;
