@@ -12,6 +12,9 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionOrticulteur;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 public class ProducteurTest {
 
     Producteur producteur;
@@ -37,7 +40,8 @@ public class ProducteurTest {
     public final void producteurOrticulteurTestPommeDeTerre(){
         uniteDeProduction = new UniteDeProductionOrticulteur();
         producteur = new Orticulteur(uniteDeProduction);
-        ProduitFermier produitFermier = producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre");
+        String[] arg = {"java.time.LocalDate","java.lang.Integer", "java.lang.Double"};
+        ProduitFermier produitFermier = producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre",arg, LocalDate.of(2019, Month.NOVEMBER, 22),50,50.0);
         assertTrue(produitFermier instanceof ProduitOrticulteur);
     }
 

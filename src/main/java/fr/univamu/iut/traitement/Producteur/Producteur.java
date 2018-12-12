@@ -19,6 +19,7 @@ public abstract class Producteur extends Proprietaire {
 
     public ProduitFermier produitProduit(String type) {
         ProduitFermier produitFermier = uniteDeProduction.produitProduit(type);
+        produitFermier.setProprietaire(this);
         this.addProduitFermiers(produitFermier);
         return produitFermier;
     }
@@ -26,6 +27,8 @@ public abstract class Producteur extends Proprietaire {
 
     public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
         ProduitFermier produitFermier = uniteDeProduction.produitProduit(type,arg,arguments);
+        produitFermier.setProprietaire(this);
+
         this.addProduitFermiers(produitFermier);
         return produitFermier;
     }

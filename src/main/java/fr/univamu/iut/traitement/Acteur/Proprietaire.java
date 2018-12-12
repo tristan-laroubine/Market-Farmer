@@ -63,13 +63,18 @@ public abstract class Proprietaire {
 
     public void proposerOffre(MarcheFermier marche, ProduitFermier produitFermier)
     {
+        System.out.println();
         if(produitFermier.getProprietaire() != this) {
             System.out.println("Mauvais proprietaire");
             return;
         }
-        if(marche.getProduitsFermier().contains(produitFermier)) {
-            System.out.println();
-            return;
+        for (ProduitFermier ignored : marche.getProduitsFermier()
+             ) {
+            if(ignored == produitFermier)
+            {
+                System.out.println("Offre déja en vente");
+                return;
+            }
         }
         PriorityQueue<OffreAchat> offreAchats = marche.getOffreAchats();
         OffreAchat offreAchat = new OffreAchat(this,produitFermier);

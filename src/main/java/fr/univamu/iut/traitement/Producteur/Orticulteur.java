@@ -15,7 +15,6 @@ public class Orticulteur extends Producteur{
         if (uniteDeProduction instanceof UniteDeProductionOrticulteur)
         {
             this.uniteDeProduction = uniteDeProduction;
-            System.out.println("salut");
         }
         else {
             throw new ClassCastException();
