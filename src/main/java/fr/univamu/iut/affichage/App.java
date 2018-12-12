@@ -17,9 +17,9 @@ public class App extends Application {
         Parent root = loader.load();
         primaryStage.setTitle("Marché");
         Scene scene = new Scene(root, 1000, 600);
-
         scene.getStylesheets().add("http://ivax.alwaysdata.net/css/style.css");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
