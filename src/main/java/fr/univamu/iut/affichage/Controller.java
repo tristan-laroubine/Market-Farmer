@@ -124,6 +124,8 @@ public class Controller implements Initializable {
             AdapteurProduitFermierButton vendreButton = new AdapteurProduitFermierButton();
             vendreButton.setText("Vendre");
             vendreButton.setId("vendre");
+            vendreButton.setTranslateX(16);
+            vendreButton.setTranslateY(5);
             vendreButton.setOnAction(event -> {
                 proprietaire.proposerOffre((MarcheFermier) marche,produitfermier);
             });
@@ -140,6 +142,8 @@ public class Controller implements Initializable {
         {
             Button produireProduitButton = new Button("Produire");
             produireProduitButton.setId("produire");
+            produireProduitButton.setTranslateY(20);
+            produireProduitButton.setTranslateX(5);
             produireProduitButton.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
                 @Override
                 public void handle(javafx.event.ActionEvent event) {
