@@ -27,6 +27,7 @@ import javafx.scene.layout.VBox;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Parameter;
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -184,14 +185,16 @@ public class Controller implements Initializable {
                 switch (str){
 
                     case "Vache" :
-                        String[] parametere = {"java.lang.Integer", "java.lang.Integer"};
-                        Vache vache = (Vache) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache",parametere,sliderPoids.getValue(), sliderPrix.getValue());
+                        String[] parametere = {"java.lang.Integer", "java.lang.Double"};
+                        Vache vache = (Vache) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache",parametere,(int)sliderPoids.getValue(), sliderPrix.getValue());
                         break;
 
-                    case "Cochon!":
-                            Cochon cochon = (Cochon) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+                    case "Cochon":
+                        String[] parametere1 = {"java.lang.Integer", "java.lang.Double"};
+                        Cochon cochon = (Cochon) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon",parametere1,(int)sliderPoids.getValue(), sliderPrix.getValue());
                             break;
                     default:
+                        System.out.println("Type non trouvé !");
                         break;
                 }
                 pannelProprietaire(producteur);

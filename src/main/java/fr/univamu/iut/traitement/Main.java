@@ -23,7 +23,7 @@ public class Main {
 //        Vache vache = (Vache) producteurDeViande.produitProduit("Vache");
         String url = "";
         String[] arg = {"java.time.LocalDate","java.lang.Integer"};
-        String[] arguments = {"java.lang.String","java.time.LocalDate"};
+        String[] arguments = {"java.lang.Integer", "java.lang.Integer"};
 //        Cochon cochon = (Cochon) producteurDeViande.produitProduit("Cochon",arg,LocalDate.of(2018, Month.NOVEMBER, 22),50);
         Cochon cochon = (Cochon) producteurDeViande.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
         System.out.println(cochon);
