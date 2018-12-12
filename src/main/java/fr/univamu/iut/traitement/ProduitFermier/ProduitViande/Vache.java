@@ -8,14 +8,8 @@ import java.util.List;
 public class Vache extends ProduitViande {
 
 
-    public Vache(List<String> labels) {
-
-    }
     public Vache(){
 
-    }
-    public Vache(String string){
-        System.out.println("Vache crée avec une string => " + string);
     }
 
     public Vache(List<String> labels, Integer poids, Double prix) {
