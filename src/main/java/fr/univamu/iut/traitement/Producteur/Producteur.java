@@ -7,6 +7,7 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
 public abstract class Producteur extends Proprietaire {
 
 
+    UniteDeProduction uniteDeProduction;
 
     public abstract void setUniteDeProduction(UniteDeProduction uniteDeProduction);
 
@@ -30,7 +31,7 @@ public abstract class Producteur extends Proprietaire {
     }
 
 
-    UniteDeProduction uniteDeProduction;
+
 
 
 

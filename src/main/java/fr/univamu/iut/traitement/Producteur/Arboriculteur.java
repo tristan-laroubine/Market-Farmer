@@ -27,6 +27,7 @@ public class Arboriculteur extends Producteur {
             this.uniteDeProduction = uniteDeProduction;
         }
         else {
+
             throw new ClassCastException();
         }
     }
