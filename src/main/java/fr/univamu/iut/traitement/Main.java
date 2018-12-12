@@ -12,7 +12,7 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 
 public class Main {
     public static void main(String[] args){
-        simulation2();
+        simulation1();
     }
     public static void simulation1(){
 
@@ -25,8 +25,7 @@ public class Main {
         String[] arg = {"java.time.LocalDate","java.lang.Integer"};
         String[] arguments = {"java.lang.Integer", "java.lang.Integer"};
 //        Cochon cochon = (Cochon) producteurDeViande.produitProduit("Cochon",arg,LocalDate.of(2018, Month.NOVEMBER, 22),50);
-        Cochon cochon = (Cochon) producteurDeViande.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
-        System.out.println(cochon);
+        System.out.println((Cochon) producteurDeViande.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon"));
 
 
     }
