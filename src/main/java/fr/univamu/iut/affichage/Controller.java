@@ -81,7 +81,7 @@ public class Controller implements Initializable {
                                        Producteur producteur = (Producteur) proprietaire;
                                        if (proprietaire instanceof ProducteurDeViande)
                                        {
-                                           ((ProducteurDeViande) producteur).setUniteDeProductionDeViande((UniteDeProductionDeViande) uniteDeProductionComboBox.getValue());
+                                           ((ProducteurDeViande) producteur).setUniteDeProduction((UniteDeProductionDeViande) uniteDeProductionComboBox.getValue());
                                        }
                                    }
 
@@ -115,16 +115,19 @@ public class Controller implements Initializable {
         pane.getChildren().addAll(labelNom,labelSolde,labelProduits);
         for (ProduitFermier produitfermier: proprietaire.getProduitFermiers()
              ) {
-
+            Label produit = new Label();
             Label labelType = new Label(""+produitfermier);
             Label labelPrix = new Label(""+ produitfermier.getPrix());
             Label labelPoids = new Label(""+ produitfermier.getPoids());
+            produit.setId("labelType");
+            produit.setText(labelType.getText() + "\n" + labelPoids.getText() + "\n"+ labelPrix.getText());
             AdapteurProduitFermierButton vendreButton = new AdapteurProduitFermierButton();
             vendreButton.setText("Vendre");
+            vendreButton.setId("vendre");
             vendreButton.setOnAction(event -> {
                 proprietaire.proposerOffre((MarcheFermier) marche,produitfermier);
             });
-            produits.getChildren().addAll(labelType,labelPrix,labelPoids,vendreButton);
+            produits.getChildren().addAll(produit,vendreButton);
             if (produitfermier instanceof ProduitPeremption)
             {
                 Label labelDatePeremption = new Label("" + ((ProduitPeremption) produitfermier).getDatePeremption());

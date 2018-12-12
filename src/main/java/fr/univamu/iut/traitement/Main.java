@@ -18,7 +18,7 @@ public class Main {
 
 
         ProducteurDeViande producteurDeViande = new ProducteurDeViande();
-        producteurDeViande.setUniteDeProductionDeViande(new UniteDeProductionDeViande());
+        producteurDeViande.setUniteDeProduction(new UniteDeProductionDeViande());
 
 //        Vache vache = (Vache) producteurDeViande.produitProduit("Vache");
         String url = "";
@@ -36,7 +36,7 @@ public class Main {
         MarcheFermier marcheFermier = new MarcheFermier("Marche D'AIX EN PROVENCE", "Rhône-Alpes",controleur);
 
         ProducteurDeViande proprietaire1 = new ProducteurDeViande();
-        proprietaire1.setUniteDeProductionDeViande(new UniteDeProductionDeViande());
+        proprietaire1.setUniteDeProduction(new UniteDeProductionDeViande());
         Cochon cochon = (Cochon) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
         Vache vache = (Vache) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
         proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
