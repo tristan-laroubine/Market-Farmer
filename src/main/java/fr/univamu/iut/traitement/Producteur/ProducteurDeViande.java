@@ -1,12 +1,18 @@
 package fr.univamu.iut.traitement.Producteur;
 
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 
 public class ProducteurDeViande extends Producteur {
 
 
     private UniteDeProductionDeViande uniteDeProductionDeViande;
+
+    public ProducteurDeViande(UniteDeProductionDeViande uniteDeProduction)
+    {
+        this.uniteDeProductionDeViande = uniteDeProduction;
+    }
 
     public UniteDeProductionDeViande getUniteDeProductionDeViande() {
         return uniteDeProductionDeViande;

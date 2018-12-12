@@ -1,10 +1,5 @@
 package fr.univamu.iut.test;
 
-import fr.univamu.iut.traitement.Acteur.Proprietaire;
-import fr.univamu.iut.traitement.Producteur.ProducteurDeViande;
-import fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.ProduitApiculteur;
-import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
-import fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.ProduitLaitier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.ProduitViande;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
