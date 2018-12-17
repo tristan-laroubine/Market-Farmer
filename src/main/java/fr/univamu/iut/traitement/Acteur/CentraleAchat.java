@@ -11,7 +11,6 @@ public class CentraleAchat {
     private ArrayList<Proprietaire> acheteurs;
 
     public ArrayList<OffreAchat> getOffresChoisies() {
-        System.out.println(this.promotion);
         return this.offresChoisies;
 
     }
@@ -22,12 +21,16 @@ public class CentraleAchat {
     private int promotion;
     private int quantitee;
 
-    public void choixProduits(ArrayList<OffreAchat> offreAchats, ProduitFermier p) {
+    public void choixProduits(ArrayList<OffreAchat> offreAchats, String p) {
 
         for (OffreAchat of : offreAchats) {
-            if (of.getProduitFermier() == p) {
-                offresChoisies.add(of);
-                System.out.println("boucle choix produits");
+            try {
+                if (of.getProduitFermier().getClass() == getClass().forName(p)) {
+                    offresChoisies.add(of);
+                    System.out.println("boucle choix produits");
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
 
