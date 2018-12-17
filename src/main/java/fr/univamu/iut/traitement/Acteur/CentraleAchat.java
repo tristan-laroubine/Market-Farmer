@@ -25,7 +25,7 @@ public class CentraleAchat {
 
         for (OffreAchat of : offreAchats) {
             try {
-                if (of.getProduitFermier().getClass() == getClass().forName(p)) {
+                if (of.getProduitFermier().getClass() == Class.forName(p)) {
                     offresChoisies.add(of);
                     System.out.println("boucle choix produits");
                 }
