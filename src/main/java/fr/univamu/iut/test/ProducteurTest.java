@@ -1,15 +1,13 @@
 package fr.univamu.iut.test;
 import static org.junit.Assert.*;
 
-import fr.univamu.iut.traitement.Producteur.Orticulteur;
-import fr.univamu.iut.traitement.Producteur.Producteur;
-import fr.univamu.iut.traitement.Producteur.ProducteurDeViande;
+import fr.univamu.iut.traitement.Producteur.*;
+import fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.ProduitArboriculteur;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.ProduitLaitier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.ProduitOrticulteur;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.ProduitViande;
-import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
-import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
-import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionOrticulteur;
+import fr.univamu.iut.traitement.UniteDeProduction.*;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -44,6 +42,27 @@ public class ProducteurTest {
         ProduitFermier produitFermier = producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre",arg, LocalDate.of(2019, Month.NOVEMBER, 22),50,50.0);
         assertTrue(produitFermier instanceof ProduitOrticulteur);
     }
+
+    @Test
+    public final void producteurLaitierTestLait(){
+        uniteDeProduction = new UniteDeProductionLaitier();
+        producteur = new ProducteurLaitier(uniteDeProduction);
+        String[] arg = {"java.time.LocalDate","java.lang.Integer", "java.lang.Double"};
+        ProduitFermier produitFermier = producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait",arg, LocalDate.of(2019, Month.NOVEMBER, 22),50,50.0);
+        assertTrue(produitFermier instanceof ProduitLaitier);
+    }
+
+    @Test
+    public final void producteurArboriculteurTestLait(){
+        uniteDeProduction = new UniteDeProductionArboriculteur();
+        producteur = new Arboriculteur(uniteDeProduction);
+        String[] arg = {"java.time.LocalDate","java.lang.Integer", "java.lang.Double"};
+        ProduitFermier produitFermier = producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme",arg, LocalDate.of(2019, Month.NOVEMBER, 22),50,50.0);
+
+        assertTrue(produitFermier instanceof ProduitArboriculteur);
+    }
+
+
 
 
 }
