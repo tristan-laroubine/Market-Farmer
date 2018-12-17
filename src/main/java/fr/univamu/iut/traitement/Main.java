@@ -1,7 +1,11 @@
 package fr.univamu.iut.traitement;
 
 
+import fr.univamu.iut.traitement.Acteur.CentraleAchat;
+import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.Marché.MarcheFermier;
+import fr.univamu.iut.traitement.Marché.OffreAchat;
+import fr.univamu.iut.traitement.Producteur.Producteur;
 import fr.univamu.iut.traitement.Producteur.ProducteurDeViande;
 import fr.univamu.iut.traitement.Producteur.ProducteurLaitier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
@@ -9,10 +13,12 @@ import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 
+import java.util.ArrayList;
+
 
 public class Main {
     public static void main(String[] args){
-        simulation1();
+        simulation2();
     }
     public static void simulation1(){
 
@@ -34,9 +40,9 @@ public class Main {
         Controleur controleur = new Controleur();
         MarcheFermier marcheFermier = new MarcheFermier("Marche D'AIX EN PROVENCE", "Rhône-Alpes",controleur);
 
-        ProducteurDeViande proprietaire1 = new ProducteurDeViande();
+        Producteur proprietaire1 = new ProducteurDeViande();
         proprietaire1.setUniteDeProduction(new UniteDeProductionDeViande());
-        Cochon cochon = (Cochon) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+        ProduitFermier cochon = (Cochon) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
         Vache vache = (Vache) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
         proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
         vache.setPrix(50);
@@ -77,6 +83,17 @@ public class Main {
         ) {
             System.out.println(produitFermier);
         }
+
+        CentraleAchat centraleAchat= new CentraleAchat();
+        OffreAchat comparable = new OffreAchat( proprietaire1,cochon);
+        OffreAchat comparable2 = new OffreAchat(proprietaire1,vache);
+        ArrayList<OffreAchat> offreAchats = new ArrayList<>();
+        offreAchats.add(comparable);
+        offreAchats.add(comparable2);
+        centraleAchat.choixProduits(offreAchats, cochon);
+        System.out.println(centraleAchat.getOffresChoisies());
+
+
 
     }
 
