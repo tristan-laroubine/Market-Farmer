@@ -89,8 +89,8 @@ public class Main {
 
         OffreAchat comparable2 = new OffreAchat(proprietaire1,vache);
         ArrayList<OffreAchat> offreAchats = new ArrayList<>();
-        offreAchats.add(comparable);
-        offreAchats.add(comparable2);
+        offreAchats.add(new OffreAchat(proprietaire1,new Cochon(50, (double) 500)));
+        offreAchats.add(new OffreAchat(proprietaire1,new Cochon(50, (double) 500)));
         offreAchats.add(new OffreAchat(proprietaire1,new Cochon(50, (double) 500)));
         centraleAchat.choixProduits(offreAchats, "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
         System.out.println(centraleAchat.getOffresChoisies().get(1).getProduitFermier());
