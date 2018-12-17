@@ -35,6 +35,8 @@ public class Controller implements Initializable {
     public Button buttonAdd;
     public VBox pane;
     public Marche marche = new MarcheFermier("Place d'Aix","Rhone-Alpe",new Controleur());
+    public VBox vBoxLesProduitEnVente;
+
     @FXML
     void addButton(){
         pane.getChildren().clear();

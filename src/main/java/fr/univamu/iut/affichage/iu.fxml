@@ -21,13 +21,15 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <ScrollPane prefHeight="600.0" prefWidth="560.0">
-               <VBox prefHeight="600.0" prefWidth="560.0" fx:id="pane"/>
+            <ScrollPane prefHeight="600.0" prefWidth="410.0">
+               <VBox prefHeight="600.0" prefWidth="410.0" fx:id="pane"/>
             </ScrollPane>
-
-            <ScrollPane prefHeight="600.0" prefWidth="320.0">
+            <ScrollPane prefHeight="600.0" prefWidth="200.0">
+               <VBox prefHeight="600.0" prefWidth="200.0" fx:id="vBoxLesProduitEnVente"/>
+            </ScrollPane>
+            <ScrollPane prefHeight="600.0" prefWidth="270.0">
                <content>
-                  <Label prefHeight="57.0" prefWidth="320.0" text="Label" />
+                  <Label prefHeight="57.0" prefWidth="270.0" text="Label" />
                </content>
             </ScrollPane>
          </children>
