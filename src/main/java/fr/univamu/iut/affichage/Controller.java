@@ -33,6 +33,7 @@ public class Controller implements Initializable {
     public VBox pane;
     public Marche marche = new MarcheFermier("Place d'Aix","Rhone-Alpe",new Controleur());
     public VBox vBoxLesProduitEnVente;
+    public ScrollPane panelProduitMarche;
 
     @FXML
     void addButton(){
@@ -127,6 +128,7 @@ public class Controller implements Initializable {
             vendreButton.setTranslateY(5);
             vendreButton.setOnAction(event -> {
                 proprietaire.proposerOffre((MarcheFermier) marche,produitfermier);
+                pannelMarche(marche);
             });
             produits.getChildren().addAll(produit,vendreButton);
             if (produitfermier instanceof ProduitPeremption)
@@ -254,18 +256,19 @@ public class Controller implements Initializable {
         pane.getChildren().add(labelNom);
     }
 
+
     private void pannelMarche(Marche marche) {
         if (marche instanceof MarcheFermier)
         {
-            pane.getChildren().clear();
+            vBoxLesProduitEnVente.getChildren().clear();
             Label labelNom = new Label("Nom : " + marche.getNom());
             Label labelRegion = new Label("Region : " + marche.getRegion());
             Label labelControlleur = new Label("Controlleur : " + marche.getControleur());
             Label labelOffreAchat = new Label("Offre d'Achat : ");
 
-            pane.getChildren().addAll(labelNom,labelRegion,labelControlleur,labelOffreAchat);
+            vBoxLesProduitEnVente.getChildren().addAll(labelNom,labelRegion,labelControlleur,labelOffreAchat);
             for (OffreAchat offreAchat: ((MarcheFermier) marche).getOffreAchats()
-                 ) {
+            ) {
                 VBox vBoxOffreAchat = new VBox();
                 Label labelProduit = new Label("Produit : " + offreAchat.getProduitFermier());
                 Label labelPoids = new Label("Poids : " + offreAchat.getProduitFermier().getPoids());
@@ -273,25 +276,27 @@ public class Controller implements Initializable {
                 Label labelDate = new Label("Date de l'offre " + offreAchat.getDateOffre());
                 Label labelAcheteur = new Label("Acheteur " + offreAchat.getAcheteur());
                 vBoxOffreAchat.getChildren().addAll(labelProduit,labelPoids,labelPrix,labelDate,labelAcheteur);
-                pane.getChildren().add(vBoxOffreAchat);
+                vBoxLesProduitEnVente.getChildren().add(vBoxOffreAchat);
             }
             Label labelProduitsFermier = new Label("Produit Disponible : ");
-            pane.getChildren().addAll(labelProduitsFermier);
+            vBoxLesProduitEnVente.getChildren().addAll(labelProduitsFermier);
             for (ProduitFermier produitFermier: ((MarcheFermier) marche).getProduitsFermier()
-                    ) {
+            ) {
                 VBox vBoxProduit = new VBox();
                 Label labelProduit = new Label("Produit : " + produitFermier);
                 Label labelPoids = new Label("Poids : " + produitFermier.getPoids());
                 Label labelPrix = new Label("Prix : " + produitFermier.getPrix());
                 Label labelAcheteur = new Label("Acheteur " + produitFermier.getProprietaire());
                 vBoxProduit.getChildren().addAll(labelProduit,labelPoids,labelPrix,labelAcheteur);
-                pane.getChildren().add(vBoxProduit);
+                vBoxLesProduitEnVente.getChildren().add(vBoxProduit);
             }
         }
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        pannelMarche(marche);
         initialisationMarcheEtControler();
     }
 }
