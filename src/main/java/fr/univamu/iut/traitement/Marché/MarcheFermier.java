@@ -15,6 +15,10 @@ import java.util.TreeSet;
 public class MarcheFermier extends Marche {
 
 
+    public MarcheFermier()
+    {
+        super();
+    }
     private TreeSet<Producteur> vendeurs = new TreeSet<>();
     private PriorityQueue <Proprietaire>  acheteurs = new PriorityQueue<>();
     private PriorityQueue<ProduitFermier> produitsFermier = new PriorityQueue<>();
