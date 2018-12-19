@@ -15,6 +15,8 @@ import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionLaitier;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -181,11 +183,27 @@ public class Controller implements Initializable {
         sliderPrix.setMin(0);
         sliderPrix.setMax(100);
         sliderPrix.setValue(50);
+        sliderPrix.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                labelPrix.textProperty().setValue("Prix : " +
+                        String.valueOf((int) sliderPrix.getValue()));
+
+            }
+        });
         Label labelPoids = new Label("Poids :");
         Slider sliderPoids = new Slider();
         sliderPoids.setMin(0);
         sliderPoids.setMax(50);
         sliderPoids.setValue(25);
+        sliderPoids.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                labelPoids.textProperty().setValue("Poids : " +
+                        String.valueOf((int) sliderPoids.getValue()));
+
+            }
+        });
         vBox.getChildren().addAll(labelPrix,sliderPrix,labelPoids,sliderPoids);
 
         Button buttonValide = new Button("Produire " +  str);
