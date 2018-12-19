@@ -296,6 +296,7 @@ public class Controller implements Initializable {
             if (proprietaire != produitFermier.getProprietaire())
             {
                 Button buttonVendre = new Button("Acheter");
+                buttonVendre.setId("buttonVendre");
                 buttonVendre.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -307,6 +308,7 @@ public class Controller implements Initializable {
             }
             else{
                 Button buttonVendre = new Button("Retirer");
+                buttonVendre.setId("buttonAcheter");
                 buttonVendre.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
