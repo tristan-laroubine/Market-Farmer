@@ -39,10 +39,10 @@ public abstract class Marche {
     }
 
     public void ajouterObservateur(Observateur observateur){
-
+        observateurs.add(observateur);
     }
     public void supprimerObservateur(Observateur observateur){
-
+        observateurs.remove(observateur);
     }
     abstract public void notifier();
 }
