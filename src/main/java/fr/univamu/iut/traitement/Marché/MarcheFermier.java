@@ -120,7 +120,7 @@ public class MarcheFermier extends Marche {
         Proprietaire proprietaire = produitFermier.getProprietaire();
         if (acheteur.getSolde() <  produitFermier.getPrix()) return;
         proprietaire.crediter(produitFermier.getPrix());
-        historique.addTransaction(new Transaction(produitFermier.getProprietaire(), produitFermier));
+        historique.addTransaction(new Transaction(acheteur, produitFermier.getProprietaire(), produitFermier));
         acheteur.crediter(-produitFermier.getPrix());
         proprietaire.removeProduitFermiers(produitFermier);
         acheteur.addProduitFermiers(produitFermier);

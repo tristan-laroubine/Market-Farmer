@@ -6,11 +6,13 @@ import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import java.time.LocalDate;
 
 public class Transaction {
+    Proprietaire acheteur;
     Proprietaire vendeur;
     ProduitFermier produitFermier;
     LocalDate localDate;
 
-    public Transaction(Proprietaire vendeur, ProduitFermier produitFermier) {
+    public Transaction(Proprietaire acheteur, Proprietaire vendeur, ProduitFermier produitFermier) {
+        this.acheteur = acheteur;
         this.vendeur = vendeur;
         this.produitFermier = produitFermier;
         this.localDate = LocalDate.now();
@@ -18,6 +20,6 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return vendeur.getPrenom() + " a vendu à " + produitFermier.getProprietaire().getPrenom() + " un(e) " + produitFermier + " le " + localDate;
+        return vendeur.getPrenom() + " a vendu à " + acheteur.getPrenom() + " un(e) " + produitFermier + " le " + localDate;
     }
 }

@@ -2,6 +2,7 @@ package fr.univamu.iut.traitement;
 
 
 import fr.univamu.iut.traitement.Acteur.CentraleAchat;
+import fr.univamu.iut.traitement.Acteur.Grossiste;
 import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.Marché.MarcheFermier;
 import fr.univamu.iut.traitement.Marché.OffreAchat;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
-        simulation2();
+        simulation3();
     }
     public static void simulation1(){
 
@@ -102,6 +103,38 @@ public class Main {
     }
 
     public static void simulation3(){
+        Controleur controleur = new Controleur();
+        Historique historique = new Historique();
+        MarcheFermier marcheFermier = new MarcheFermier("Marche D'AIX EN PROVENCE", "Rhône-Alpes",controleur,historique);
+
+        Proprietaire marc = new Grossiste();
+        marc.setPrenom("Marc");
+        ProducteurDeViande paul = new ProducteurDeViande(new UniteDeProductionDeViande());
+        paul.setPrenom("Paul");
+        ProduitFermier cochon = (Cochon) paul.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+        paul.vendre(cochon,marcheFermier);
+        System.out.println("Bien sur le marche : ");
+        for ( ProduitFermier produitFermier : marcheFermier.getProduitsFermier()
+        ) {
+            System.out.println(produitFermier + " prix =" + produitFermier.getPrix());
+
+        }
+        System.out.println("Reserve du proprietaire Paul : ");
+        for ( ProduitFermier produitFermier : paul.getProduitFermiers()
+        ) {
+            System.out.println(produitFermier);
+
+        }
+        marc.proposerOffre(marcheFermier,cochon);
+        System.out.println("Transaction");
+        marcheFermier.checkOffreAchatVente();
+        System.out.println("Reserve du proprietaire Marc : ");
+        for ( ProduitFermier produitFermier : marc.getProduitFermiers()
+        ) {
+            System.out.println(produitFermier);
+
+        }
+        historique.afficherTransaction();
 
     }
 }

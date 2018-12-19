@@ -63,8 +63,8 @@ public abstract class Proprietaire {
 
     public void proposerOffre(MarcheFermier marche, ProduitFermier produitFermier)
     {
-        System.out.println();
-        if(produitFermier.getProprietaire() != this) {
+        System.out.println(produitFermier.getProprietaire().getPrenom() + " != " +  this.Prenom);
+        if(produitFermier.getProprietaire() == this) {
             System.out.println("Mauvais proprietaire");
             return;
         }

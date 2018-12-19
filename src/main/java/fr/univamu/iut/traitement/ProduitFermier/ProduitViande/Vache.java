@@ -9,7 +9,6 @@ public class Vache extends ProduitViande {
 
 
     public Vache(){
-
     }
 
     public Vache(List<String> labels, Integer poids, Double prix) {

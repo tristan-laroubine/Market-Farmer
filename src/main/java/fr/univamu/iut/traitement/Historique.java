@@ -11,6 +11,7 @@ public class Historique {
 
     public void afficherTransaction()
     {
+        System.out.println("Historique :");
         for (Transaction transaction : transactions)
         {
             System.out.println(transaction);
