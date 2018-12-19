@@ -94,9 +94,11 @@ public class Controller implements Initializable {
                                        @Override
                                        public void handle(javafx.event.ActionEvent event) {
                                            pannelProprietaire(proprietaire);
+
                                        }
                                    });
                                    vBoxLesActeurs.getChildren().add(button);
+                                   pannelProprietaire(proprietaire);
                                }
 
         }
