@@ -1,6 +1,7 @@
 package fr.univamu.iut.traitement.Marché;
 
 import fr.univamu.iut.affichage.Controller;
+import fr.univamu.iut.traitement.Acteur.Observateur;
 import fr.univamu.iut.traitement.Controleur;
 
 public abstract class Marche {
@@ -32,4 +33,8 @@ public abstract class Marche {
     public Controleur getControleur() {
         return controleur;
     }
+
+    abstract public void ajouterObservateur(Observateur o);
+    abstract public void supprimerObservateur(Observateur o);
+    abstract public void notifier();
 }
