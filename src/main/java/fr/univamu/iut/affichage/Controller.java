@@ -127,7 +127,7 @@ public class Controller implements Initializable {
             vendreButton.setTranslateX(16);
             vendreButton.setTranslateY(5);
             vendreButton.setOnAction(event -> {
-                proprietaire.proposerOffre((MarcheFermier) marche,produitfermier);
+                proprietaire.vendre(produitfermier,(MarcheFermier) marche);
                 pannelMarche(marche);
             });
             produits.getChildren().addAll(produit,vendreButton);
