@@ -2,6 +2,7 @@ package fr.univamu.iut.traitement.Marché;
 
 import fr.univamu.iut.affichage.Controller;
 import fr.univamu.iut.traitement.Acteur.Observateur;
+import fr.univamu.iut.traitement.Acteur.Tradeur;
 import fr.univamu.iut.traitement.Controleur;
 import fr.univamu.iut.traitement.Historique;
 
@@ -14,6 +15,11 @@ public abstract class Marche {
     Controleur controleur;
     Historique historique;
     ArrayList<Observateur> observateurs;
+
+    public Marche(){
+        Observateur obs = new Tradeur();
+        observateurs.add(obs);
+    }
     public String getNom() {
         return nom;
     }
