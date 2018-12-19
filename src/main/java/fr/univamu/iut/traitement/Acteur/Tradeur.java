@@ -1,10 +1,9 @@
 package fr.univamu.iut.traitement.Acteur;
 
-import fr.univamu.iut.traitement.Marché.Marche;
-import fr.univamu.iut.traitement.Producteur.Producteur;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
 import java.util.Collection;
+import java.util.PriorityQueue;
 
 public class Tradeur implements Observateur {
 
@@ -16,11 +15,10 @@ public class Tradeur implements Observateur {
 
 
     @Override
-    public void update(Collection<Producteur> vendeurs, Collection<Proprietaire> acheteurs, Collection<ProduitFermier> produitsFermier) {
+    public void update(PriorityQueue<ProduitFermier> produitsFermier) {
         System.out.println("Des éléments du marché on été modifié");
-        System.out.println("Les vendeurs : " + "\n" +  vendeurs);
-        System.out.println("Les acheteurs : " + "\n" +  acheteurs);
-        System.out.println("Les produits fermiers : " + "\n" +  produitsFermier);
+        System.out.println(produitsFermier.peek().getProprietaire().getPrenom());
+
 
     }
 }

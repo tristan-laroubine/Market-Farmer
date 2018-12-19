@@ -14,7 +14,7 @@ public abstract class Marche {
     String region;
     Controleur controleur;
     Historique historique;
-    ArrayList<Observateur> observateurs;
+    ArrayList<Observateur> observateurs = new ArrayList<>();
 
     public Marche(){
         Observateur obs = new Tradeur();

@@ -149,7 +149,7 @@ public class MarcheFermier extends Marche {
     public void notifier() {
         for(Observateur o : observateurs)
         {
-            o.update(this.vendeurs, this.acheteurs, this.produitsFermier);
+            o.update(this.produitsFermier);
         }
     }
 }
