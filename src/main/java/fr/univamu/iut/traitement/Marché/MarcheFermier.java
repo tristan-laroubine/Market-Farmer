@@ -1,5 +1,6 @@
 package fr.univamu.iut.traitement.Marché;
 
+import fr.univamu.iut.traitement.Acteur.Observateur;
 import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.Controleur;
 import fr.univamu.iut.traitement.Historique;
@@ -54,9 +55,11 @@ public class MarcheFermier extends Marche {
 
     public void addOffreToOffreAchats(OffreAchat offreAchat){
         offreAchats.add(offreAchat);
+        notifier();
     }
     public void removeOffreToOffreAchats(OffreAchat offreAchat){
         offreAchats.remove(offreAchat);
+        notifier();
     }
 
     public TreeSet<Producteur> getVendeurs() {
@@ -73,50 +76,59 @@ public class MarcheFermier extends Marche {
 
     public void setVendeurs(TreeSet<Producteur> vendeurs) {
         this.vendeurs = vendeurs;
+        notifier();
     }
 
     public void setAcheteurs(PriorityQueue <Proprietaire> acheteurs) {
         this.acheteurs = acheteurs;
+        notifier();
     }
 
     public void setProduitsFermier(PriorityQueue<ProduitFermier> produitsFermier) {
         this.produitsFermier = produitsFermier;
+        notifier();
     }
 
 
     public void addVendeur(Producteur p)
     {
         vendeurs.add(p);
+        notifier();
     }
 
     public void addVendeurs(List<Producteur> ListVendeurs)
     {
         vendeurs.addAll(ListVendeurs);
+        notifier();
     }
 
     public void addAcheteur(Proprietaire acheteur)
     {
         acheteurs.add(acheteur);
+        notifier();
     }
 
     public void addAcheteurs(List <Proprietaire> ListAcheteurs)
     {
         acheteurs.addAll(ListAcheteurs);
+        notifier();
     }
 
     public void addProduit(ProduitFermier produitFermier)
     {
         produitsFermier.add(produitFermier);
+        notifier();
     }
 
     public void addProduits(List<ProduitFermier> ListProduitFermiers)
     {
         produitsFermier.addAll(ListProduitFermiers);
+        notifier();
     }
 
 
 
-    public void transaction(ProduitFermier produitFermier, Proprietaire acheteur){
+    private void transaction(ProduitFermier produitFermier, Proprietaire acheteur){
         Proprietaire proprietaire = produitFermier.getProprietaire();
         if (acheteur.getSolde() <  produitFermier.getPrix()) return;
         proprietaire.crediter(produitFermier.getPrix());
@@ -135,6 +147,9 @@ public class MarcheFermier extends Marche {
 
     @Override
     public void notifier() {
-
+        for(Observateur o : observateurs)
+        {
+            o.update(this.vendeurs, this.acheteurs, this.produitsFermier);
+        }
     }
 }
