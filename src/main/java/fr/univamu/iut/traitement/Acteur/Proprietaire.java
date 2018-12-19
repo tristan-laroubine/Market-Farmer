@@ -56,6 +56,14 @@ public abstract class Proprietaire {
     public void vendre(ProduitFermier produitFermier, MarcheFermier marche)
     {
         if(produitFermier.getProprietaire() == this) {
+
+            for (ProduitFermier produitFermier1 : marche.getProduitsFermier()){
+                if(produitFermier1 == produitFermier)
+                {
+                    System.out.println("Produit déja en vente");
+                    return;
+                }
+            }
             marche.addProduit(produitFermier);
         }
         else System.out.println("Mauvais Proprietaire" + produitFermier.getProprietaire() + this);
