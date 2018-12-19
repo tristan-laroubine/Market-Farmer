@@ -2,8 +2,10 @@ package fr.univamu.iut.traitement.Marché;
 
 import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.Controleur;
+import fr.univamu.iut.traitement.Historique;
 import fr.univamu.iut.traitement.Producteur.Producteur;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.traitement.Transaction;
 
 import java.util.List;
 import java.util.PriorityQueue;
@@ -32,6 +34,13 @@ public class MarcheFermier extends Marche {
         super.nom = nom;
         super.region = region;
         super.controleur = controleur;
+    }
+    public MarcheFermier(String nom, String region, Controleur controleur, Historique historique)
+    {
+        super.nom = nom;
+        super.region = region;
+        super.controleur = controleur;
+        super.historique = historique;
     }
 
     public void checkOffreAchatVente(){
@@ -111,13 +120,21 @@ public class MarcheFermier extends Marche {
         Proprietaire proprietaire = produitFermier.getProprietaire();
         if (acheteur.getSolde() <  produitFermier.getPrix()) return;
         proprietaire.crediter(produitFermier.getPrix());
+        historique.addTransaction(new Transaction(produitFermier.getProprietaire(), produitFermier));
         acheteur.crediter(-produitFermier.getPrix());
         proprietaire.removeProduitFermiers(produitFermier);
         acheteur.addProduitFermiers(produitFermier);
+
+
     }
 
     @Override
     public String toString() {
         return "MarcheFermier";
+    }
+
+    @Override
+    public void notifier() {
+
     }
 }

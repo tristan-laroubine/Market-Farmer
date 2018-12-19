@@ -22,21 +22,16 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-import java.awt.event.MouseEvent;
-import java.lang.reflect.Parameter;
 import java.net.URL;
-import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     public VBox vBoxLesActeurs;
     public Button buttonAdd;
     public VBox pane;
-    public Marche marche = new MarcheFermier("Place d'Aix","Rhone-Alpe",new Controleur());
+    public Marche marche = new MarcheFermier("Place d'Aix","Rhone-Alpe",new Controleur(), historique);
     public VBox vBoxLesProduitEnVente;
 
     @FXML

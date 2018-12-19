@@ -3,13 +3,17 @@ package fr.univamu.iut.traitement.Marché;
 import fr.univamu.iut.affichage.Controller;
 import fr.univamu.iut.traitement.Acteur.Observateur;
 import fr.univamu.iut.traitement.Controleur;
+import fr.univamu.iut.traitement.Historique;
+
+import java.util.ArrayList;
 
 public abstract class Marche {
 
     String nom;
     String region;
     Controleur controleur;
-
+    Historique historique;
+    ArrayList<Observateur> observateurs;
     public String getNom() {
         return nom;
     }
@@ -34,7 +38,11 @@ public abstract class Marche {
         return controleur;
     }
 
-    abstract public void ajouterObservateur(Observateur o);
-    abstract public void supprimerObservateur(Observateur o);
+    public void ajouterObservateur(Observateur observateur){
+
+    }
+    public void supprimerObservateur(Observateur observateur){
+
+    }
     abstract public void notifier();
 }

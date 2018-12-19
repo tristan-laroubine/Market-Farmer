@@ -38,7 +38,8 @@ public class Main {
     public static void simulation2(){
 
         Controleur controleur = new Controleur();
-        MarcheFermier marcheFermier = new MarcheFermier("Marche D'AIX EN PROVENCE", "Rhône-Alpes",controleur);
+        Historique historique = new Historique();
+        MarcheFermier marcheFermier = new MarcheFermier("Marche D'AIX EN PROVENCE", "Rhône-Alpes",controleur,historique);
 
         Producteur proprietaire1 = new ProducteurDeViande();
         proprietaire1.setUniteDeProduction(new UniteDeProductionDeViande());
@@ -94,6 +95,8 @@ public class Main {
         offreAchats.add(new OffreAchat(proprietaire1,new Cochon(50, (double) 500)));
         centraleAchat.choixProduits(offreAchats, "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
         System.out.println(centraleAchat.getOffresChoisies().get(1).getProduitFermier());
+
+
 
 
     }
