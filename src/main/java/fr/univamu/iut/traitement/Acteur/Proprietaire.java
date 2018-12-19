@@ -85,4 +85,6 @@ public abstract class Proprietaire {
     }
 
 
+
+
 }

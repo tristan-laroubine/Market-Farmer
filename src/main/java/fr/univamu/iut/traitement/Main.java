@@ -42,11 +42,11 @@ public class Main {
         Historique historique = new Historique();
         MarcheFermier marcheFermier = new MarcheFermier("Marche D'AIX EN PROVENCE", "Rhône-Alpes",controleur,historique);
 
-        Producteur proprietaire1 = new ProducteurDeViande();
-        proprietaire1.setUniteDeProduction(new UniteDeProductionDeViande());
-        ProduitFermier cochon = (Cochon) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
-        Vache vache = (Vache) proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
-        proprietaire1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
+        Producteur producteur1 = new ProducteurDeViande();
+        producteur1.setUniteDeProduction(new UniteDeProductionDeViande());
+        ProduitFermier cochon = (Cochon) producteur1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+        Vache vache = (Vache) producteur1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
+        producteur1.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache");
         vache.setPrix(50);
         marcheFermier.addProduit(cochon);
         marcheFermier.addProduit(vache);
@@ -59,13 +59,13 @@ public class Main {
 
         }
         System.out.println("Reserve du proprietaire : ");
-        for ( ProduitFermier produitFermier : proprietaire1.getProduitFermiers()
+        for ( ProduitFermier produitFermier : producteur1.getProduitFermiers()
         ) {
             System.out.println(produitFermier);
 
         }
         System.out.println("Sold du producteurLaitier " + producteurLaitier.getSolde());
-        System.out.println("Sold du propriétaire " + proprietaire1.getSolde());
+        System.out.println("Sold du propriétaire " + producteur1.getSolde());
         System.out.println("Produit " + vache + " | prix : "+ vache.getPrix());
         System.out.println("Transaction");
         producteurLaitier.proposerOffre(marcheFermier,vache);
@@ -73,9 +73,9 @@ public class Main {
 
         marcheFermier.checkOffreAchatVente();
         System.out.println("Sold du producteurLaitier " + producteurLaitier.getSolde());
-        System.out.println("Sold du propriétaire " + proprietaire1.getSolde());
+        System.out.println("Sold du propriétaire " + producteur1.getSolde());
         System.out.println("Reserve du proprietaire : ");
-        for ( ProduitFermier produitFermier : proprietaire1.getProduitFermiers()
+        for ( ProduitFermier produitFermier : producteur1.getProduitFermiers()
              ) {
             System.out.println(produitFermier);
 
@@ -87,15 +87,16 @@ public class Main {
         }
 
         CentraleAchat centraleAchat= new CentraleAchat();
-        OffreAchat comparable = new OffreAchat( proprietaire1,cochon);
+        OffreAchat comparable = new OffreAchat( producteur1,cochon);
 
-        OffreAchat comparable2 = new OffreAchat(proprietaire1,vache);
+        OffreAchat comparable2 = new OffreAchat(producteur1,vache);
         ArrayList<OffreAchat> offreAchats = new ArrayList<>();
-        offreAchats.add(new OffreAchat(proprietaire1,new Cochon(50, (double) 500)));
-        offreAchats.add(new OffreAchat(proprietaire1,new Cochon(50, (double) 500)));
-        offreAchats.add(new OffreAchat(proprietaire1,new Cochon(50, (double) 500)));
+        offreAchats.add(new OffreAchat(producteur1,new Cochon(50, (double) 500)));
+        offreAchats.add(new OffreAchat(producteur1,new Cochon(50, (double) 500)));
+        offreAchats.add(new OffreAchat(producteur1,new Vache(50, (double) 500)));
         centraleAchat.choixProduits(offreAchats, "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
-        System.out.println(centraleAchat.getOffresChoisies().get(1).getProduitFermier());
+        System.out.println(centraleAchat.getOffresChoisies().get(1).getAcheteur());
+        centraleAchat.setPromotion();
 
 
 
@@ -136,5 +137,29 @@ public class Main {
         }
         historique.afficherTransaction();
 
+
+        Proprietaire centraleAchat = new CentraleAchat();
+        ArrayList<OffreAchat> offreAchats = new ArrayList<>();
+        offreAchats.add(new OffreAchat(centraleAchat,new Cochon(50, (double) 50)));
+        offreAchats.add(new OffreAchat(centraleAchat,new Cochon(50, (double) 50)));
+        offreAchats.add(new OffreAchat(centraleAchat,new Vache(50, (double) 50)));
+        ((CentraleAchat) centraleAchat).choixProduits(offreAchats, "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+        ((CentraleAchat) centraleAchat).setPromotion();
+        ((CentraleAchat) centraleAchat).promotion();
+
+        for ( ProduitFermier produitFermier : marcheFermier.getProduitsFermier()
+        ) {
+            System.out.println(produitFermier + " prix =" + produitFermier.getPrix());
+
+        }
+
+        //centraleAchat.proposerOffre();
+
+        System.out.println("Reserve du proprietaire Paul : ");
+        for ( ProduitFermier produitFermier : paul.getProduitFermiers()
+        ) {
+            System.out.println(produitFermier);
+
+        }
     }
 }

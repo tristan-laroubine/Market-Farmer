@@ -10,18 +10,24 @@ public class OffreAchat implements Comparable{
     private ProduitFermier produitFermier;
     private Proprietaire acheteur;
 
-    public LocalDate getDateOffre() {
-        return dateOffre;
-    }
+
 
     public void setDateOffre(LocalDate dateOffre) {
         this.dateOffre = dateOffre;
     }
 
+    public LocalDate getDateOffre() {
+        return dateOffre;
+    }
     private LocalDate dateOffre;
 
     public double getPrix() {
         return this.prix;
+    }
+
+
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
 
     private double prix;
