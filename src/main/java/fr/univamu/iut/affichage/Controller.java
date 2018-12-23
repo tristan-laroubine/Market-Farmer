@@ -302,7 +302,7 @@ public class Controller implements Initializable {
                 buttonVendre.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-
+                        proprietaire.proposerOffre((MarcheFermier) marche,produitFermier);
                     }
                 });
                 vBoxProduit.getChildren().add(buttonVendre);
