@@ -53,6 +53,8 @@ public class MarcheFermier extends Marche {
              ) {
             if(controleur.choisirAcheteur(offreAchats,produifermier) != null){
                 transaction(produifermier,controleur.choisirAcheteur(offreAchats,produifermier).getAcheteur());
+                removeOffreToOffreAchats(controleur.choisirAcheteur(offreAchats,produifermier));
+                removeProduitFermier(produifermier);
             }
         }
     }
@@ -142,6 +144,7 @@ public class MarcheFermier extends Marche {
         historique.addTransaction(new Transaction(acheteur, produitFermier.getProprietaire(), produitFermier));
         acheteur.crediter(-produitFermier.getPrix());
         proprietaire.removeProduitFermiers(produitFermier);
+        produitFermier.setProprietaire(acheteur);
         acheteur.addProduitFermiers(produitFermier);
 
 

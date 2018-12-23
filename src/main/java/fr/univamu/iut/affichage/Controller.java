@@ -2,6 +2,7 @@ package fr.univamu.iut.affichage;
 
 import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.Controleur;
+import fr.univamu.iut.traitement.Historique;
 import fr.univamu.iut.traitement.Marché.Marche;
 import fr.univamu.iut.traitement.Marché.MarcheFermier;
 import fr.univamu.iut.traitement.Marché.OffreAchat;
@@ -31,7 +32,7 @@ public class Controller implements Initializable {
     public VBox vBoxLesActeurs;
     public Button buttonAdd;
     public VBox pane;
-    public Marche marche = new MarcheFermier("Place d'Aix","Rhone-Alpe",new Controleur());
+    public Marche marche = new MarcheFermier("Place d'Aix","Rhone-Alpe",new Controleur(), new Historique());
     public VBox vBoxLesProduitEnVente;
     public ScrollPane panelProduitMarche;
 
@@ -283,6 +284,15 @@ public class Controller implements Initializable {
                 vBoxOffreAchat.getChildren().addAll(labelProduit,labelPoids,labelPrix,labelDate,labelAcheteur);
                 pane.getChildren().add(vBoxOffreAchat);
             }
+            Button buttonCheck = new Button("Avancer");
+            buttonCheck.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    ((MarcheFermier) marche).checkOffreAchatVente();
+                    updateVBoxProduit();
+                }
+            });
+            pane.getChildren().add(buttonCheck);
         }
     }
     void updateVBoxProduit(Proprietaire proprietaire)
@@ -303,6 +313,7 @@ public class Controller implements Initializable {
                     @Override
                     public void handle(ActionEvent event) {
                         proprietaire.proposerOffre((MarcheFermier) marche,produitFermier);
+                        updateVBoxProduit();
                     }
                 });
                 vBoxProduit.getChildren().add(buttonVendre);
@@ -315,6 +326,7 @@ public class Controller implements Initializable {
                     @Override
                     public void handle(ActionEvent event) {
                         ((MarcheFermier) marche).removeProduitFermier(produitFermier);
+                        updateVBoxProduit();
                     }
                 });
                 vBoxProduit.getChildren().add(buttonVendre);
@@ -338,6 +350,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         pannelMarche(marche);
         updateVBoxProduit();
         initialisationMarcheEtControler();
