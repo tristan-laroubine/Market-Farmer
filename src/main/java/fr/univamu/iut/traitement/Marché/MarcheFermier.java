@@ -65,7 +65,10 @@ public class MarcheFermier extends Marche {
         offreAchats.remove(offreAchat);
         notifier();
     }
-
+    public void removeProduitFermier(ProduitFermier produitFermier){
+        produitsFermier.remove(produitFermier);
+        notifier();
+    }
     public TreeSet<Producteur> getVendeurs() {
         return vendeurs;
     }
