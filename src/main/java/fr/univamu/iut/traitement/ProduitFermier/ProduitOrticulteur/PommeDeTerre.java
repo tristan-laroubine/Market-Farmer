@@ -25,7 +25,10 @@ public class PommeDeTerre extends ProduitOrticulteur {
     }
 
 
-
+    /**
+     * Force la conversion en String de la classe
+     * @return le nom de la classe est les informations
+     */
     @Override
     public String toString() {
         return "PommeDeTerre";

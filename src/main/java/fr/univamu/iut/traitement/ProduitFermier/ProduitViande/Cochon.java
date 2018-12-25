@@ -23,7 +23,10 @@ public class Cochon extends ProduitViande {
 
         this.prix = prix;
     }
-
+    /**
+     * Force la conversion en String de la classe
+     * @return le nom de la classe est les informations
+     */
     @Override
     public String toString() {
         return "Cochon";

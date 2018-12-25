@@ -1,11 +1,11 @@
 package fr.univamu.iut.traitement.Producteur;
 
-import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionArboriculteur;
-import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
+
 
 public class Arboriculteur extends Producteur {
+
 
     public Arboriculteur(){
 
@@ -21,6 +21,10 @@ public class Arboriculteur extends Producteur {
         }
     }
 
+    /**
+     * Change l'unité de production du Producteur
+     * @param uniteDeProduction l'unité de production associée
+     */
     public void setUniteDeProduction(UniteDeProduction uniteDeProduction) {
         if (uniteDeProduction instanceof UniteDeProductionArboriculteur )
         {
@@ -32,7 +36,10 @@ public class Arboriculteur extends Producteur {
         }
     }
 
-
+    /**
+     * Force la conversion en String de la classe
+     * @return le nom de la classe est les informations
+     */
     @Override
     public String toString() {
         return "Arboriculteur";

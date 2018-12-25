@@ -31,6 +31,10 @@ public class ProducteurLaitier extends Producteur{
             throw new ClassCastException();
         }
     }
+    /**
+     * Force la conversion en String de la classe
+     * @return le nom de la classe est les informations
+     */
     @Override
     public String toString() {
         return "ProducteurLaitier";
