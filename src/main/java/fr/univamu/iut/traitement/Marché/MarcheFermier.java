@@ -55,10 +55,21 @@ public class MarcheFermier extends Marche {
                 transaction(produifermier,controleur.choisirAcheteur(offreAchats,produifermier).getAcheteur());
                 removeOffreToOffreAchats(controleur.choisirAcheteur(offreAchats,produifermier));
                 removeProduitFermier(produifermier);
+                checkOffreAchatVente();
             }
         }
     }
-
+    public boolean isDejaOffreEnCours(Proprietaire proprietaire, ProduitFermier produitFermier)
+    {
+        for (OffreAchat offreAchat : offreAchats)
+        {
+            if (offreAchat.getProduitFermier() == produitFermier && offreAchat.getAcheteur() == proprietaire)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public void addOffreToOffreAchats(OffreAchat offreAchat){
         offreAchats.add(offreAchat);
         notifier();

@@ -13,6 +13,7 @@ import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitPeremption;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
+import fr.univamu.iut.traitement.Transaction;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionLaitier;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
@@ -35,6 +36,7 @@ public class Controller implements Initializable {
     public Marche marche = new MarcheFermier("Place d'Aix","Rhone-Alpe",new Controleur(), new Historique());
     public VBox vBoxLesProduitEnVente;
     public ScrollPane panelProduitMarche;
+    public VBox historiqueScrollPane;
 
     @FXML
     void addButton(){
@@ -290,6 +292,7 @@ public class Controller implements Initializable {
                 public void handle(ActionEvent actionEvent) {
                     ((MarcheFermier) marche).checkOffreAchatVente();
                     updateVBoxProduit();
+                    updateHistorique();
                 }
             });
             pane.getChildren().add(buttonCheck);
@@ -305,7 +308,14 @@ public class Controller implements Initializable {
             Label labelPrix = new Label("Prix : " + produitFermier.getPrix());
             Label labelAcheteur = new Label("Acheteur " + produitFermier.getProprietaire());
             vBoxProduit.getChildren().addAll(labelProduit,labelPoids,labelPrix,labelAcheteur);
-            if (proprietaire != produitFermier.getProprietaire())
+            if(((MarcheFermier) marche).isDejaOffreEnCours(proprietaire, produitFermier))
+            {
+                Button buttonVendre = new Button("Offre en cours");
+                buttonVendre.setId("buttonAcheter");
+                vBoxProduit.getChildren().add(buttonVendre);
+                vBoxLesProduitEnVente.getChildren().add(vBoxProduit);
+            }
+            else if (proprietaire != produitFermier.getProprietaire())
             {
                 Button buttonVendre = new Button("Acheter");
                 buttonVendre.setId("buttonVendre");
@@ -313,12 +323,13 @@ public class Controller implements Initializable {
                     @Override
                     public void handle(ActionEvent event) {
                         proprietaire.proposerOffre((MarcheFermier) marche,produitFermier);
-                        updateVBoxProduit();
+                        updateVBoxProduit(proprietaire);
                     }
                 });
                 vBoxProduit.getChildren().add(buttonVendre);
                 vBoxLesProduitEnVente.getChildren().add(vBoxProduit);
             }
+
             else{
                 Button buttonVendre = new Button("Retirer");
                 buttonVendre.setId("buttonAcheter");
@@ -326,7 +337,7 @@ public class Controller implements Initializable {
                     @Override
                     public void handle(ActionEvent event) {
                         ((MarcheFermier) marche).removeProduitFermier(produitFermier);
-                        updateVBoxProduit();
+                        updateVBoxProduit(proprietaire);
                     }
                 });
                 vBoxProduit.getChildren().add(buttonVendre);
@@ -348,9 +359,17 @@ public class Controller implements Initializable {
         }
     }
 
+    void updateHistorique()
+    {
+        historiqueScrollPane.getChildren().clear();
+        for (Transaction transaction : marche.getHistorique().getTransactions()) {
+            historiqueScrollPane.getChildren().add(new Label(transaction.toString()));
+        }
+
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        updateHistorique();
         pannelMarche(marche);
         updateVBoxProduit();
         initialisationMarcheEtControler();

@@ -44,5 +44,10 @@ public abstract class Marche {
     public void supprimerObservateur(Observateur observateur){
         observateurs.remove(observateur);
     }
+
+    public Historique getHistorique() {
+        return historique;
+    }
+
     abstract public void notifier();
 }
