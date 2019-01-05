@@ -41,4 +41,9 @@ public class ProducteurDeViande extends Producteur {
     public String toString() {
         return "ProducteurDeViande";
     }
+
+    @Override
+    public double comissionMarchePourcentage(double benefice) {
+        return 2;
+    }
 }

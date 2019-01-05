@@ -151,7 +151,7 @@ public class MarcheFermier extends Marche {
     private void transaction(ProduitFermier produitFermier, Proprietaire acheteur){
         Proprietaire proprietaire = produitFermier.getProprietaire();
         if (acheteur.getSolde() <  produitFermier.getPrix()) return;
-        proprietaire.crediter(produitFermier.getPrix());
+        proprietaire.crediter(produitFermier.getPrix() - proprietaire.comissionMarchePourcentage(produitFermier.getPrix()));
         historique.addTransaction(new Transaction(acheteur, produitFermier.getProprietaire(), produitFermier));
         acheteur.crediter(-produitFermier.getPrix());
         proprietaire.removeProduitFermiers(produitFermier);
