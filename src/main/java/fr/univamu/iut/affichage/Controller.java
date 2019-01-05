@@ -190,7 +190,7 @@ public class Controller implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 labelPrix.textProperty().setValue("Prix : " +
-                        String.valueOf((int) sliderPrix.getValue()));
+                        String.valueOf(arrondir (sliderPrix.getValue(),2)));
 
             }
         });
@@ -203,7 +203,7 @@ public class Controller implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 labelPoids.textProperty().setValue("Poids : " +
-                        String.valueOf((int) sliderPoids.getValue()));
+                        String.valueOf((int)(sliderPoids.getValue())));
 
             }
         });
@@ -217,12 +217,12 @@ public class Controller implements Initializable {
 
                     case "Vache" :
                         String[] parametere = {"java.lang.Integer", "java.lang.Double"};
-                        Vache vache = (Vache) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache",parametere,(int)sliderPoids.getValue(), sliderPrix.getValue());
+                        Vache vache = (Vache) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache",parametere,(int)sliderPoids.getValue(), arrondir(sliderPrix.getValue(),2));
                         break;
 
                     case "Cochon":
                         String[] parametere1 = {"java.lang.Integer", "java.lang.Double"};
-                        Cochon cochon = (Cochon) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon",parametere1,(int)sliderPoids.getValue(), sliderPrix.getValue());
+                        Cochon cochon = (Cochon) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon",parametere1,(int)sliderPoids.getValue(), arrondir(sliderPrix.getValue(),2));
                             break;
                     default:
                         System.out.println("Type non trouvé !");
@@ -373,5 +373,9 @@ public class Controller implements Initializable {
         pannelMarche(marche);
         updateVBoxProduit();
         initialisationMarcheEtControler();
+    }
+    private double arrondir(double nombre,double nbApVirg)
+    {
+        return(double)((int)(nombre * Math.pow(10,nbApVirg) + .5)) / Math.pow(10,nbApVirg);
     }
 }
