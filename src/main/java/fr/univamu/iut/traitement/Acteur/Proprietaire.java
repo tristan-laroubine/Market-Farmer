@@ -71,18 +71,13 @@ public abstract class Proprietaire implements StrategyCom{
 
     public void proposerOffre(MarcheFermier marche, ProduitFermier produitFermier)
     {
-        System.out.println(produitFermier.getProprietaire().getPrenom() + " != " +  this.Prenom);
         if(produitFermier.getProprietaire() == this) {
             System.out.println("Mauvais proprietaire");
             return;
         }
-        for (OffreAchat offreAchat: marche.getOffreAchats()
-             ) {
-            if (offreAchat.getProduitFermier() == produitFermier)
-            {
-                System.out.println("Offre déja en vente");
-                return;
-            }
+        if(isDejaEnOffre(marche,produitFermier))
+        {
+            return;
         }
         PriorityQueue<OffreAchat> offreAchats = marche.getOffreAchats();
         OffreAchat offreAchat = new OffreAchat(this,produitFermier);
@@ -90,6 +85,18 @@ public abstract class Proprietaire implements StrategyCom{
         {
             marche.addOffreToOffreAchats(offreAchat);
         }
+    }
+    boolean isDejaEnOffre(MarcheFermier marche, ProduitFermier produitFermier)
+    {
+        for (OffreAchat offreAchat: marche.getOffreAchats()
+                ) {
+            if (offreAchat.getProduitFermier() == produitFermier)
+            {
+                System.out.println("Offre déja en vente");
+                return true;
+            }
+        }
+        return false;
     }
 
 

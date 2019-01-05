@@ -10,6 +10,7 @@ public class Grossiste extends Proprietaire {
 
 
     public void proposerOffreEnGrandeQuantitee(MarcheFermier marcheFermier, String type, Double prixMax, Double soldeMax) {
+        if (this.getSolde() > soldeMax) soldeMax = this.getSolde();
         Comparator<ProduitFermier> produitFermierComparator = (s1, s2) -> (int) (s1.getPrix() - s2.getPrix());
         PriorityQueue<ProduitFermier> produitFermierPriorityQueue = new PriorityQueue<>(produitFermierComparator);
         if (soldeMax > getSolde()) soldeMax = getSolde();
@@ -23,9 +24,11 @@ public class Grossiste extends Proprietaire {
             }
         }
         while(!produitFermierPriorityQueue.isEmpty() && soldeMax>=0 ){
-            ProduitFermier produitFermier = produitFermierPriorityQueue.peek();
-            soldeMax = soldeMax - produitFermier.getPrix();
-            proposerOffre(marcheFermier,produitFermier);
+            ProduitFermier produitFermier = produitFermierPriorityQueue.remove();
+            if (!isDejaEnOffre(marcheFermier,produitFermier)){
+                soldeMax = soldeMax - produitFermier.getPrix();
+                proposerOffre(marcheFermier,produitFermier);
+            }
         }
     }
 

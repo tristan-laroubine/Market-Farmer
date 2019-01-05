@@ -1,6 +1,8 @@
 package fr.univamu.iut.affichage;
 
+import fr.univamu.iut.traitement.Acteur.Grossiste;
 import fr.univamu.iut.traitement.Acteur.Proprietaire;
+import fr.univamu.iut.traitement.Acteur.Tradeur;
 import fr.univamu.iut.traitement.Controleur;
 import fr.univamu.iut.traitement.Historique;
 import fr.univamu.iut.traitement.Marché.Marche;
@@ -44,8 +46,9 @@ public class Controller implements Initializable {
 
         ComboBox<Proprietaire> proprietaireComboBox = new ComboBox<>();
         proprietaireComboBox.getItems().add(new ProducteurDeViande());
+        proprietaireComboBox.getItems().add(new Tradeur());
+        proprietaireComboBox.getItems().add(new Grossiste());
         proprietaireComboBox.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
-                    System.out.println(newValue);
                     setActeur(newValue);
                 }
         );
@@ -158,6 +161,63 @@ public class Controller implements Initializable {
                 }
             });
             pane.getChildren().addAll(produireProduitButton);
+        }
+        if(proprietaire instanceof Grossiste)
+        {
+            ComboBox<String> typeC = new ComboBox<>();
+            typeC.getItems().addAll(
+                    "Vache",
+                    "Cochon"
+            );
+            typeC.setValue("Vache");
+            Slider prixMax = new Slider();
+            prixMax.setMin(0);
+            prixMax.setMax(100);
+            prixMax.setValue(50);
+
+            Slider soldeMax = new Slider();
+            soldeMax.setMin(0);
+            soldeMax.setMax(proprietaire.getSolde());
+            soldeMax.setValue(proprietaire.getSolde()/2);
+
+            Label prixMaxLabel = new Label("Prix Max : ");
+            Label soldeMaxLabel = new Label("Solde Max : ");
+            soldeMax.valueProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    soldeMaxLabel.textProperty().setValue("Solde Max : " +
+                            String.valueOf(arrondir (soldeMax.getValue(),2)));
+                }
+            });
+            prixMax.valueProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    prixMaxLabel.textProperty().setValue("Prix Max : " +
+                            String.valueOf(arrondir (prixMax.getValue(),2)));
+                }
+            });
+            final String[] typeProduit = {"fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache"};
+            typeC.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+                switch (newValue){
+                    case "Cochon":
+                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon";
+                        break;
+
+                    case "Vache":
+                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache";
+                        break;
+                }
+                    }
+            );
+            Button offreEnMasse = new Button("Offre en masse");
+            offreEnMasse.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                   ((Grossiste) proprietaire).proposerOffreEnGrandeQuantitee((MarcheFermier)marche, typeProduit[0],prixMax.getValue(),soldeMax.getValue());
+                    updateVBoxProduit(proprietaire);
+                }
+            });
+            pane.getChildren().addAll(typeC,prixMaxLabel,prixMax,soldeMaxLabel,soldeMax,offreEnMasse);
         }
 
     }
