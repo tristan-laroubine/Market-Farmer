@@ -19,7 +19,7 @@ public class ProduitOrticulteurTest {
     @Test
     public final void attributPommeDeTerreTest()
     {
-        produitOrticulteur = new PommeDeTerre(labels,LocalDate.of(1995,10,12) , 10,25.0);
+        produitOrticulteur = new PommeDeTerre(labels , 10,25.0);
         assertEquals(produitOrticulteur.getPoids(), 10);
         assertEquals("C'est bon",produitOrticulteur.getPrix(), 25, 0);
         assertEquals(produitOrticulteur.getDatePeremption(),LocalDate.of(1995,10,12));
@@ -28,7 +28,7 @@ public class ProduitOrticulteurTest {
     @Test
     public final void validerPommeDeTerre()
     {
-        produitOrticulteur = new PommeDeTerre(labels,LocalDate.of(2020,12,12) , 10,25.0);
+        produitOrticulteur = new PommeDeTerre(labels , 10,25.0);
         assertTrue(produitOrticulteur.valider());
     }
 }

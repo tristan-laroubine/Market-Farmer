@@ -43,4 +43,6 @@ public abstract class ProduitPeremption extends ProduitFermier{
     public void setDatePeremption(LocalDate datePeremption) {
         this.datePeremption = datePeremption;
     }
+
+    protected abstract LocalDate generateDatePeremption();
 }

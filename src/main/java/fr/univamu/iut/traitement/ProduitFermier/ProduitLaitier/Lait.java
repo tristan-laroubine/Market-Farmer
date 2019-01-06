@@ -9,18 +9,21 @@ public class Lait extends ProduitLaitier {
         this.datePeremption = datePeremption;
     }
 
-    public Lait(List<String> labels, LocalDate datePeremption, Integer poids, Double prix) {
+    public Lait(List<String> labels, Integer poids, Double prix) {
         this.labels = labels;
-        this.datePeremption = datePeremption;
+        this.datePeremption = generateDatePeremption();
         this.poids = poids;
         this.prix = prix;
     }
 
-    public Lait(LocalDate datePeremption, Integer poids, Double prix) {
-        this.datePeremption = datePeremption;
+    public Lait(Integer poids, Double prix) {
+        this.datePeremption = generateDatePeremption();
         this.poids = poids;
         this.prix = prix;
     }
+
+
+
     /**
      * Force la conversion en String de la classe
      * @return le nom de la classe est les informations
@@ -31,4 +34,8 @@ public class Lait extends ProduitLaitier {
     }
 
 
+    @Override
+    protected LocalDate generateDatePeremption() {
+        return LocalDate.now().plusDays(7);
+    }
 }

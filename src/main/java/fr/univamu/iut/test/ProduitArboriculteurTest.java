@@ -18,7 +18,7 @@ public class ProduitArboriculteurTest {
     @Test
     public final void attributPommeTest()
     {
-        produitArboriculteur= new Pomme(labels,LocalDate.of(1995,10,12) , 10,25.0);
+        produitArboriculteur= new Pomme(labels, 10,25.0);
         assertEquals(produitArboriculteur.getPoids(), 10);
         assertEquals("C'est bon", produitArboriculteur.getPrix(), 25, 0);
         assertEquals(produitArboriculteur.getDatePeremption(),LocalDate.of(1995,10,12));
@@ -27,14 +27,14 @@ public class ProduitArboriculteurTest {
     @Test
     public final void validerPommeNonPerime()
     {
-        produitArboriculteur = new Pomme(labels,LocalDate.of(2020,12,12) , 10,25.0);
+        produitArboriculteur = new Pomme(labels, 10,25.0);
         assertTrue(produitArboriculteur.valider());
     }
 
     @Test
     public final void validerPommePerime(){
 
-        produitArboriculteur = new Pomme(labels,LocalDate.of(2014,12,12) , 10,25.0);
+        produitArboriculteur = new Pomme(labels , 10,25.0);
         assertFalse(produitArboriculteur.valider());
     }
 }

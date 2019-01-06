@@ -32,4 +32,8 @@ public class Grossiste extends Proprietaire {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Grossiste";
+    }
 }

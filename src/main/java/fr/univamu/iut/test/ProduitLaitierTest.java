@@ -18,7 +18,7 @@ public class ProduitLaitierTest {
     @Test
     public final void attributLaitTest()
     {
-        produitLaitier = new Lait(labels,LocalDate.of(1995,10,12) , 10,25.0);
+        produitLaitier = new Lait(labels, 10,25.0);
         assertEquals(produitLaitier.getPoids(), 10);
         assertEquals("C'est bon",produitLaitier.getPrix(), 25, 0);
         assertEquals(produitLaitier.getDatePeremption(),LocalDate.of(1995,10,12));
@@ -27,14 +27,14 @@ public class ProduitLaitierTest {
     @Test
     public final void validerLaitNonPerime()
     {
-        produitLaitier = new Lait(labels,LocalDate.of(2020,12,12) , 10,25.0);
+        produitLaitier = new Lait(labels , 10,25.0);
         assertTrue(produitLaitier.valider());
     }
 
     @Test
     public final void validerLaitPerime(){
 
-        produitLaitier = new Lait(labels,LocalDate.of(2014,12,12) , 10,25.0);
+        produitLaitier = new Lait(labels, 10,25.0);
         assertFalse(produitLaitier.valider());
     }
 }

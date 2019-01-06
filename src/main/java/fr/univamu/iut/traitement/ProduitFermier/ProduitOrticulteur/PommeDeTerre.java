@@ -11,15 +11,15 @@ public class PommeDeTerre extends ProduitOrticulteur {
         this.datePeremption = datePeremption;
     }
 
-    public PommeDeTerre(List<String> labels, LocalDate datePeremption, Integer poids, double prix) {
+    public PommeDeTerre(List<String> labels, Integer poids, double prix) {
         this.labels = labels;
-        this.datePeremption = datePeremption;
+        this.datePeremption = generateDatePeremption();
         this.poids = poids;
         this.prix = prix;
     }
 
-    public PommeDeTerre(LocalDate datePeremption, Integer poids, Double prix) {
-        this.datePeremption = datePeremption;
+    public PommeDeTerre(Integer poids, Double prix) {
+        this.datePeremption = generateDatePeremption();
         this.poids = poids;
         this.prix = prix;
     }
@@ -32,5 +32,9 @@ public class PommeDeTerre extends ProduitOrticulteur {
     @Override
     public String toString() {
         return "PommeDeTerre";
+    }
+    @Override
+    protected LocalDate generateDatePeremption() {
+        return LocalDate.now().plusDays(30);
     }
 }

@@ -6,19 +6,19 @@ import java.util.List;
 public class Miel extends ProduitApiculteur {
 
 
-    public Miel(LocalDate datePeremption) {
-        this.datePeremption = datePeremption;
+    public Miel(List<String> labels) {
+        this.datePeremption = generateDatePeremption();
     }
 
-    public Miel(List<String> labels, LocalDate datePeremption, Integer poids, double prix) {
+    public Miel(List<String> labels, Integer poids, double prix) {
         this.labels = labels;
-        this.datePeremption = datePeremption;
+        this.datePeremption = generateDatePeremption();
         this.poids = poids;
         this.prix = prix;
     }
 
-    public Miel(LocalDate datePeremption, Integer poids, Double prix) {
-        this.datePeremption = datePeremption;
+    public Miel(Integer poids, Double prix) {
+        this.datePeremption = generateDatePeremption();
         this.poids = poids;
         this.prix = prix;
     }
@@ -30,5 +30,10 @@ public class Miel extends ProduitApiculteur {
     @Override
     public String toString() {
         return "Miel";
+    }
+
+    @Override
+    protected LocalDate generateDatePeremption() {
+        return LocalDate.now().plusDays(64);
     }
 }

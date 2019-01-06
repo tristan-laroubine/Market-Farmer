@@ -8,17 +8,14 @@ import fr.univamu.iut.traitement.Historique;
 import fr.univamu.iut.traitement.Marché.Marche;
 import fr.univamu.iut.traitement.Marché.MarcheFermier;
 import fr.univamu.iut.traitement.Marché.OffreAchat;
-import fr.univamu.iut.traitement.Producteur.Producteur;
-import fr.univamu.iut.traitement.Producteur.ProducteurDeViande;
-import fr.univamu.iut.traitement.Producteur.ProducteurLaitier;
+import fr.univamu.iut.traitement.Producteur.*;
+import fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitPeremption;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
 import fr.univamu.iut.traitement.Transaction;
-import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
-import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionLaitier;
-import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
+import fr.univamu.iut.traitement.UniteDeProduction.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -46,16 +43,24 @@ public class Controller implements Initializable {
 
         ComboBox<Proprietaire> proprietaireComboBox = new ComboBox<>();
         proprietaireComboBox.getItems().add(new ProducteurDeViande());
+        proprietaireComboBox.getItems().add(new ProducteurLaitier());
+        proprietaireComboBox.getItems().add(new Arboriculteur());
+        proprietaireComboBox.getItems().add(new Orticulteur());
         proprietaireComboBox.getItems().add(new Tradeur());
         proprietaireComboBox.getItems().add(new Grossiste());
         proprietaireComboBox.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+                    pane.getChildren().clear();
+                    pane.getChildren().add(proprietaireComboBox);
                     setActeur(newValue);
+
                 }
         );
         pane.getChildren().add(proprietaireComboBox);
+
     }
 
     void setActeur(Proprietaire proprietaire){
+
         Label label = new Label();
         label.setText("Prenom :");
         TextArea textArea1 = new TextArea();
@@ -77,6 +82,21 @@ public class Controller implements Initializable {
             uniteDeProductionComboBox.setValue(uniteDeProduction);
             pane.getChildren().addAll(label1,uniteDeProductionComboBox);
         }
+        if (proprietaire instanceof Arboriculteur)
+        {
+            UniteDeProduction uniteDeProduction = new UniteDeProductionArboriculteur();
+            uniteDeProductionComboBox.getItems().add(uniteDeProduction);
+            uniteDeProductionComboBox.setValue(uniteDeProduction);
+            pane.getChildren().addAll(label1,uniteDeProductionComboBox);
+        }
+        if (proprietaire instanceof Orticulteur)
+        {
+            UniteDeProduction uniteDeProduction = new UniteDeProductionOrticulteur();
+            uniteDeProductionComboBox.getItems().add(uniteDeProduction);
+            uniteDeProductionComboBox.setValue(uniteDeProduction);
+            pane.getChildren().addAll(label1,uniteDeProductionComboBox);
+        }
+
 
         Button button = new Button("Ajouter");
         button.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
@@ -87,7 +107,23 @@ public class Controller implements Initializable {
                                        Producteur producteur = (Producteur) proprietaire;
                                        if (proprietaire instanceof ProducteurDeViande)
                                        {
-                                           ((ProducteurDeViande) producteur).setUniteDeProduction((UniteDeProductionDeViande) uniteDeProductionComboBox.getValue());
+                                           (producteur).setUniteDeProduction((UniteDeProductionDeViande) uniteDeProductionComboBox.getValue());
+                                       }
+                                       if (proprietaire instanceof Arboriculteur)
+                                       {
+                                           (producteur).setUniteDeProduction((UniteDeProductionArboriculteur) uniteDeProductionComboBox.getValue());
+                                       }
+                                       if (proprietaire instanceof Orticulteur)
+                                       {
+                                           (producteur).setUniteDeProduction((UniteDeProductionOrticulteur) uniteDeProductionComboBox.getValue());
+                                       }
+                                       if (proprietaire instanceof Arboriculteur)
+                                       {
+                                           (producteur).setUniteDeProduction((UniteDeProductionArboriculteur) uniteDeProductionComboBox.getValue());
+                                       }
+                                       if (proprietaire instanceof ProducteurLaitier)
+                                       {
+                                           (producteur).setUniteDeProduction(uniteDeProductionComboBox.getValue());
                                        }
                                    }
 
@@ -230,6 +266,18 @@ public class Controller implements Initializable {
         {
             produitFermierComboBox.getItems().addAll("Cochon","Vache");
         }
+        if (producteur instanceof Arboriculteur)
+        {
+            produitFermierComboBox.getItems().addAll("Pomme");
+        }
+        if (producteur instanceof Orticulteur)
+        {
+            produitFermierComboBox.getItems().addAll("PommeDeTerre");
+        }
+        if (producteur instanceof ProducteurLaitier)
+        {
+            produitFermierComboBox.getItems().addAll("Lait");
+        }
         VBox attriProduit = new VBox();
         produitFermierComboBox.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
                     produiteComboBoxItem(newValue,producteur, attriProduit);
@@ -284,6 +332,10 @@ public class Controller implements Initializable {
                         String[] parametere1 = {"java.lang.Integer", "java.lang.Double"};
                         Cochon cochon = (Cochon) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon",parametere1,(int)sliderPoids.getValue(), arrondir(sliderPrix.getValue(),2));
                             break;
+                    case "Pomme":
+                        String[] parametere2 = {"java.lang.Integer", "java.lang.Double"};
+                        Pomme pomme = (Pomme) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme",parametere2,(int)sliderPoids.getValue(), arrondir(sliderPrix.getValue(),2));
+                        break;
                     default:
                         System.out.println("Type non trouvé !");
                         break;
