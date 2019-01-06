@@ -9,8 +9,11 @@ import fr.univamu.iut.traitement.Marché.Marche;
 import fr.univamu.iut.traitement.Marché.MarcheFermier;
 import fr.univamu.iut.traitement.Marché.OffreAchat;
 import fr.univamu.iut.traitement.Producteur.*;
+import fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
+import fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait;
+import fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitPeremption;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
@@ -26,6 +29,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -36,6 +40,8 @@ public class Controller implements Initializable {
     public VBox vBoxLesProduitEnVente;
     public ScrollPane panelProduitMarche;
     public VBox historiqueScrollPane;
+    public ScrollPane ScrollPanePane;
+    public ScrollPane ScrollPaneHistorique;
 
     @FXML
     void addButton(){
@@ -56,6 +62,7 @@ public class Controller implements Initializable {
                 }
         );
         pane.getChildren().add(proprietaireComboBox);
+        ScrollPanePane.setVvalue(0);
 
     }
 
@@ -136,6 +143,7 @@ public class Controller implements Initializable {
                                        @Override
                                        public void handle(javafx.event.ActionEvent event) {
                                            pannelProprietaire(proprietaire);
+                                           ScrollPanePane.setVvalue(0);
 
                                        }
                                    });
@@ -156,8 +164,11 @@ public class Controller implements Initializable {
         VBox produits = new VBox();
         produits.getChildren().clear();
         produits.setMinWidth(150);
+
         Label labelProduits = new Label("Produits :");
+        produits.setMinHeight(produits.getHeight()+20);
         pane.getChildren().addAll(labelNom,labelSolde,labelProduits);
+        pane.setMinHeight(pane.getHeight());
         for (ProduitFermier produitfermier: proprietaire.getProduitFermiers()
              ) {
             Label produit = new Label();
@@ -165,7 +176,16 @@ public class Controller implements Initializable {
             Label labelPrix = new Label(""+ produitfermier.getPrix());
             Label labelPoids = new Label(""+ produitfermier.getPoids());
             produit.setId("labelType");
-            produit.setText(labelType.getText() + "\n" + labelPoids.getText() + "\n"+ labelPrix.getText());
+            produit.setMinHeight(100);
+
+            if(produitfermier instanceof ProduitPeremption) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+                produit.setText(labelType.getText() + "\n" + "Poids : " + labelPoids.getText() + "\n"+ "Prix : " + labelPrix.getText() + "\n" + "Péremption : " + formatter.format(((ProduitPeremption) produitfermier).getDatePeremption()));
+            }
+            else
+            {
+                produit.setText(labelType.getText() + "\n" + "Poids : " + labelPoids.getText() + "\n"+ "Prix : " + labelPrix.getText());
+            }
             AdapteurProduitFermierButton vendreButton = new AdapteurProduitFermierButton();
             vendreButton.setText("Vendre");
             vendreButton.setId("vendre");
@@ -176,12 +196,7 @@ public class Controller implements Initializable {
                 updateVBoxProduit(proprietaire);
             });
             produits.getChildren().addAll(produit,vendreButton);
-            if (produitfermier instanceof ProduitPeremption)
-            {
-                Label labelDatePeremption = new Label("" + ((ProduitPeremption) produitfermier).getDatePeremption());
-                produits.getChildren().addAll(labelDatePeremption);
-            }
-
+            pane.setMinHeight(pane.getMinHeight() + produit.getHeight() + 20);
         }
         pane.getChildren().add(produits);
         if(proprietaire instanceof Producteur)
@@ -194,6 +209,8 @@ public class Controller implements Initializable {
                 @Override
                 public void handle(javafx.event.ActionEvent event) {
                     produireComboBoxProduit((Producteur) proprietaire);
+                    ScrollPanePane.setVvalue(0);
+
                 }
             });
             pane.getChildren().addAll(produireProduitButton);
@@ -336,11 +353,25 @@ public class Controller implements Initializable {
                         String[] parametere2 = {"java.lang.Integer", "java.lang.Double"};
                         Pomme pomme = (Pomme) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme",parametere2,(int)sliderPoids.getValue(), arrondir(sliderPrix.getValue(),2));
                         break;
+                    case "Lait":
+                        String[] parametere3 = {"java.lang.Integer", "java.lang.Double"};
+                        Lait lait = (Lait) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait",parametere3,(int)sliderPoids.getValue(), arrondir(sliderPrix.getValue(),2));
+                        break;
+                    case "Miel":
+                        String[] parametere4 = {"java.lang.Integer", "java.lang.Double"};
+                        Miel miel = (Miel) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel",parametere4,(int)sliderPoids.getValue(), arrondir(sliderPrix.getValue(),2));
+                        break;
+                    case "PommeDeTerre":
+                        String[] parametere5 = {"java.lang.Integer", "java.lang.Double"};
+                        PommeDeTerre pommeDeTerre = (PommeDeTerre) producteur.produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre",parametere5,(int)sliderPoids.getValue(), arrondir(sliderPrix.getValue(),2));
+                        break;
                     default:
                         System.out.println("Type non trouvé !");
                         break;
                 }
+
                 pannelProprietaire(producteur);
+                ScrollPanePane.setVvalue(pane.getHeight());
             }
         });
         vBox.getChildren().addAll(buttonValide);
@@ -356,6 +387,7 @@ public class Controller implements Initializable {
         buttonMarche.setMinWidth(100);
         buttonMarche.setOnAction(event -> {
             pannelMarche(buttonMarche.getMarche());
+            ScrollPanePane.setVvalue(0);
         });
         AdapteurControllerButton buttonController = new AdapteurControllerButton();
         buttonController.setController(marche.getControleur());
@@ -364,6 +396,7 @@ public class Controller implements Initializable {
         buttonController.setMinWidth(100);
         buttonController.setOnAction(event -> {
             pannelControlleur(buttonController.getController());
+            ScrollPanePane.setVvalue(0);
         });
         vBoxLesActeurs.getChildren().addAll(buttonMarche,buttonController);
     }
@@ -384,21 +417,10 @@ public class Controller implements Initializable {
             Label labelNom = new Label("Nom : " + marche.getNom());
             Label labelRegion = new Label("Region : " + marche.getRegion());
             Label labelControlleur = new Label("Controlleur : " + marche.getControleur());
-            Label labelOffreAchat = new Label("Offre d'Achat : ");
 
-            pane.getChildren().addAll(labelNom,labelRegion,labelControlleur,labelOffreAchat);
-            for (OffreAchat offreAchat: ((MarcheFermier) marche).getOffreAchats()
-            ) {
-                VBox vBoxOffreAchat = new VBox();
-                Label labelProduit = new Label("Produit : " + offreAchat.getProduitFermier());
-                Label labelPoids = new Label("Poids : " + offreAchat.getProduitFermier().getPoids());
-                Label labelPrix = new Label("Prix : " + offreAchat.getProduitFermier().getPrix());
-                Label labelDate = new Label("Date de l'offre " + offreAchat.getDateOffre());
-                Label labelAcheteur = new Label("Acheteur " + offreAchat.getAcheteur());
-                vBoxOffreAchat.getChildren().addAll(labelProduit,labelPoids,labelPrix,labelDate,labelAcheteur);
-                pane.getChildren().add(vBoxOffreAchat);
-            }
+            pane.getChildren().addAll(labelNom,labelRegion,labelControlleur);
             Button buttonCheck = new Button("Avancer");
+            buttonCheck.setId("produire");
             buttonCheck.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -415,11 +437,11 @@ public class Controller implements Initializable {
         vBoxLesProduitEnVente.getChildren().clear();
         for (ProduitFermier produitFermier: ((MarcheFermier) marche).getProduitsFermier()) {
             VBox vBoxProduit = new VBox();
-            Label labelProduit = new Label("Produit : " + produitFermier);
-            Label labelPoids = new Label("Poids : " + produitFermier.getPoids());
-            Label labelPrix = new Label("Prix : " + produitFermier.getPrix());
-            Label labelAcheteur = new Label("Acheteur " + produitFermier.getProprietaire());
-            vBoxProduit.getChildren().addAll(labelProduit,labelPoids,labelPrix,labelAcheteur);
+            Label produit = new Label(produitFermier + "\n" + "Poids : " + produitFermier.getPoids() + "\n" + "Prix : " + produitFermier.getPrix()
+                    + "\n" + "Vendeur : " + produitFermier.getProprietaire().getPrenom());
+            produit.setId("labelType");
+            produit.setMinHeight(100);
+            vBoxProduit.getChildren().addAll(produit);
             if(((MarcheFermier) marche).isDejaOffreEnCours(proprietaire, produitFermier))
             {
                 Button buttonVendre = new Button("Offre en cours");
@@ -431,6 +453,7 @@ public class Controller implements Initializable {
             {
                 Button buttonVendre = new Button("Acheter");
                 buttonVendre.setId("buttonVendre");
+                buttonVendre.setTranslateX(45);
                 buttonVendre.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -445,6 +468,7 @@ public class Controller implements Initializable {
             else{
                 Button buttonVendre = new Button("Retirer");
                 buttonVendre.setId("buttonAcheter");
+                buttonVendre.setTranslateX(45);
                 buttonVendre.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -462,11 +486,10 @@ public class Controller implements Initializable {
         vBoxLesProduitEnVente.getChildren().clear();
         for (ProduitFermier produitFermier: ((MarcheFermier) marche).getProduitsFermier()) {
             VBox vBoxProduit = new VBox();
-            Label labelProduit = new Label("Produit : " + produitFermier);
-            Label labelPoids = new Label("Poids : " + produitFermier.getPoids());
-            Label labelPrix = new Label("Prix : " + produitFermier.getPrix());
-            Label labelAcheteur = new Label("Acheteur " + produitFermier.getProprietaire());
-            vBoxProduit.getChildren().addAll(labelProduit,labelPoids,labelPrix,labelAcheteur);
+            Label produit = new Label(produitFermier + "\n" + "Poids : " + produitFermier.getPoids() + "\n" + "Prix : " + produitFermier.getPrix()
+            + "\n" + "Vendeur : " + produitFermier.getProprietaire().getPrenom());
+            produit.setId("labelType");
+            vBoxProduit.getChildren().addAll(produit);
             vBoxLesProduitEnVente.getChildren().add(vBoxProduit);
         }
     }

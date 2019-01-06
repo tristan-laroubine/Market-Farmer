@@ -20,6 +20,6 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return vendeur.getPrenom() + " a vendu à " + acheteur.getPrenom() + " un(e) " + produitFermier + " le " + localDate;
+        return vendeur.getPrenom() + " a vendu à " + acheteur.getPrenom() + " un(e) " + produitFermier + " le " + localDate + " au prix de " + produitFermier.getPrix() +"€";
     }
 }
