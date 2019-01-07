@@ -10,20 +10,16 @@ public class CentraleAchat extends Proprietaire {
 
     private ArrayList<Proprietaire> acheteurs;
 
-
-
     private ArrayList<OffreAchat> offresChoisies = new ArrayList<>();
 
-
-
-
     private int promotion;
+
     private int quantitee;
 
     public ArrayList<OffreAchat> getOffresChoisies() {
         return this.offresChoisies;
-
     }
+
     public void choixProduits(ArrayList<OffreAchat> offreAchats, String p) {
 
         for (OffreAchat of : offreAchats) {

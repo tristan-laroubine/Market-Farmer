@@ -3,7 +3,7 @@ package fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Miel extends ProduitApiculteur {
+public class Miel extends ProduitApiculteur{
 
 
     public Miel(List<String> labels) {
@@ -36,4 +36,6 @@ public class Miel extends ProduitApiculteur {
     protected LocalDate generateDatePeremption() {
         return LocalDate.now().plusDays(64);
     }
+
+
 }

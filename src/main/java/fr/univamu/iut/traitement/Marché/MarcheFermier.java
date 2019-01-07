@@ -70,6 +70,7 @@ public class MarcheFermier extends Marche {
         }
         return false;
     }
+
     public void addOffreToOffreAchats(OffreAchat offreAchat){
         offreAchats.add(offreAchat);
         notifier();

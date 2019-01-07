@@ -3,7 +3,7 @@ package fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Pomme extends ProduitArboriculteur {
+public class Pomme extends ProduitArboriculteur{
 
     public Pomme(LocalDate datePeremption) {
         this.datePeremption = datePeremption;
@@ -21,6 +21,7 @@ public class Pomme extends ProduitArboriculteur {
         this.poids = poids;
         this.prix = prix;
     }
+
     /**
      * Force la conversion en String de la classe
      * @return le nom de la classe est les informations

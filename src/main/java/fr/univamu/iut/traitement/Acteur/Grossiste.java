@@ -25,7 +25,7 @@ public class Grossiste extends Proprietaire {
         }
         while(!produitFermierPriorityQueue.isEmpty() && soldeMax>=0 ){
             ProduitFermier produitFermier = produitFermierPriorityQueue.remove();
-            if (!isDejaEnOffre(marcheFermier,produitFermier)){
+            if (!marcheFermier.isDejaOffreEnCours(this,produitFermier)){
                 soldeMax = soldeMax - produitFermier.getPrix();
                 proposerOffre(marcheFermier,produitFermier);
             }

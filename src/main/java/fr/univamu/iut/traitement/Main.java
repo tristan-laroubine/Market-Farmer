@@ -9,6 +9,8 @@ import fr.univamu.iut.traitement.Marché.OffreAchat;
 import fr.univamu.iut.traitement.Producteur.Producteur;
 import fr.univamu.iut.traitement.Producteur.ProducteurDeViande;
 import fr.univamu.iut.traitement.Producteur.ProducteurLaitier;
+import fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel;
+import fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
-        simulation3();
+        test1();
     }
     public static void simulation1(){
 
@@ -102,7 +104,6 @@ public class Main {
 
 
     }
-
     public static void simulation3(){
         Controleur controleur = new Controleur();
         Historique historique = new Historique();
@@ -161,5 +162,14 @@ public class Main {
             System.out.println(produitFermier);
 
         }
+    }
+    public static void test1(){
+        Pomme pomme = new Pomme(50, (double) 50);
+        System.out.println(pomme.getPrix());
+        Pomme pomme1 = (Pomme) pomme.clone();
+        System.out.println(pomme1.getPrix());
+        ProduitFermier produitFermier = new Miel(50,50.0);
+        ProduitFermier produitFermier2 = (ProduitFermier) (produitFermier).clone();
+
     }
 }
