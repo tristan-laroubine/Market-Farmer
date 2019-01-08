@@ -283,7 +283,7 @@ public class Controller implements Initializable {
         if(proprietaire instanceof CentraleAchat)
         {
             CheckBox checkBox = new CheckBox();
-            checkBox.getCh
+//            checkBox.getCh
             Button offreEnMasse = new Button("Achat Groupe");
             offreEnMasse.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
