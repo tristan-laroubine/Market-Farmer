@@ -13,7 +13,6 @@ public class CentraleAchat extends Proprietaire {
     public void achatDeGroupe(String type, ArrayList<Proprietaire> acheteurs, Marche marche){
         if(marche instanceof MarcheFermier)
         {
-            System.out.println(acheteurs);
             if(((MarcheFermier) marche).isProduitForThatType(type))
             {
                 ProduitFermier produitFermier = ((MarcheFermier) marche).getProduitMoinsChereByType(type);
