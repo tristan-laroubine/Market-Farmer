@@ -20,8 +20,6 @@ public class CentraleAchatTest {
         ArrayList<OffreAchat> offreAchats = new ArrayList<>();
         offreAchats.add(new OffreAchat(proprietaire1,new Vache(50, (double) 500)));
         offreAchats.add(new OffreAchat(proprietaire1,new Cochon(50, (double) 500)));
-        centraleAchat.choixProduits(offreAchats, "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
 
-        assertSame(centraleAchat.getOffresChoisies().get(0).getProduitFermier().getClass(),Cochon.class);
     }
 }

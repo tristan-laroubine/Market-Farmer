@@ -1,5 +1,6 @@
 package fr.univamu.iut.affichage;
 
+import fr.univamu.iut.traitement.Acteur.CentraleAchat;
 import fr.univamu.iut.traitement.Acteur.Grossiste;
 import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.Acteur.Tradeur;
@@ -28,8 +29,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -42,6 +46,7 @@ public class Controller implements Initializable {
     public VBox historiqueScrollPane;
     public ScrollPane ScrollPanePane;
     public ScrollPane ScrollPaneHistorique;
+    private ArrayList<Proprietaire> proprietaires = new ArrayList<>();
 
     @FXML
     void addButton(){
@@ -54,6 +59,7 @@ public class Controller implements Initializable {
         proprietaireComboBox.getItems().add(new Orticulteur());
         proprietaireComboBox.getItems().add(new Tradeur());
         proprietaireComboBox.getItems().add(new Grossiste());
+        proprietaireComboBox.getItems().add(new CentraleAchat());
         proprietaireComboBox.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
                     pane.getChildren().clear();
                     pane.getChildren().add(proprietaireComboBox);
@@ -154,6 +160,8 @@ public class Controller implements Initializable {
         }
         );
         pane.getChildren().add(button);
+        if(!(proprietaire instanceof CentraleAchat))
+            proprietaires.add(proprietaire);
     }
 
     private void pannelProprietaire(Proprietaire proprietaire) {
@@ -271,6 +279,21 @@ public class Controller implements Initializable {
                 }
             });
             pane.getChildren().addAll(typeC,prixMaxLabel,prixMax,soldeMaxLabel,soldeMax,offreEnMasse);
+        }
+        if(proprietaire instanceof CentraleAchat)
+        {
+            CheckBox checkBox = new CheckBox();
+            checkBox.getCh
+            Button offreEnMasse = new Button("Achat Groupe");
+            offreEnMasse.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    CentraleAchat centraleAchat = (CentraleAchat) proprietaire;
+                   centraleAchat.achatDeGroupe("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache",proprietaires,marche);
+                    updateVBoxProduit(proprietaire);
+                }
+            });
+            pane.getChildren().add(offreEnMasse);
         }
 
     }

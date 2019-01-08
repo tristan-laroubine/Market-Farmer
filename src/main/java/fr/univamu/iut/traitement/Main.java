@@ -96,9 +96,6 @@ public class Main {
         offreAchats.add(new OffreAchat(producteur1,new Cochon(50, (double) 500)));
         offreAchats.add(new OffreAchat(producteur1,new Cochon(50, (double) 500)));
         offreAchats.add(new OffreAchat(producteur1,new Vache(50, (double) 500)));
-        centraleAchat.choixProduits(offreAchats, "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
-        System.out.println(centraleAchat.getOffresChoisies().get(1).getAcheteur());
-        centraleAchat.setPromotion();
 
 
 
@@ -144,9 +141,7 @@ public class Main {
         offreAchats.add(new OffreAchat(centraleAchat,new Cochon(50, (double) 50)));
         offreAchats.add(new OffreAchat(centraleAchat,new Cochon(50, (double) 50)));
         offreAchats.add(new OffreAchat(centraleAchat,new Vache(50, (double) 50)));
-        ((CentraleAchat) centraleAchat).choixProduits(offreAchats, "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
-        ((CentraleAchat) centraleAchat).setPromotion();
-        ((CentraleAchat) centraleAchat).promotion();
+
 
         for ( ProduitFermier produitFermier : marcheFermier.getProduitsFermier()
         ) {
@@ -169,7 +164,8 @@ public class Main {
         Pomme pomme1 = (Pomme) pomme.clone();
         System.out.println(pomme1.getPrix());
         ProduitFermier produitFermier = new Miel(50,50.0);
-        ProduitFermier produitFermier2 = (ProduitFermier) (produitFermier).clone();
+        ProduitFermier produitFermier2 = (ProduitFermier) (produitFermier).divideBy(4);
+        System.out.println(produitFermier2.getPrix() + "prix ->" + produitFermier2.getPoids());
 
     }
 }

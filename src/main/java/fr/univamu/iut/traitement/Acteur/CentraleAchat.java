@@ -1,5 +1,7 @@
 package fr.univamu.iut.traitement.Acteur;
 
+import fr.univamu.iut.traitement.Marché.Marche;
+import fr.univamu.iut.traitement.Marché.MarcheFermier;
 import fr.univamu.iut.traitement.Marché.OffreAchat;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
@@ -8,49 +10,39 @@ import java.util.Iterator;
 
 public class CentraleAchat extends Proprietaire {
 
-    private ArrayList<Proprietaire> acheteurs;
-
-    private ArrayList<OffreAchat> offresChoisies = new ArrayList<>();
-
-    private int promotion;
-
-    private int quantitee;
-
-    public ArrayList<OffreAchat> getOffresChoisies() {
-        return this.offresChoisies;
-    }
-
-    public void choixProduits(ArrayList<OffreAchat> offreAchats, String p) {
-
-        for (OffreAchat of : offreAchats) {
-            try {
-                if (of.getProduitFermier().getClass() == Class.forName(p)) {
-                    offresChoisies.add(of);
+    public void achatDeGroupe(String type, ArrayList<Proprietaire> acheteurs, Marche marche){
+        if(marche instanceof MarcheFermier)
+        {
+            System.out.println(acheteurs);
+            if(((MarcheFermier) marche).isProduitForThatType(type))
+            {
+                ProduitFermier produitFermier = ((MarcheFermier) marche).getProduitMoinsChereByType(type);
+                produitFermier.getProprietaire().setSolde(produitFermier.getProprietaire().getSolde() + produitFermier.getPrix());
+                produitFermier.getProprietaire().removeProduitFermiers(produitFermier);
+                ((MarcheFermier) marche).removeProduitFermier(produitFermier);
+                ArrayList<Proprietaire> acheteursCopy = new ArrayList<>();
+                acheteursCopy.addAll(acheteurs);
+                for ( Proprietaire acheteur : acheteurs
+                     ) {
+                    if(produitFermier.getProprietaire() == acheteur )
+                    {
+                        acheteursCopy.remove(acheteur);
+                    }
                 }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                for (Proprietaire proprietaire: acheteursCopy
+                ) {
+                    ProduitFermier produitFermier1 = (ProduitFermier) produitFermier.divideBy(acheteursCopy.size());
+                    produitFermier1.setProprietaire(proprietaire);
+                    proprietaire.addProduitFermiers(produitFermier1);
+                    proprietaire.setSolde(proprietaire.getSolde() - produitFermier1.getPrix());
+                }
             }
         }
-    }
 
-    public int getPromotion() {
-        return promotion;
-    }
-
-    public void setPromotion() {
-        //pour 4 cochons on pourra faire une promotion de 4% (4/100)
-        this.promotion = offresChoisies.size();
-    }
-
-    public void promotion(){
-
-        for ( OffreAchat of : this.offresChoisies)
-        {
-            double prix = of.getPrix()-(this.getPromotion()/100);
-            of.setPrix(of.getPrix()-prix);
-            System.out.println(prix);
-        }
     }
 
 
-}
+
+    }
+
+

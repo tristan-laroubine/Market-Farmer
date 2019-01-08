@@ -141,4 +141,20 @@ public abstract class ProduitFermier implements Comparable, Cloneable{
         // on renvoie le clone
         return o;
     }
+    public Object divideBy(int number) {
+        ProduitFermier o = null;
+        try {
+            // On récupère l'instance à renvoyer par l'appel de la
+            // méthode super.clone()
+            o = (ProduitFermier) super.clone();
+            o.setPrix((int) (o.getPrix()/number));
+            o.setPoids(o.getPoids()/number);
+        } catch(CloneNotSupportedException cnse) {
+            // Ne devrait jamais arriver car nous implémentons
+            // l'interface Cloneable
+            cnse.printStackTrace(System.err);
+        }
+        // on renvoie le clone
+        return o;
+    }
 }

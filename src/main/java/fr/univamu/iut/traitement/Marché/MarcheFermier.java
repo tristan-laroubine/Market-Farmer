@@ -8,6 +8,7 @@ import fr.univamu.iut.traitement.Producteur.Producteur;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.Transaction;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.TreeSet;
@@ -83,6 +84,36 @@ public class MarcheFermier extends Marche {
         produitsFermier.remove(produitFermier);
         notifier();
     }
+    public boolean isProduitForThatType(String type)
+    {
+        for (ProduitFermier produitFermier : produitsFermier)
+        {
+            try {
+                if(produitFermier.getClass() == Class.forName(type)) return true;
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public ProduitFermier getProduitMoinsChereByType(String type)
+    {
+
+        Comparator<ProduitFermier> produitFermierComparator = (s1, s2) -> (int) (s1.getPrix()/s1.getPoids() - s2.getPrix()/s2.getPoids());
+        PriorityQueue<ProduitFermier> produitFermierPriorityQueue = new PriorityQueue<>(produitFermierComparator);
+        for (ProduitFermier produitfermier : this.getProduitsFermier()) {
+            try {
+                if(produitfermier.getClass() == Class.forName(type)){
+                    produitFermierPriorityQueue.add(produitfermier);
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return produitFermierPriorityQueue.remove();
+    }
+
     public TreeSet<Producteur> getVendeurs() {
         return vendeurs;
     }

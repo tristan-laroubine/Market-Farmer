@@ -27,7 +27,7 @@
                <VBox fx:id="vBoxLesProduitEnVente" prefHeight="600.0" prefWidth="200.0" />
             </ScrollPane>
             <ScrollPane  prefHeight="600.0" prefWidth="300.0" fx:id="ScrollPaneHistorique">
-               <VBox fx:id="historiqueScrollPane" prefHeight="600.0" prefWidth="420.0">
+               <VBox fx:id="historiqueScrollPane" prefHeight="600.0" prefWidth="470.0">
 
                </VBox>
             </ScrollPane>
