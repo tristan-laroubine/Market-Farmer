@@ -7,10 +7,19 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionLaitier;
 
 public class ProducteurLaitier extends Producteur{
 
+    /**
+     * Constructeur par defaut vide
+     */
     public ProducteurLaitier()
     {
 
     }
+
+    /**
+     * Constructeur ProducteurLaitier à partir d'une unité de Production
+     * Laitiere
+     * @param uniteDeProduction
+     */
     public ProducteurLaitier(UniteDeProduction uniteDeProduction)
     {
         if (uniteDeProduction instanceof UniteDeProductionLaitier)
@@ -22,6 +31,10 @@ public class ProducteurLaitier extends Producteur{
         }
     }
 
+    /**
+     * Setteur unité de production
+     * @param uniteDeProduction
+     */
     public void setUniteDeProduction(UniteDeProduction uniteDeProduction) {
         if (uniteDeProduction instanceof UniteDeProductionLaitier )
         {
@@ -40,6 +53,11 @@ public class ProducteurLaitier extends Producteur{
         return "ProducteurLaitier";
     }
 
+    /**
+     * Retourne le pourcentage de la commission
+     * @param benefice correspond au prix qui doit être taxé
+     * @return
+     */
     @Override
     public double comissionMarchePourcentage(double benefice) {
         return 1;
