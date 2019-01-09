@@ -77,6 +77,7 @@ public class Controller implements Initializable {
         Label label1 = new Label("Unite De Production");
         ComboBox<UniteDeProduction> uniteDeProductionComboBox = new ComboBox<>();
         pane.getChildren().addAll(label,textArea1);
+        Label label2 = new Label("Stock : " + proprietaire.get)
         if (proprietaire instanceof ProducteurDeViande)
         {
             UniteDeProduction uniteDeProduction = new UniteDeProductionDeViande();
