@@ -15,7 +15,7 @@
                <content>
                   <VBox fx:id="vBoxLesActeurs" prefHeight="600.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="buttonAdd" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#addButton" text="AddButton" />
+                        <Button fx:id="buttonAdd" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#addButton" text="Ajouter" />
                      </children>
                   </VBox>
                </content>
