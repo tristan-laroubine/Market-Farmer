@@ -49,6 +49,9 @@ public class MarcheFermier extends Marche {
         return offreAchats;
     }
 
+    /**
+     * Liste d'observateur Proprietaire
+     */
     ArrayList<Proprietaire> abonnementProprietaire = new ArrayList<>();
 
     /**
