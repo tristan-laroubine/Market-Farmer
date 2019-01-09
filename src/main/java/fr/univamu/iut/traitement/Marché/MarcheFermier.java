@@ -190,6 +190,19 @@ public class MarcheFermier extends Marche {
         return false;
     }
 
+    public boolean isProduitForThatTypeAndMaxPrice(String type, Double prixMax)
+    {
+        for (ProduitFermier produitFermier : produitsFermier)
+        {
+            try {
+                if(produitFermier.getClass() == Class.forName(type) && produitFermier.getPoids()/produitFermier.getPrix()<= prixMax) return true;
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
     /**
      * renvoie le produit avec le type correspondant le moins cher
      * @param type correspond au type de produit que l'on recherche
