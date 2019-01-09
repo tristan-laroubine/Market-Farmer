@@ -20,17 +20,14 @@ public class MarcheFermier extends Marche {
     private TreeSet<Producteur> vendeurs = new TreeSet<>();
     private PriorityQueue <Proprietaire>  acheteurs = new PriorityQueue<>();
     private PriorityQueue<ProduitFermier> produitsFermier = new PriorityQueue<>();
-
     public PriorityQueue<OffreAchat> getOffreAchats() {
         return offreAchats;
     }
+    private PriorityQueue<OffreAchat> offreAchats = new PriorityQueue<>();
 
     public void setOffreAchats(PriorityQueue<OffreAchat> offreAchats) {
         this.offreAchats = offreAchats;
     }
-
-    private PriorityQueue<OffreAchat> offreAchats = new PriorityQueue<>();
-
 
     public MarcheFermier(String nom, String region, Controleur controleur)
     {
@@ -46,6 +43,9 @@ public class MarcheFermier extends Marche {
         super.historique = historique;
     }
 
+    /**
+     *
+     */
     public void checkOffreAchatVente(){
         for (ProduitFermier produifermier: produitsFermier
              ) {
@@ -57,6 +57,13 @@ public class MarcheFermier extends Marche {
             }
         }
     }
+
+    /**
+     * renvoie true si un produit possède déjà une offre d'achat dans le marché
+     * @param produitFermier correspond au produit que l'on veut tester
+     * @return boolean
+     */
+
     public boolean isDejaOffreEnCours(Proprietaire proprietaire, ProduitFermier produitFermier)
     {
         for (OffreAchat offreAchat : offreAchats)
@@ -69,14 +76,31 @@ public class MarcheFermier extends Marche {
         return false;
     }
 
+    /**
+     * ajoute une offre d'achat dans la liste des offres d'achats du marché
+     * @param offreAchat correspond à l'offre d'achat à ajouter
+     */
+
     public void addOffreToOffreAchats(OffreAchat offreAchat){
         offreAchats.add(offreAchat);
         notifier();
     }
+
+    /**
+     * supprime un offre d'achat dans la liste des offres du marché
+     * @param offreAchat correspond à l'offre d'achat à supprimer
+     */
+
     public void removeOffreToOffreAchats(OffreAchat offreAchat){
         offreAchats.remove(offreAchat);
         notifier();
     }
+
+    /**
+     * supprimer l'offre de vente de la liste du marché
+     * @param produitFermier correspond au produit à supprimer
+     */
+
     public void removeProduitFermier(ProduitFermier produitFermier){
         produitsFermier.remove(produitFermier);
         notifier();
@@ -92,6 +116,13 @@ public class MarcheFermier extends Marche {
         }
         return false;
     }
+
+    /**
+     * renvoie vrai si un type de produit est présent dans la liste des offres de vente
+     * @param type correspond au type de produit cherché
+     * @return boolean
+     */
+
     public boolean isProduitForThatType(String type)
     {
         for (ProduitFermier produitFermier : produitsFermier)
@@ -104,6 +135,12 @@ public class MarcheFermier extends Marche {
         }
         return false;
     }
+
+    /**
+     * renvoie le produit avec le type correspondant le moins cher
+     * @param type correspond au type de produit que l'on recherche
+     * @return ProduitFermier
+     */
 
     public ProduitFermier getProduitMoinsChereByType(String type)
     {
@@ -149,12 +186,20 @@ public class MarcheFermier extends Marche {
         notifier();
     }
 
-
+    /**
+     * ajoute un vendeur à la liste des vendeurs du marché
+     * @param p correpond au vendeur à ajouté
+     */
     public void addVendeur(Producteur p)
     {
         vendeurs.add(p);
         notifier();
     }
+
+    /**
+     * ajoute une liste de vendeurs à la liste des vendeurs du marché
+     * @param ListVendeurs correspond à la liste à ajouter
+     */
 
     public void addVendeurs(List<Producteur> ListVendeurs)
     {
@@ -162,11 +207,21 @@ public class MarcheFermier extends Marche {
         notifier();
     }
 
+    /**
+     * ajoute un acheteur à la lsite des acheteurs du marché
+     * @param acheteur correspond à l'acheteur à ajouter
+     */
+
     public void addAcheteur(Proprietaire acheteur)
     {
         acheteurs.add(acheteur);
         notifier();
     }
+
+    /**
+     * ajoute une liste d'acheteurs à la liste des acheteurs du marché
+     * @param ListAcheteurs correspond à la liste d'acheteurs à ajouter
+     */
 
     public void addAcheteurs(List <Proprietaire> ListAcheteurs)
     {
@@ -174,6 +229,10 @@ public class MarcheFermier extends Marche {
         notifier();
     }
 
+    /**
+     * ajoute une offre de vente à la liste acuelle des offres du marché
+     * @param produitFermier correspond au produit a ajouter
+     */
     public void addProduit(ProduitFermier produitFermier)
     {
         produitsFermier.add(produitFermier);
@@ -187,6 +246,11 @@ public class MarcheFermier extends Marche {
     }
 
 
+    /**
+     * ajoute une liste offre de vente à la liste acuelle des offres du marché
+     * @param ListProduitFermiers correspond à la liste de prosuits a ajouter
+     */
+
     public void addProduits(List<ProduitFermier> ListProduitFermiers)
     {
         produitsFermier.addAll(ListProduitFermiers);
@@ -197,12 +261,15 @@ public class MarcheFermier extends Marche {
     {
         for (Proprietaire proprietaire : proprietaires)
         {
-
             proprietaire.notification(produitFermier);
 
         }
     }
-
+/**
+ * effectue les transactions (solde) entre le producteur et l'acheteur
+ * @param produitFermier correspond au produit acheté
+ * @param acheteur correspond à l'acheteur du produit
+ */
     private void transaction(ProduitFermier produitFermier, Proprietaire acheteur){
         Proprietaire proprietaire = produitFermier.getProprietaire();
         if (acheteur.getSolde() <  produitFermier.getPrix()) return;
@@ -221,6 +288,9 @@ public class MarcheFermier extends Marche {
         return "MarcheFermier";
     }
 
+    /**
+     * notifie les observateurs des modification dans la marché grâce à la méthode update
+     */
     @Override
     public void notifier() {
         for(Observateur o : observateurs)

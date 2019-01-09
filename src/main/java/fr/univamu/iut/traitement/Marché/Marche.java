@@ -14,6 +14,8 @@ public abstract class Marche {
     Controleur controleur;
     Historique historique;
     ArrayList<Observateur> observateurs = new ArrayList<>();
+
+
     public String getNom() {
         return nom;
     }

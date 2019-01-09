@@ -49,6 +49,15 @@ public class CentraleAchat extends Proprietaire {
         }
 
     }
+
+    /**
+     *
+     * @param nbActeurs correspond au nombre de perssonnes qui achéte le produit,
+     *                  plus il y a de personnes, plus la promotion est élevée
+     * @param prix correspond au prix actuel du produit
+     * @return un double qui correspond à la promotion
+     */
+
     private double getPromotion(int nbActeurs, double prix)
     {
         return (prix * (((double)nbActeurs+10)/100));
