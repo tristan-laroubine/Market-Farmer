@@ -9,6 +9,9 @@ import java.util.ArrayList;
 public abstract class Producteur extends Proprietaire {
 
 
+    /**
+     * attribut unite de production
+     */
     UniteDeProduction uniteDeProduction;
 
     /**
