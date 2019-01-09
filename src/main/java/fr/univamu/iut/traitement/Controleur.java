@@ -7,6 +7,7 @@ import java.util.PriorityQueue;
 
 public class Controleur {
 
+
     public OffreAchat choisirAcheteur(PriorityQueue<OffreAchat> offreAchats, ProduitFermier produitFermier){
         for (OffreAchat offreAchat : offreAchats) {
             if(offreAchat.getProduitFermier() == produitFermier )

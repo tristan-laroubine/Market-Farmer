@@ -46,7 +46,7 @@ public abstract class ProduitPeremption extends ProduitFermier{
 
     /**
      * Genere une date de peremption
-     * @return
+     * @return LocalDate
      */
     protected abstract LocalDate generateDatePeremption();
 }
