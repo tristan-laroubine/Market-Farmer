@@ -388,9 +388,35 @@ public class Controller implements Initializable {
 
         pane.getChildren().addAll(typeProduitAbo,abonner,listAbonner);
         Label label1 = new Label("Equipe de Tradeur");
+        ComboBox<Proprietaire> proprietaireComboBox = new ComboBox<>();
+        for (Proprietaire proprietaire1 : proprietaires) {
+            if (proprietaire1 instanceof Tradeur)
+            {
+                proprietaireComboBox.getItems().add(proprietaire1);
+            }
 
+        }
+        final Tradeur[] tradeur = {null};
+        typeProduitAbo.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+            tradeur[0] = (Tradeur) findTradeurByPrenom(newValue);
+        });
+        Button ajouterTradeur = new Button("Ajouter Tradeur");
+        ajouterTradeur.setId("offreEnMasse");
+        ajouterTradeur.setOnAction(event -> {
+            tradeur[0]
+        });
     }
+    private Proprietaire findTradeurByPrenom(String string){
+        for (Proprietaire proprietaire: proprietaires
+             ) {
+            if (proprietaire instanceof Tradeur && proprietaire.getPrenom().equals(string))
+            {
+                return proprietaire;
+            }
 
+        }
+        return null;
+    }
     private void switchProduit(ComboBox<String> typeProduitAbo, String[] typeDuProduitAbo) {
         typeProduitAbo.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
                     switch (newValue){

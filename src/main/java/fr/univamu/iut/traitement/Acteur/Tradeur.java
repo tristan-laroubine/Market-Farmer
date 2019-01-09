@@ -42,7 +42,18 @@ public class Tradeur extends Proprietaire implements Observateur {
         }
     }
 
+    public void addProprietaire(Proprietaire proprietaire)
+    {
+        for (Proprietaire pro : proprietaires
+        ) {
+            if(pro==proprietaire)
+            {
+                return;
+            }
 
+        }
+        proprietaires.add(proprietaire);
+    }
     @Override
     public double comissionMarchePourcentage(double benefice) {
         return benefice*0.05;
