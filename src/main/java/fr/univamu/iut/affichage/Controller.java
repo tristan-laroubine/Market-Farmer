@@ -22,13 +22,17 @@ import fr.univamu.iut.traitement.Transaction;
 import fr.univamu.iut.traitement.UniteDeProduction.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import javax.swing.*;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
@@ -47,7 +51,7 @@ public class Controller implements Initializable {
     public ScrollPane ScrollPanePane;
     public ScrollPane ScrollPaneHistorique;
     private ArrayList<Proprietaire> proprietaires = new ArrayList<>();
-
+    public ArrayList<Proprietaire> Ajouterproprietaires = new ArrayList<>();
     @FXML
     void addButton(){
         pane.getChildren().clear();
@@ -282,9 +286,52 @@ public class Controller implements Initializable {
         }
         if(proprietaire instanceof CentraleAchat)
         {
-            CheckBox checkBox = new CheckBox();
-//            checkBox.getCh
+
+            ComboBox proprietaireComboBox = new ComboBox();
+            proprietaireComboBox.setId("proprietaireComboBox");
+            for(Proprietaire p : proprietaires){
+                proprietaireComboBox.getItems().add(p);
+            }
+            if(proprietaireComboBox.getItems().size() != 0)
+            {
+                Button ajouter = new Button("Ajouter");
+                ajouter.setId("ajouter");
+                ajouter.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        if(proprietaireComboBox.getValue() instanceof Proprietaire)
+                        {
+                            for(Proprietaire p : Ajouterproprietaires){
+                                if(p == proprietaireComboBox.getValue()){
+                                    System.out.println("Deja dans la liste");
+                                    Ajouterproprietaires.remove(p);
+                                }
+                            }
+                            Ajouterproprietaires.add((Proprietaire) proprietaireComboBox.getValue());
+                        }    pannelProprietaire(proprietaire);
+                    }
+                });
+                pane.getChildren().add(ajouter);
+            }
+
+
+            VBox listActeur = new VBox();
+            for(Proprietaire p : Ajouterproprietaires){
+                Button button = new Button(p.getPrenom() + " " + p);
+                button.setId("buttonProprietaireAchat");
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Ajouterproprietaires.remove(p);
+                        pannelProprietaire(proprietaire);
+                    }
+                });
+                listActeur.getChildren().add(button);
+            }
+
+
             Button offreEnMasse = new Button("Achat Groupe");
+            offreEnMasse.setId("offreEnMasse");
             offreEnMasse.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -293,7 +340,11 @@ public class Controller implements Initializable {
                     updateVBoxProduit(proprietaire);
                 }
             });
+            pane.getChildren().add(proprietaireComboBox);
+
+            pane.getChildren().add(listActeur);
             pane.getChildren().add(offreEnMasse);
+
         }
 
     }
