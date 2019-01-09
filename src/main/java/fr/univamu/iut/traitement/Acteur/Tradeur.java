@@ -25,6 +25,12 @@ public class Tradeur extends Proprietaire implements Observateur {
         System.out.println(produitsFermier.peek().getProprietaire().getPrenom());
     }
 
+    /**
+     * Acheter pour un autre Proprietaire
+     * @param proprietaire Le proprietaire concerner
+     * @param type Le Type du produit
+     * @param prixMax Le Prix max du produit
+     */
     public void acheterPourUnAutre(Proprietaire proprietaire, String type, Double prixMax)
     {
 
