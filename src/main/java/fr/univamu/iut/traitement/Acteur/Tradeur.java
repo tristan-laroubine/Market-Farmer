@@ -1,5 +1,7 @@
 package fr.univamu.iut.traitement.Acteur;
 
+import fr.univamu.iut.traitement.Marché.Marche;
+import fr.univamu.iut.traitement.Marché.MarcheFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
 import java.util.ArrayList;
@@ -31,9 +33,13 @@ public class Tradeur extends Proprietaire implements Observateur {
      * @param type Le Type du produit
      * @param prixMax Le Prix max du produit
      */
-    public void acheterPourUnAutre(Proprietaire proprietaire, String type, Double prixMax)
+    public void acheterPourUnAutre(Proprietaire proprietaire, String type, Double prixMax, Marche marche)
     {
-
+        MarcheFermier marcheFermier = (MarcheFermier) marche;
+        if(marcheFermier.isProduitForThatTypeAndMaxPrice(type,prixMax))
+        {
+            proprietaire.proposerOffre(marcheFermier,marcheFermier.getProduitMoinsChereByTypeAndPrice(type,prixMax));
+        }
     }
 
     @Override
