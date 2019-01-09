@@ -4,12 +4,15 @@ import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
 
+import java.util.ArrayList;
+
 public abstract class Producteur extends Proprietaire {
 
 
     UniteDeProduction uniteDeProduction;
 
     public abstract void setUniteDeProduction(UniteDeProduction uniteDeProduction);
+
 
 
     public UniteDeProduction getUniteDeProduction() {
@@ -32,11 +35,6 @@ public abstract class Producteur extends Proprietaire {
         this.addProduitFermiers(produitFermier);
         return produitFermier;
     }
-
-
-
-
-
 
 
 }

@@ -14,6 +14,7 @@ public abstract class Proprietaire implements StrategyCom{
     private String Prenom;
     private double solde = 1000;
     private List<ProduitFermier> produitFermiers = new ArrayList<>();
+    private ArrayList<String> typesInteresse = new ArrayList<>();
 
     //GET
 
@@ -125,6 +126,16 @@ public abstract class Proprietaire implements StrategyCom{
         return false;
     }
 
+    public void addTypes(String type)
+    {
+        boolean exist = false;
+        for(String s : typesInteresse)
+        {
+            if(s.equals(type)) exist = true;
+        }
+
+        if(!exist) typesInteresse.add(type);
+    }
 
 
 
