@@ -50,6 +50,11 @@ public class MarcheFermier extends Marche {
     }
 
     /**
+     * Liste d'observateur Proprietaire
+     */
+    ArrayList<Proprietaire> abonnementProprietaire = new ArrayList<>();
+
+    /**
      * Modifie la liste des offres d'achats dans le marché
      * @param offreAchats correspond à la nouvelle liste d'offres d'achats
      */
@@ -355,6 +360,14 @@ public class MarcheFermier extends Marche {
         acheteur.addProduitFermiers(produitFermier);
     }
 
+    /**
+     * Ajoute le proprietaire dans la liste d'abonné
+     * @param proprietaire Le proprietaire à ajouter
+     */
+    public void addProprietaireInAbonne(Proprietaire proprietaire)
+    {
+        abonnementProprietaire.add(proprietaire);
+    }
 
 
     @Override
