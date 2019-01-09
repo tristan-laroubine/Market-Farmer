@@ -21,7 +21,6 @@ public class ProduitArboriculteurTest {
         produitArboriculteur= new Pomme(labels, 10,25.0);
         assertEquals(produitArboriculteur.getPoids(), 10);
         assertEquals("C'est bon", produitArboriculteur.getPrix(), 25, 0);
-        assertEquals(produitArboriculteur.getDatePeremption(),LocalDate.of(1995,10,12));
     }
 
     @Test
@@ -35,6 +34,7 @@ public class ProduitArboriculteurTest {
     public final void validerPommePerime(){
 
         produitArboriculteur = new Pomme(labels , 10,25.0);
+        produitArboriculteur.setDatePeremption(LocalDate.of(1500,5,16));
         assertFalse(produitArboriculteur.valider());
     }
 }

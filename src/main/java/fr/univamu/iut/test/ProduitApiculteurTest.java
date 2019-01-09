@@ -21,7 +21,6 @@ public class ProduitApiculteurTest {
         produitApiculteur= new Miel(labels , 10,25.0);
         assertEquals(produitApiculteur.getPoids(), 10);
         assertEquals("C'est bon", produitApiculteur.getPrix(), 25, 0);
-        assertEquals(produitApiculteur.getDatePeremption(),LocalDate.of(1995,10,12));
     }
 
     @Test
@@ -35,6 +34,7 @@ public class ProduitApiculteurTest {
     public final void validerMielPerime(){
 
         produitApiculteur = new Miel(labels , 10,25.0);
+        produitApiculteur.setDatePeremption(LocalDate.of(1500,5,2));
         assertFalse(produitApiculteur.valider());
     }
 }
