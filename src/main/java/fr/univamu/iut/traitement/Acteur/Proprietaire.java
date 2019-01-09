@@ -169,7 +169,7 @@ public abstract class Proprietaire implements StrategyCom{
      * @param type correspond au type de produit à chercher
      * @return boolean
      */
-    boolean isFindInTypeInteresse(String type)
+    private boolean isFindInTypeInteresse(String type)
     {
         for(String s : typesInteresse)
         {
