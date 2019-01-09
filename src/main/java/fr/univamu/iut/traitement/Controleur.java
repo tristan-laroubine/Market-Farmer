@@ -34,6 +34,10 @@ public class Controleur {
         return true;
     }
 
+    /**
+     * Sanctionne un proprietaire
+     * @param proprietaire le proprietaire sanctionner
+     */
     public void sanction(Proprietaire proprietaire)
     {
         proprietaire.crediter(-100);
