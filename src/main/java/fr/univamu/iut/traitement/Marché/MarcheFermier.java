@@ -216,7 +216,7 @@ public class MarcheFermier extends Marche {
     public ProduitFermier getProduitMoinsChereByType(String type)
     {
 
-        Comparator<ProduitFermier> produitFermierComparator = (s1, s2) -> (int) (s1.getPrix()/s1.getPoids() - s2.getPrix()/s2.getPoids());
+        Comparator<ProduitFermier> produitFermierComparator = (s1, s2) -> (int) (s1.getPoids()/s1.getPrix() - s2.getPoids()/s2.getPrix());
         PriorityQueue<ProduitFermier> produitFermierPriorityQueue = new PriorityQueue<>(produitFermierComparator);
         for (ProduitFermier produitfermier : this.getProduitsFermier()) {
             try {
