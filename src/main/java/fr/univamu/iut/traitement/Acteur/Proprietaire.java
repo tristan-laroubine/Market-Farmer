@@ -161,7 +161,7 @@ public abstract class Proprietaire implements StrategyCom{
      */
     public void addTypes(String type)
     {
-        if(isFindInTypeInteresse(type)) typesInteresse.add(type);
+        if(!isFindInTypeInteresse(type)) typesInteresse.add(type);
     }
 
     /**

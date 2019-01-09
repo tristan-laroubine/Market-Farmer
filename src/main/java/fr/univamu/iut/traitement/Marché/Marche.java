@@ -9,10 +9,29 @@ import java.util.ArrayList;
 
 public abstract class Marche {
 
+    /**
+     * nom du marché
+     */
     String nom;
+
+    /**
+     * region du marché
+     */
     String region;
+
+    /**
+     * controleur du marché
+     */
     Controleur controleur;
+
+    /**
+     * historique du marché
+     */
     Historique historique;
+
+    /**
+     * ob
+     */
     ArrayList<Observateur> observateurs = new ArrayList<>();
 
 
