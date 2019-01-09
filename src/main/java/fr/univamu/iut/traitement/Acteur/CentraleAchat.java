@@ -60,7 +60,7 @@ public class CentraleAchat extends Proprietaire {
 
     private double getPromotion(int nbActeurs, double prix)
     {
-        return (prix * (((double)nbActeurs+10)/100));
+        return (prix * ((100-(double)nbActeurs)/100));
     }
 
     /**Inflige une sanction a un proprietaire
