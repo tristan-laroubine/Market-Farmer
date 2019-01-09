@@ -5,7 +5,16 @@ import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Classe UniteDeProduction
+ */
 public abstract class UniteDeProduction {
+
+    /**
+     * Fonction permettant de produire un produit selon le type passé en paramètre
+     * @param type
+     * @return produitFermier
+     */
     public ProduitFermier produitProduit(String type){
         try{
             Class<?> classe = Class.forName(type);
@@ -18,6 +27,14 @@ public abstract class UniteDeProduction {
         }
         return null;
     }
+
+    /**
+     * permet de produire un produit selon un type et les arguments
+     * @param type
+     * @param args
+     * @param arguments
+     * @return produitFermier
+     */
     public ProduitFermier produitProduit(String type, String[] args, Object... arguments){
         try{
 
@@ -37,6 +54,13 @@ public abstract class UniteDeProduction {
         }
         return null;
     }
+
+    /**
+     * Permet de verifier si le constructeur est le bon par rapport aux arguments
+     * @param constructor
+     * @param args
+     * @return boolean
+     */
     boolean isRightConstructor(Constructor constructor, String[] args){
         Class[] params = constructor.getParameterTypes();
         if (params.length != args.length) return false;
