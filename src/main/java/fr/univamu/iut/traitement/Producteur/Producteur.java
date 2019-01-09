@@ -11,8 +11,16 @@ public abstract class Producteur extends Proprietaire {
 
     UniteDeProduction uniteDeProduction;
 
+    /**
+     * Setteur unité de production
+     * @param uniteDeProduction
+     */
     public abstract void setUniteDeProduction(UniteDeProduction uniteDeProduction);
 
+    /**
+     * Getteur unité de production
+     * @return
+     */
     public UniteDeProduction getUniteDeProduction() {
         return uniteDeProduction;
     }
