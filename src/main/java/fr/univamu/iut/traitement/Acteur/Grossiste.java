@@ -8,7 +8,14 @@ import java.util.PriorityQueue;
 
 public class Grossiste extends Proprietaire {
 
-
+    /**
+     * propose des offres pour le type de produit choisi tant que le soldeMax est plus grand que 0
+     *
+     * @param marcheFermier
+     * @param type correspond au type de produit que l'on veut acheter
+     * @param prixMax correspond au prix maximum d'un type de produit
+     * @param soldeMax correspond au solde maximum de l'acheteur
+     */
     public void proposerOffreEnGrandeQuantitee(MarcheFermier marcheFermier, String type, Double prixMax, Double soldeMax) {
         if (this.getSolde() > soldeMax) soldeMax = this.getSolde();
         Comparator<ProduitFermier> produitFermierComparator = (s1, s2) -> (int) (s1.getPrix() - s2.getPrix());

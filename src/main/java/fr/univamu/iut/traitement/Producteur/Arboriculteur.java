@@ -38,7 +38,7 @@ public class Arboriculteur extends Producteur {
 
     /**
      * Force la conversion en String de la classe
-     * @return le nom de la classe est les informations
+     * @return le nom de la classe et les informations
      */
     @Override
     public String toString() {

@@ -10,6 +10,16 @@ import java.util.Iterator;
 
 public class CentraleAchat extends Proprietaire {
 
+    /**
+     *
+     * achatDeGroupe permet à plusieurs acheteurs d'acheter le produit de type choisi le moins cher
+     * et de le partager équitablement en bénéficient d'une promotion
+     * Les soldes des vendeurs et des acheteurs sont mis à jour
+     *
+      * @param type le type de produit que l'on veut acheter
+     * @param acheteurs le nombre d'acheteurs associès
+     * @param marche le type de marché
+     */
     public void achatDeGroupe(String type, ArrayList<Proprietaire> acheteurs, Marche marche){
         if(marche instanceof MarcheFermier)
         {
