@@ -63,10 +63,10 @@ public class CentraleAchat extends Proprietaire {
         return (prix * (((double)nbActeurs+10)/100));
     }
 
-    /**
+    /**Inflige une sanction a un proprietaire
      *
-     * @param amende
-     * @param proprietaire
+     * @param amende Le montant de la sanction
+     * @param proprietaire Le proprietaire
      */
     public void sanctionArgent(int amende, Proprietaire proprietaire)
     {
