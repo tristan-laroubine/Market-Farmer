@@ -9,28 +9,17 @@ public class OffreAchat implements Comparable{
 
     private ProduitFermier produitFermier;
     private Proprietaire acheteur;
+    private LocalDate dateOffre;
+    private double prix;
 
 
-
-    public void setDateOffre(LocalDate dateOffre) {
-        this.dateOffre = dateOffre;
-    }
-
+    //GET
     public LocalDate getDateOffre() {
         return dateOffre;
     }
-    private LocalDate dateOffre;
-
     public double getPrix() {
         return this.prix;
     }
-
-
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
-
-    private double prix;
 
     public ProduitFermier getProduitFermier() {
         return produitFermier;
@@ -40,6 +29,15 @@ public class OffreAchat implements Comparable{
         return acheteur;
     }
 
+    //SET
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+    public void setDateOffre(LocalDate dateOffre) {
+        this.dateOffre = dateOffre;
+    }
+
+    //CONSTRUCT
     public OffreAchat(Proprietaire acheteur, ProduitFermier produitFermier) {
         this.acheteur = acheteur;
         this.produitFermier = produitFermier;
@@ -47,11 +45,17 @@ public class OffreAchat implements Comparable{
         this.prix = produitFermier.getPrix();
 
     }
+
     @Override
     public String toString() {
         return "Offre Achat" + dateOffre;
     }
 
+    /**
+     * compare deux offres d'achats en fonction de leurs dates
+     * @param o correspond à une offre d'achat
+     * @return int
+     */
     @Override
     public int compareTo(Object o) {
         OffreAchat offreAchat = (OffreAchat) o;

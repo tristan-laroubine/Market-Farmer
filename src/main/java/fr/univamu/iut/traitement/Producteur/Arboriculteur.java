@@ -10,6 +10,8 @@ public class Arboriculteur extends Producteur {
     public Arboriculteur(){
 
     }
+
+    //CONSTRUCT
     public Arboriculteur(UniteDeProduction uniteDeProduction)
     {
         if (uniteDeProduction instanceof UniteDeProductionArboriculteur)
@@ -25,6 +27,7 @@ public class Arboriculteur extends Producteur {
      * Change l'unité de production du Producteur
      * @param uniteDeProduction l'unité de production associée
      */
+
     public void setUniteDeProduction(UniteDeProduction uniteDeProduction) {
         if (uniteDeProduction instanceof UniteDeProductionArboriculteur )
         {

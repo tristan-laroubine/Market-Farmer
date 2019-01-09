@@ -11,41 +11,92 @@ import java.util.PriorityQueue;
 
 public abstract class Proprietaire implements StrategyCom{
 
+    /**
+     * prenom du proprietaire
+     */
     private String Prenom;
+
+    /**
+     * solde du proprietaire
+     */
     private double solde = 1000;
+
+    /**
+     * liste des produits que possède un proprietaire
+     */
     private List<ProduitFermier> produitFermiers = new ArrayList<>();
+
+    /**
+     * Liste des produits dont le propriétaire veut être notifié à l'arrivée dans le marché
+     */
     private ArrayList<String> typesInteresse = new ArrayList<>();
 
     //GET
 
+    /**
+     * renvoie le prenom du proprietaire
+     * @return String
+     */
     public String getPrenom() {
         return Prenom;
     }
 
+    /**
+     * renvoie le solde du proprietaire
+     * @return double
+     */
     public double getSolde() {
         return solde;
     }
 
+    /**
+     * renvoie la liste des produits possédès par le proprietaire
+     * @return List<ProduitFermier>
+     */
     public List<ProduitFermier> getProduitFermiers() {
         return produitFermiers;
     }
 
     //SET
+
+    /**
+     * modifie le prenom du proprietaire
+     * @param prenom correspond au nouveau prenom
+     */
+
     public void setPrenom(String prenom) {
         Prenom = prenom;
     }
 
+    /**
+     * modifie le solde du proprietaire
+     * @param solde correspondant au nouveau solde
+     */
     public void setSolde(double solde) {
         this.solde = solde;
     }
 
+    /**
+     * modifie la liste des produits possédés par le proprietaire
+     * @param produitFermiers correspondant à la nouvelle liste
+     */
     public void setProduitFermiers(List<ProduitFermier> produitFermiers) {
         this.produitFermiers = produitFermiers;
     }
 
+    /**
+     * ajoute un produit à la liste des produit possédés par le proprietaire
+     * @param produitFermier correspondant au produit à ajouter
+     */
+
     public void addProduitFermiers(ProduitFermier produitFermier){
         produitFermiers.add(produitFermier);
     }
+
+    /**
+     * supprime un produit à la liste des produits possédés par le proprietaire
+     * @param produitFermier correspond au produit à supprimer
+     */
     public void removeProduitFermiers(ProduitFermier produitFermier){
         produitFermiers.remove(produitFermier);
     }
@@ -104,11 +155,20 @@ public abstract class Proprietaire implements StrategyCom{
         }
     }
 
-
+    /**
+     * ajoute des type de produits au produis suivvis par le proprietaire
+     * @param type correspondant au type de produit à ajouter
+     */
     public void addTypes(String type)
     {
         if(isFindInTypeInteresse(type)) typesInteresse.add(type);
     }
+
+    /**
+     * renvoie true si le type de produit est trouvé dans la liste des types intéressés
+     * @param type correspond au type de produit à chercher
+     * @return boolean
+     */
     boolean isFindInTypeInteresse(String type)
     {
         for(String s : typesInteresse)
@@ -117,6 +177,11 @@ public abstract class Proprietaire implements StrategyCom{
         }
         return false;
     }
+
+    /**
+     * notifie le proprietaire qu'il veut recevoir les notifications de ce type de produit
+     * @param produitFermier correspond au type de produit a chercher
+     */
     public void notification(ProduitFermier produitFermier)
     {
         if (!isFindInTypeInteresse(produitFermier.getClass().getTypeName()))
