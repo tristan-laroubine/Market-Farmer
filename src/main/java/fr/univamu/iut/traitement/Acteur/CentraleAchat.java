@@ -63,9 +63,10 @@ public class CentraleAchat extends Proprietaire {
         return (prix * (((double)nbActeurs+10)/100));
     }
 
+
     @Override
     public String toString() {
-        return "Centrale d'Achat";
+        return "Centrale d'Achat  ";
     }
 }
 

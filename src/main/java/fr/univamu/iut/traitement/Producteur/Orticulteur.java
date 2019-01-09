@@ -6,6 +6,8 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionOrticulteur;
 
 public class Orticulteur extends Producteur{
 
+
+    //CONSTRUCT
     public Orticulteur()
     {
 
