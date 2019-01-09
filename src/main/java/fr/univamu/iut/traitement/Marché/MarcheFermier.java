@@ -189,7 +189,11 @@ public class MarcheFermier extends Marche {
         }
         return false;
     }
-
+    /**
+     * renvoie vrai si un type de produit est présent dans la liste des offres de vente et prixMax
+     * @param type correspond au type de produit cherché
+     * @return boolean
+     */
     public boolean isProduitForThatTypeAndMaxPrice(String type, Double prixMax)
     {
         for (ProduitFermier produitFermier : produitsFermier)
