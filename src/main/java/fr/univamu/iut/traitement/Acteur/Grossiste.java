@@ -18,7 +18,7 @@ public class Grossiste extends Proprietaire {
      */
     public void proposerOffreEnGrandeQuantitee(MarcheFermier marcheFermier, String type, Double prixMax, Double soldeMax) {
         if (this.getSolde() > soldeMax) soldeMax = this.getSolde();
-        Comparator<ProduitFermier> produitFermierComparator = (s1, s2) -> (int) (s1.getPrix() - s2.getPrix());
+        Comparator<ProduitFermier> produitFermierComparator = (s1, s2) -> (int) (s1.getPoids()/s1.getPrix() - s2.getPoids()/s2.getPrix());
         PriorityQueue<ProduitFermier> produitFermierPriorityQueue = new PriorityQueue<>(produitFermierComparator);
         if (soldeMax > getSolde()) soldeMax = getSolde();
         for (ProduitFermier produitfermier : marcheFermier.getProduitsFermier()) {
