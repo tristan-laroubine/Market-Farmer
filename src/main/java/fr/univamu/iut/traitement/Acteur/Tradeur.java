@@ -58,4 +58,8 @@ public class Tradeur extends Proprietaire implements Observateur {
     public double comissionMarchePourcentage(double benefice) {
         return benefice*0.05;
     }
+
+    public ArrayList<Proprietaire> getProprietaires() {
+        return proprietaires;
+    }
 }

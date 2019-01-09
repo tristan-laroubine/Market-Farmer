@@ -226,6 +226,40 @@ public class Controller implements Initializable {
             });
             pane.getChildren().addAll(produireProduitButton);
         }
+        if (proprietaire instanceof Tradeur)
+        {
+            ComboBox tradeurs = new ComboBox();
+//            tradeurs.getItems().addAll(((Tradeur) proprietaire).getProprietaires());
+            ComboBox<String> typeC = new ComboBox<>();
+            typeC.getItems().addAll(
+                    "Vache",
+                    "Cochon",
+                    "Miel",
+                    "Pomme",
+                    "Lait",
+                    "Pomme de Terre"
+            );
+            typeC.setValue("Vache");
+            final String[] typeDuProduit1 = {"fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache"};
+            switchProduit(typeC, typeDuProduit1);
+
+            Label label = new Label("Prix max");
+            Slider slider = new Slider();
+            slider.setMin(0);
+            slider.setMax(100);
+            slider.setValue(50);
+
+
+            Button buttonTradeur = new Button("Ajouter Tradeur");
+            buttonTradeur.setId("offreEnMasse");
+            buttonTradeur.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    ((Tradeur) proprietaire).acheterPourUnAutre((Proprietaire) tradeurs.getValue(),typeDuProduit1[0],slider.getValue(),marche);
+                }
+            });
+
+        }
         if(proprietaire instanceof Grossiste)
         {
             ComboBox<String> typeC = new ComboBox<>();
@@ -403,9 +437,12 @@ public class Controller implements Initializable {
         Button ajouterTradeur = new Button("Ajouter Tradeur");
         ajouterTradeur.setId("offreEnMasse");
         ajouterTradeur.setOnAction(event -> {
-            tradeur[0]
+            tradeur[0].addProprietaire(proprietaire);
         });
     }
+
+
+
     private Proprietaire findTradeurByPrenom(String string){
         for (Proprietaire proprietaire: proprietaires
              ) {
