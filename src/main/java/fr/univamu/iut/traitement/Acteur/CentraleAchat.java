@@ -26,7 +26,7 @@ public class CentraleAchat extends Proprietaire {
             if(((MarcheFermier) marche).isProduitForThatType(type))
             {
                 ProduitFermier produitFermier = ((MarcheFermier) marche).getProduitMoinsChereByType(type);
-                produitFermier.getProprietaire().setSolde(produitFermier.getProprietaire().getSolde() + produitFermier.getPrix());
+                produitFermier.getProprietaire().crediter(produitFermier.getPrix());
                 produitFermier.getProprietaire().removeProduitFermiers(produitFermier);
                 ((MarcheFermier) marche).removeProduitFermier(produitFermier);
                 ArrayList<Proprietaire> acheteursCopy = new ArrayList<>();
@@ -43,15 +43,21 @@ public class CentraleAchat extends Proprietaire {
                     ProduitFermier produitFermier1 = (ProduitFermier) produitFermier.divideBy(acheteursCopy.size());
                     produitFermier1.setProprietaire(proprietaire);
                     proprietaire.addProduitFermiers(produitFermier1);
-                    proprietaire.setSolde(proprietaire.getSolde() - produitFermier1.getPrix());
+                    proprietaire.crediter(-getPromotion(acheteursCopy.size(), produitFermier1.getPrix()));
                 }
             }
         }
 
     }
-
-
-
+    private double getPromotion(int nbActeurs, double prix)
+    {
+        return (prix * (((double)nbActeurs+10)/100));
     }
+
+    @Override
+    public String toString() {
+        return "Centrale d'Achat";
+    }
+}
 
 
