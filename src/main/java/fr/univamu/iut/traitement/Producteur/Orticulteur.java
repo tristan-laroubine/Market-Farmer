@@ -7,11 +7,19 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionOrticulteur;
 public class Orticulteur extends Producteur{
 
 
-    //CONSTRUCT
+    /**
+     * Constructeur defaut vide
+     */
     public Orticulteur()
     {
 
     }
+
+    /**
+     * Constructeur Orticulteur à partir d'une unité
+     * de Production
+     * @param uniteDeProduction
+     */
     public Orticulteur(UniteDeProduction uniteDeProduction)
     {
         if (uniteDeProduction instanceof UniteDeProductionOrticulteur)
@@ -23,6 +31,12 @@ public class Orticulteur extends Producteur{
         }
     }
 
+    /**
+     * setteur Unite de production
+     * L'unité de production ne peut que etre une unité
+     * de production Orticulteur
+     * @param uniteDeProduction
+     */
     public void setUniteDeProduction(UniteDeProduction uniteDeProduction) {
         if (uniteDeProduction instanceof UniteDeProductionOrticulteur )
         {
