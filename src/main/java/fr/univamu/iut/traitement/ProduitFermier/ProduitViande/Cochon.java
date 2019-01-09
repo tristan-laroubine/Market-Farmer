@@ -7,10 +7,19 @@ import java.util.List;
 
 public class Cochon extends ProduitViande {
 
+    /**
+     * Constructeur Cochon vide
+     */
     public Cochon(){
 
     }
 
+    /**
+     * Constructeur avec label, poids, et prix
+     * @param labels
+     * @param poids
+     * @param prix
+     */
     public Cochon(List<String> labels, Integer poids, Double prix) {
         this.labels = labels;
         this.prix = prix;
@@ -18,6 +27,11 @@ public class Cochon extends ProduitViande {
 
     }
 
+    /**
+     * Constructeur avec poids et prix
+     * @param poids
+     * @param prix
+     */
     public Cochon(Integer poids, Double prix){
         this.poids = poids;
 
