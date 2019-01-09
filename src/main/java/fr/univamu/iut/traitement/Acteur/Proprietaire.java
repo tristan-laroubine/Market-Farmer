@@ -184,7 +184,7 @@ public abstract class Proprietaire implements StrategyCom{
      */
     public void notification(ProduitFermier produitFermier)
     {
-        if (!isFindInTypeInteresse(produitFermier.getClass().getTypeName()))
+        if (isFindInTypeInteresse(produitFermier.getClass().getTypeName()))
         {
             System.out.println(getPrenom()+" => Produit de votre abonnement ajouté au marché ! => " + produitFermier);
         }
