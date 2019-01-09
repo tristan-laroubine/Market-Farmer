@@ -75,9 +75,10 @@ public class Controller implements Initializable {
         TextArea textArea1 = new TextArea();
         textArea1.setText("Marc");
         Label label1 = new Label("Unite De Production");
+
         ComboBox<UniteDeProduction> uniteDeProductionComboBox = new ComboBox<>();
         pane.getChildren().addAll(label,textArea1);
-        Label label2 = new Label("Stock : " + proprietaire.get)
+
         if (proprietaire instanceof ProducteurDeViande)
         {
             UniteDeProduction uniteDeProduction = new UniteDeProductionDeViande();
@@ -170,13 +171,14 @@ public class Controller implements Initializable {
         updateVBoxProduit(proprietaire);
         Label labelNom = new Label(proprietaire.getPrenom());
         Label labelSolde = new Label("Solde sur le compte "+proprietaire.getSolde());
+        Label label2 = new Label("Stock : " + proprietaire.getStock());
         VBox produits = new VBox();
         produits.getChildren().clear();
         produits.setMinWidth(150);
 
         Label labelProduits = new Label("Produits :");
         produits.setMinHeight(produits.getHeight()+20);
-        pane.getChildren().addAll(labelNom,labelSolde,labelProduits);
+        pane.getChildren().addAll(labelNom,labelSolde,label2,labelProduits);
         pane.setMinHeight(pane.getHeight());
         for (ProduitFermier produitfermier: proprietaire.getProduitFermiers()
              ) {

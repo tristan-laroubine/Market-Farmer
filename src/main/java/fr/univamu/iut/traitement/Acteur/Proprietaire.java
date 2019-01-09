@@ -9,6 +9,10 @@ import java.util.List;
 
 public abstract class Proprietaire implements StrategyCom{
 
+    public int getStock() {
+        return stock;
+    }
+
     private int stock = 0;
 
     /**

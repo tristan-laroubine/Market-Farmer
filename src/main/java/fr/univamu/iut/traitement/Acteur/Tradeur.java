@@ -42,6 +42,7 @@ public class Tradeur extends Proprietaire implements Observateur {
         }
     }
 
+
     @Override
     public double comissionMarchePourcentage(double benefice) {
         return benefice*0.05;
