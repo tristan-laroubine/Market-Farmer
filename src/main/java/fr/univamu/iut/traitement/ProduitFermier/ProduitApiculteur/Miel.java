@@ -6,10 +6,20 @@ import java.util.List;
 public class Miel extends ProduitApiculteur{
 
 
+    /**
+     * Constructeur
+     * @param labels
+     */
     public Miel(List<String> labels) {
         this.datePeremption = generateDatePeremption();
     }
 
+    /**
+     * Constructeur avec label, poids et prix
+     * @param labels
+     * @param poids
+     * @param prix
+     */
     public Miel(List<String> labels, Integer poids, double prix) {
         this.labels = labels;
         this.datePeremption = generateDatePeremption();
@@ -17,6 +27,11 @@ public class Miel extends ProduitApiculteur{
         this.prix = prix;
     }
 
+    /**
+     * COnstructeur avec poids et prix
+     * @param poids
+     * @param prix
+     */
     public Miel(Integer poids, Double prix) {
         this.datePeremption = generateDatePeremption();
         this.poids = poids;
@@ -32,6 +47,10 @@ public class Miel extends ProduitApiculteur{
         return "Miel";
     }
 
+    /**
+     * Genere une date de peremption de la date actuel plus 64 jours
+     * @return
+     */
     @Override
     protected LocalDate generateDatePeremption() {
         return LocalDate.now().plusDays(64);
