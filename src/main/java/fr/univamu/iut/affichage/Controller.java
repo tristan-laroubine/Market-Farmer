@@ -364,7 +364,6 @@ public class Controller implements Initializable {
         switchProduit(typeProduitAbo, typeDuProduitAbo);
         Button abonner = new Button("Abonnement");
         abonner.setId("offreEnMasse");
-
         abonner.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -386,7 +385,10 @@ public class Controller implements Initializable {
             });
             listAbonner.getChildren().add(button);
         }
+
         pane.getChildren().addAll(typeProduitAbo,abonner,listAbonner);
+        Label label1 = new Label("Equipe de Tradeur");
+
     }
 
     private void switchProduit(ComboBox<String> typeProduitAbo, String[] typeDuProduitAbo) {
