@@ -307,16 +307,12 @@ public class MarcheFermier extends Marche {
      * ajoute une offre de vente à la liste acuelle des offres du marché
      * @param produitFermier correspond au produit a ajouter
      */
+
     public void addProduit(ProduitFermier produitFermier)
     {
         produitsFermier.add(produitFermier);
         notifier();
-    }
-    public void addProduit(ProduitFermier produitFermier, ArrayList<Proprietaire> proprietaires)
-    {
-        produitsFermier.add(produitFermier);
-        notifier();
-        notifierProprietaires(proprietaires,produitFermier);
+        notifierProprietaires(produitFermier);
     }
 
 
@@ -327,20 +323,20 @@ public class MarcheFermier extends Marche {
 
     public void addProduits(List<ProduitFermier> ListProduitFermiers)
     {
+
         produitsFermier.addAll(ListProduitFermiers);
         notifier();
     }
 
     /**
      *
-     * @param proprietaires
      * @param produitFermier
      */
-    public void notifierProprietaires(ArrayList<Proprietaire> proprietaires, ProduitFermier produitFermier)
+    public void notifierProprietaires(ProduitFermier produitFermier)
     {
-        for (Proprietaire proprietaire : proprietaires)
+        for (Proprietaire proprietaire : abonnementProprietaire)
         {
-            proprietaire.notification(produitFermier);
+           if(!(produitFermier.getProprietaire() == proprietaire)) proprietaire.notification(produitFermier);
 
         }
     }

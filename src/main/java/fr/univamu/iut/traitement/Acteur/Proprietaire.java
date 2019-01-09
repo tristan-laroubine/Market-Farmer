@@ -1,13 +1,11 @@
 package fr.univamu.iut.traitement.Acteur;
 
-import fr.univamu.iut.traitement.Marché.Marche;
 import fr.univamu.iut.traitement.Marché.MarcheFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.Marché.OffreAchat;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
 
 public abstract class Proprietaire implements StrategyCom{
 
@@ -191,5 +189,7 @@ public abstract class Proprietaire implements StrategyCom{
     }
 
 
-
+    public ArrayList<String> getTypes(){
+        return typesInteresse;
+    }
 }

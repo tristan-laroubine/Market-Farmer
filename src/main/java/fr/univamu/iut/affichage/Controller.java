@@ -61,7 +61,6 @@ public class Controller implements Initializable {
                     pane.getChildren().clear();
                     pane.getChildren().add(proprietaireComboBox);
                     setActeur(newValue);
-
                 }
         );
         pane.getChildren().add(proprietaireComboBox);
@@ -147,18 +146,22 @@ public class Controller implements Initializable {
                                        public void handle(javafx.event.ActionEvent event) {
                                            pannelProprietaire(proprietaire);
                                            ScrollPanePane.setVvalue(0);
-
                                        }
                                    });
                                    vBoxLesActeurs.getChildren().add(button);
+                                   if(!(proprietaire instanceof CentraleAchat))
+                                   {
+                                       MarcheFermier castMarche = (MarcheFermier) marche;
+                                       castMarche.addProprietaireInAbonne(proprietaire);
+
+                                   }
                                    pannelProprietaire(proprietaire);
                                }
 
         }
         );
         pane.getChildren().add(button);
-        if(!(proprietaire instanceof CentraleAchat))
-            proprietaires.add(proprietaire);
+
     }
 
     private void pannelProprietaire(Proprietaire proprietaire) {
@@ -197,13 +200,9 @@ public class Controller implements Initializable {
             vendreButton.setTranslateX(16);
             vendreButton.setTranslateY(5);
             vendreButton.setOnAction(event -> {
-                MarcheFermier marcheFermier = (MarcheFermier) marche;
-                if(!marcheFermier.findProduitInProduits(produitfermier))
-                {
-                    ((MarcheFermier) marche).notifierProprietaires(proprietaires,produitfermier);
-                }
+                    proprietaire.vendre(produitfermier,(MarcheFermier) marche);
                     updateVBoxProduit(proprietaire);
-                proprietaire.vendre(produitfermier,(MarcheFermier) marche);
+
 
 
             });
@@ -215,15 +214,11 @@ public class Controller implements Initializable {
         {
             Button produireProduitButton = new Button("Produire");
             produireProduitButton.setId("produire");
-            produireProduitButton.setTranslateY(20);
             produireProduitButton.setTranslateX(5);
-            produireProduitButton.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
-                @Override
-                public void handle(javafx.event.ActionEvent event) {
-                    produireComboBoxProduit((Producteur) proprietaire);
-                    ScrollPanePane.setVvalue(0);
+            produireProduitButton.setOnAction(event -> {
+                produireComboBoxProduit((Producteur) proprietaire);
+                ScrollPanePane.setVvalue(0);
 
-                }
             });
             pane.getChildren().addAll(produireProduitButton);
         }
@@ -266,34 +261,7 @@ public class Controller implements Initializable {
                 }
             });
             final String[] typeProduit = {"fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache"};
-            typeC.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
-                switch (newValue){
-                    case "Cochon":
-                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon";
-                        break;
-
-                    case "Vache":
-                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache";
-                        break;
-
-                    case "Miel":
-                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel";
-                        break;
-
-                    case "Pomme":
-                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme";
-                        break;
-
-                    case "Lait":
-                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait";
-                        break;
-
-                    case "Pomme de Terre":
-                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre";
-                        break;
-                }
-                    }
-            );
+            switchProduit(typeC, typeProduit);
             Button offreEnMasse = new Button("Offre en masse");
             offreEnMasse.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -317,37 +285,11 @@ public class Controller implements Initializable {
             );
             typeC.setValue("Vache");
             final String[] typeDuProduit = {"fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache"};
-            typeC.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
-                        switch (newValue){
-                            case "Cochon":
-                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon";
-                                break;
-
-                            case "Vache":
-                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache";
-                                break;
-
-                            case "Miel":
-                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel";
-                                break;
-
-                            case "Pomme":
-                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme";
-                                break;
-
-                            case "Lait":
-                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait";
-                                break;
-
-                            case "Pomme de Terre":
-                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre";
-                                break;
-                        }
-                    }
-            );
+            switchProduit(typeC, typeDuProduit);
 
             ComboBox proprietaireComboBox = new ComboBox();
             proprietaireComboBox.setId("proprietaireComboBox");
+            pane.getChildren().add(typeC);
             for(Proprietaire p : proprietaires){
                 if(!isInListProprietaire(ajouterproprietaires,p))proprietaireComboBox.getItems().add(p);
             }
@@ -366,6 +308,7 @@ public class Controller implements Initializable {
                         pannelProprietaire(proprietaire);
                     }
                 });
+
                 pane.getChildren().add(ajouter);
             }
 
@@ -401,7 +344,104 @@ public class Controller implements Initializable {
             pane.getChildren().add(offreEnMasse);
 
         }
+        ComboBox<String> typeProduitAbo = new ComboBox<>();
+        typeProduitAbo.getItems().addAll(
+                "Vache",
+                "Cochon",
+                "Miel",
+                "Pomme",
+                "Lait",
+                "Pomme de Terre"
+        );
+        typeProduitAbo.setValue("Vache");
+        final String[] typeDuProduitAbo = {"fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache"};
+        switchProduit(typeProduitAbo, typeDuProduitAbo);
+        Button abonner = new Button("Abonnement");
+        abonner.setId("offreEnMasse");
 
+        abonner.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                proprietaire.addTypes(typeDuProduitAbo[0]);
+                pannelProprietaire(proprietaire);
+            }
+        });
+
+        VBox listAbonner = new VBox();
+        for(String string : proprietaire.getTypes()){
+            Button button = new Button(traductTypeJavaInString(string));
+            button.setId("buttonProprietaireAchat");
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    proprietaire.getTypes().remove(string);
+                    pannelProprietaire(proprietaire);
+                }
+            });
+            listAbonner.getChildren().add(button);
+        }
+        pane.getChildren().addAll(typeProduitAbo,abonner,listAbonner);
+    }
+
+    private void switchProduit(ComboBox<String> typeProduitAbo, String[] typeDuProduitAbo) {
+        typeProduitAbo.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+                    switch (newValue){
+                        case "Cochon":
+                            typeDuProduitAbo[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon";
+                            break;
+
+                        case "Vache":
+                            typeDuProduitAbo[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache";
+                            break;
+
+                        case "Miel":
+                            typeDuProduitAbo[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel";
+                            break;
+
+                        case "Pomme":
+                            typeDuProduitAbo[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme";
+                            break;
+
+                        case "Lait":
+                            typeDuProduitAbo[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait";
+                            break;
+
+                        case "Pomme de Terre":
+                            typeDuProduitAbo[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre";
+                            break;
+                    }
+                }
+        );
+    }
+
+    private String traductTypeJavaInString(String string){
+
+        switch (string){
+            case "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon":
+                return "Cochon";
+
+
+            case "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache":
+                return"Vache";
+
+
+            case "fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel":
+                return "Miel";
+
+
+            case "fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme":
+                return "Pomme";
+
+
+            case "fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait":
+                return "Lait";
+
+
+            case "fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre":
+                return "Pomme De Terre";
+
+        }
+        return "NULL";
     }
     private boolean isInListProprietaire(ArrayList<Proprietaire> proprietaires, Proprietaire proprietaire)
     {
