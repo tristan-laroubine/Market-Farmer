@@ -360,6 +360,10 @@ public class MarcheFermier extends Marche {
         acheteur.addProduitFermiers(produitFermier);
     }
 
+    public void addProprietaireInAbonne(Proprietaire proprietaire)
+    {
+        abonnementProprietaire.add(proprietaire);
+    }
 
 
     @Override
