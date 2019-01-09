@@ -212,6 +212,13 @@ public class MarcheFermier extends Marche {
         }
         return produitFermierPriorityQueue.remove();
     }
+
+    /**
+     * Selectionne le produit le moins chere et dans les prixs
+     * @param type le type du produit
+     * @param prixMax prix max du produit
+     * @return le produit le moins chère
+     */
     public ProduitFermier getProduitMoinsChereByTypeAndPrice(String type, Double prixMax)
     {
 
