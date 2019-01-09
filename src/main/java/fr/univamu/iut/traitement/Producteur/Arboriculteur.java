@@ -7,11 +7,20 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionArboriculteu
 public class Arboriculteur extends Producteur {
 
 
+    /**
+     * Constructeur par defaut vide
+     */
     public Arboriculteur(){
 
     }
 
-    //CONSTRUCT
+    /**
+     * Constructeur Arboriculteur à partir d'une unite de
+     * production
+     * L'unite de production doit etre une unite de production
+     * Arboriculteur
+     * @param uniteDeProduction
+     */
     public Arboriculteur(UniteDeProduction uniteDeProduction)
     {
         if (uniteDeProduction instanceof UniteDeProductionArboriculteur)
