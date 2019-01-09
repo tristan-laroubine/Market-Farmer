@@ -127,6 +127,10 @@ public abstract class ProduitFermier implements Comparable, Cloneable{
         return 0;
     }
 
+    /**
+     * Récupere l'instance à renvoyer par l'appel de la méthode super.clone()
+     * @return
+     */
     public Object clone() {
         Object o = null;
         try {
@@ -141,6 +145,13 @@ public abstract class ProduitFermier implements Comparable, Cloneable{
         // on renvoie le clone
         return o;
     }
+
+    /**
+     * Divise le produit fermier , c'est-a-dire la quantité et le prix par rapport au
+     * parametre number
+     * @param number
+     * @return
+     */
     public Object divideBy(int number) {
         ProduitFermier o = null;
         try {

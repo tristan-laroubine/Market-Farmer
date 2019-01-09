@@ -44,5 +44,9 @@ public abstract class ProduitPeremption extends ProduitFermier{
         this.datePeremption = datePeremption;
     }
 
+    /**
+     * Genere une date de peremption
+     * @return
+     */
     protected abstract LocalDate generateDatePeremption();
 }
