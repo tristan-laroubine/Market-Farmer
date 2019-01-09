@@ -58,6 +58,12 @@ public class Tradeur extends Proprietaire implements Observateur {
         }
         proprietaires.add(proprietaire);
     }
+
+    /**
+     * Commission du marche spécifique au Tradeur
+     * @param benefice correspond au prix qui doit être taxé
+     * @return
+     */
     @Override
     public double comissionMarchePourcentage(double benefice) {
         return benefice*0.05;
