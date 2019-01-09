@@ -9,6 +9,8 @@ import java.util.List;
 
 public abstract class Proprietaire implements StrategyCom{
 
+    private int stock = 0;
+
     /**
      * prenom du proprietaire
      */
@@ -57,11 +59,16 @@ public abstract class Proprietaire implements StrategyCom{
 
     //SET
 
+    public void setStock(int stock)
+    {
+        this.stock = this.stock + stock;
+        System.out.println(this.stock);
+    }
+
     /**
      * modifie le prenom du proprietaire
      * @param prenom correspond au nouveau prenom
      */
-
     public void setPrenom(String prenom) {
         Prenom = prenom;
     }

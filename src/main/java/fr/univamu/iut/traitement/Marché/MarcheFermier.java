@@ -395,6 +395,7 @@ public class MarcheFermier extends Marche {
         proprietaire.removeProduitFermiers(produitFermier);
         produitFermier.setProprietaire(acheteur);
         acheteur.addProduitFermiers(produitFermier);
+        proprietaire.setStock(-produitFermier.getPoids());
     }
 
     /**

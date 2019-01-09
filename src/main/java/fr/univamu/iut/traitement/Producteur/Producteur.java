@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public abstract class Producteur extends Proprietaire {
 
-
     /**
      * attribut unite de production
      */
@@ -36,6 +35,7 @@ public abstract class Producteur extends Proprietaire {
     public ProduitFermier produitProduit(String type) {
         ProduitFermier produitFermier = uniteDeProduction.produitProduit(type);
         produitFermier.setProprietaire(this);
+        produitFermier.getProprietaire().setStock(produitFermier.getPoids());
         this.addProduitFermiers(produitFermier);
         return produitFermier;
     }
@@ -50,10 +50,9 @@ public abstract class Producteur extends Proprietaire {
     public ProduitFermier produitProduit(String type, String[] arg, Object... arguments) {
         ProduitFermier produitFermier = uniteDeProduction.produitProduit(type,arg,arguments);
         produitFermier.setProprietaire(this);
-
+        produitFermier.getProprietaire().setStock(produitFermier.getPoids());
         this.addProduitFermiers(produitFermier);
         return produitFermier;
     }
-
 
 }
