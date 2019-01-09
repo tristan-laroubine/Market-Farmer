@@ -22,6 +22,8 @@ public class UniteDeProductionArboriculteur extends UniteDeProduction {
     /**
      * Permet de produire un produit fermier d'arboriculteur grace à la fonction mère
      * @param type
+     * @param args
+     * @param arguments
      * @return ProduitFermier
      */
     @Override

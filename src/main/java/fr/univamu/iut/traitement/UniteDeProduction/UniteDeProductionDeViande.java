@@ -23,6 +23,8 @@ public class UniteDeProductionDeViande extends UniteDeProduction {
     /**
      * Permet de produire un produit fermier de viande grace à la fonction mère
      * @param type
+     * @param args
+     * @param arguments
      * @return ProduitFermier
      */
     @Override

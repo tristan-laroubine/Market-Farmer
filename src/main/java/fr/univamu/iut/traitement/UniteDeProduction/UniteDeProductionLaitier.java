@@ -22,6 +22,8 @@ public class UniteDeProductionLaitier extends UniteDeProduction{
     /**
      * Permet de produire un produit fermier laitier grace à la fonction mère
      * @param type
+     * @param args
+     * @param arguments
      * @return ProduitFermier
      */
 
