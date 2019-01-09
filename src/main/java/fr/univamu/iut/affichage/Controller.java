@@ -197,8 +197,15 @@ public class Controller implements Initializable {
             vendreButton.setTranslateX(16);
             vendreButton.setTranslateY(5);
             vendreButton.setOnAction(event -> {
+                MarcheFermier marcheFermier = (MarcheFermier) marche;
+                if(!marcheFermier.findProduitInProduits(produitfermier))
+                {
+                    ((MarcheFermier) marche).notifierProprietaires(proprietaires,produitfermier);
+                }
+                    updateVBoxProduit(proprietaire);
                 proprietaire.vendre(produitfermier,(MarcheFermier) marche);
-                updateVBoxProduit(proprietaire);
+
+
             });
             produits.getChildren().addAll(produit,vendreButton);
             pane.setMinHeight(pane.getMinHeight() + produit.getHeight() + 20);
