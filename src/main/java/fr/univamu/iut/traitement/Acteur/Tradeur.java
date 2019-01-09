@@ -42,6 +42,10 @@ public class Tradeur extends Proprietaire implements Observateur {
         }
     }
 
+    /**
+     * Ajoute un proprietaire
+     * @param proprietaire le proprietaire ajouter
+     */
     public void addProprietaire(Proprietaire proprietaire)
     {
         for (Proprietaire pro : proprietaires
