@@ -29,6 +29,8 @@ public class ActeurTest {
     private Proprietaire p2 = new ProducteurLaitier();
     private Proprietaire p3 = new ProducteurLaitier();
     private MarcheFermier marcheFermier = new MarcheFermier();
+    private Proprietaire p = new ProducteurDeViande(uniteDeProduction);
+
     private double soldeInitialP2 = p2.getSolde();
     private double soldeInitialP3 = p3.getSolde();
 
@@ -40,7 +42,6 @@ public class ActeurTest {
 
         uniteDeProduction = new UniteDeProductionDeViande();
         marcheFermier.setControleur(new Controleur());
-        Proprietaire p = new ProducteurDeViande(uniteDeProduction);
         ProduitFermier produitFermier = ((ProducteurDeViande) p).produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
         p.vendre(produitFermier,marcheFermier);
     }
@@ -53,8 +54,17 @@ public class ActeurTest {
 
     }
 
+
     @Test
-    public final void proposeOffreGrandeQuantite(){
+    public final void proposerOffre(){
+        ProduitFermier produitFermier = ((ProducteurDeViande) p).produitProduit("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon");
+        int nbOffreAchat = marcheFermier.getOffreAchats().size();
+        p2.proposerOffre(marcheFermier,produitFermier);
+        assertNotEquals(nbOffreAchat, marcheFermier.getOffreAchats().size());
+
+    }
+    @Test
+    public final void proposeOffreGrandeQuantiteTest(){
 
         Grossiste g = new Grossiste();
         int nbOffreAchat = marcheFermier.getOffreAchats().size();
@@ -62,4 +72,6 @@ public class ActeurTest {
         assertNotEquals(nbOffreAchat, marcheFermier.getOffreAchats().size());
 
     }
+
+
 }
