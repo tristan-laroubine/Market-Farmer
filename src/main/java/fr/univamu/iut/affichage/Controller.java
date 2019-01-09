@@ -306,6 +306,45 @@ public class Controller implements Initializable {
         }
         if(proprietaire instanceof CentraleAchat)
         {
+            ComboBox<String> typeC = new ComboBox<>();
+            typeC.getItems().addAll(
+                    "Vache",
+                    "Cochon",
+                    "Miel",
+                    "Pomme",
+                    "Lait",
+                    "Pomme de Terre"
+            );
+            typeC.setValue("Vache");
+            final String[] typeDuProduit = {"fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache"};
+            typeC.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+                        switch (newValue){
+                            case "Cochon":
+                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon";
+                                break;
+
+                            case "Vache":
+                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache";
+                                break;
+
+                            case "Miel":
+                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel";
+                                break;
+
+                            case "Pomme":
+                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme";
+                                break;
+
+                            case "Lait":
+                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait";
+                                break;
+
+                            case "Pomme de Terre":
+                                typeDuProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre";
+                                break;
+                        }
+                    }
+            );
 
             ComboBox proprietaireComboBox = new ComboBox();
             proprietaireComboBox.setId("proprietaireComboBox");
@@ -352,7 +391,7 @@ public class Controller implements Initializable {
                 @Override
                 public void handle(ActionEvent actionEvent) {
                     CentraleAchat centraleAchat = (CentraleAchat) proprietaire;
-                   centraleAchat.achatDeGroupe("fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache",proprietaires,marche);
+                   centraleAchat.achatDeGroupe(typeDuProduit[0],proprietaires,marche);
                     updateVBoxProduit(proprietaire);
                 }
             });
