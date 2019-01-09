@@ -64,6 +64,11 @@ public class CentraleAchat extends Proprietaire {
     }
 
 
+    public void sanctionArgent(int amende, Proprietaire proprietaire)
+    {
+        proprietaire.crediter(-amende);
+    }
+
     @Override
     public String toString() {
         return "Centrale d'Achat  ";
