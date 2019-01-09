@@ -7,10 +7,18 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 public class ProducteurDeViande extends Producteur {
 
 
+    /**
+     * Constructeur par defaut vide
+     */
     public ProducteurDeViande()
     {
     }
 
+    /**
+     * Constructeur ProducteurDeViande à partir d'une unité de Production
+     * de viande
+     * @param uniteDeProduction
+     */
     public ProducteurDeViande(UniteDeProduction uniteDeProduction)
     {
         if (uniteDeProduction instanceof UniteDeProductionDeViande )
@@ -22,6 +30,10 @@ public class ProducteurDeViande extends Producteur {
         }
     }
 
+    /**
+     * Setteur unité de production
+     * @param uniteDeProduction
+     */
     public void setUniteDeProduction(UniteDeProduction uniteDeProduction) {
         if (uniteDeProduction instanceof UniteDeProductionDeViande )
         {
@@ -42,6 +54,11 @@ public class ProducteurDeViande extends Producteur {
         return "ProducteurDeViande";
     }
 
+    /**
+     * Retourne le pourcentage de la commission
+     * @param benefice correspond au prix qui doit être taxé
+     * @return
+     */
     @Override
     public double comissionMarchePourcentage(double benefice) {
         return 2;
