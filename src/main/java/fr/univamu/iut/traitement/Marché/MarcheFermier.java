@@ -360,6 +360,10 @@ public class MarcheFermier extends Marche {
         acheteur.addProduitFermiers(produitFermier);
     }
 
+    /**
+     * Ajoute le proprietaire dans la liste d'abonné
+     * @param proprietaire Le proprietaire à ajouter
+     */
     public void addProprietaireInAbonne(Proprietaire proprietaire)
     {
         abonnementProprietaire.add(proprietaire);
