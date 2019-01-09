@@ -49,6 +49,8 @@ public class MarcheFermier extends Marche {
         return offreAchats;
     }
 
+    ArrayList<Proprietaire> abonnementProprietaire = new ArrayList<>();
+
     /**
      * Modifie la liste des offres d'achats dans le marché
      * @param offreAchats correspond à la nouvelle liste d'offres d'achats
