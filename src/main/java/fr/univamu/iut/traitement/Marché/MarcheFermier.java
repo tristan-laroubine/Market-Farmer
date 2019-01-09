@@ -8,10 +8,7 @@ import fr.univamu.iut.traitement.Producteur.Producteur;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 import fr.univamu.iut.traitement.Transaction;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.TreeSet;
+import java.util.*;
 
 public class MarcheFermier extends Marche {
 
@@ -83,6 +80,17 @@ public class MarcheFermier extends Marche {
     public void removeProduitFermier(ProduitFermier produitFermier){
         produitsFermier.remove(produitFermier);
         notifier();
+    }
+    public boolean findProduitInProduits(ProduitFermier produitFermier)
+    {
+        for (ProduitFermier produitFermier1 : produitsFermier)
+        {
+            if (produitFermier1 == produitFermier)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     public boolean isProduitForThatType(String type)
     {
@@ -171,6 +179,13 @@ public class MarcheFermier extends Marche {
         produitsFermier.add(produitFermier);
         notifier();
     }
+    public void addProduit(ProduitFermier produitFermier, ArrayList<Proprietaire> proprietaires)
+    {
+        produitsFermier.add(produitFermier);
+        notifier();
+        notifierProprietaires(proprietaires,produitFermier);
+    }
+
 
     public void addProduits(List<ProduitFermier> ListProduitFermiers)
     {
@@ -178,7 +193,15 @@ public class MarcheFermier extends Marche {
         notifier();
     }
 
+    public void notifierProprietaires(ArrayList<Proprietaire> proprietaires, ProduitFermier produitFermier)
+    {
+        for (Proprietaire proprietaire : proprietaires)
+        {
 
+            proprietaire.notification(produitFermier);
+
+        }
+    }
 
     private void transaction(ProduitFermier produitFermier, Proprietaire acheteur){
         Proprietaire proprietaire = produitFermier.getProprietaire();
@@ -189,9 +212,9 @@ public class MarcheFermier extends Marche {
         proprietaire.removeProduitFermiers(produitFermier);
         produitFermier.setProprietaire(acheteur);
         acheteur.addProduitFermiers(produitFermier);
-
-
     }
+
+
 
     @Override
     public String toString() {

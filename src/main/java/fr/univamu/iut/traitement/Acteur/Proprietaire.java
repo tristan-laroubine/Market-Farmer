@@ -70,12 +70,10 @@ public abstract class Proprietaire implements StrategyCom{
     {
         if(produitFermier.getProprietaire() == this) {
 
-            for (ProduitFermier produitFermier1 : marche.getProduitsFermier()){
-                if(produitFermier1 == produitFermier)
-                {
-                    System.out.println("Produit déja en vente");
-                    return;
-                }
+            if(marche.findProduitInProduits(produitFermier))
+            {
+                System.out.println("Produit déjà en vente");
+                return;
             }
             marche.addProduit(produitFermier);
         }
@@ -94,7 +92,7 @@ public abstract class Proprietaire implements StrategyCom{
             System.out.println("Mauvais proprietaire");
             return;
         }
-        if(isDejaEnOffre(marche,produitFermier))
+        if(marche.isDejaOffreEnCours(this,produitFermier))
         {
             return;
         }
@@ -106,35 +104,25 @@ public abstract class Proprietaire implements StrategyCom{
         }
     }
 
-    /**
-     * renvoie true si un produit possède déjà une offre d'achat dans le marché
-     * @param marche correspond au marché ou l'on veut tester si l'offre est déjà créée
-     * @param produitFermier correspond au produit que l'on veut tester
-     * @return boolean
-     */
-
-    boolean isDejaEnOffre(MarcheFermier marche, ProduitFermier produitFermier)
-    {
-        for (OffreAchat offreAchat: marche.getOffreAchats()
-                ) {
-            if (offreAchat.getProduitFermier() == produitFermier)
-            {
-                System.out.println("Offre déja en vente");
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void addTypes(String type)
     {
-        boolean exist = false;
+        if(isFindInTypeInteresse(type)) typesInteresse.add(type);
+    }
+    boolean isFindInTypeInteresse(String type)
+    {
         for(String s : typesInteresse)
         {
-            if(s.equals(type)) exist = true;
+            if(s.equals(type)) return true;
         }
-
-        if(!exist) typesInteresse.add(type);
+        return false;
+    }
+    public void notification(ProduitFermier produitFermier)
+    {
+        if (!isFindInTypeInteresse(produitFermier.getClass().getTypeName()))
+        {
+            System.out.println(getPrenom()+" => Produit de votre abonnement ajouté au marché ! => " + produitFermier);
+        }
     }
 
 
