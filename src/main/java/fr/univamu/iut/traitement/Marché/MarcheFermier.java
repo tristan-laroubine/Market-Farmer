@@ -212,6 +212,23 @@ public class MarcheFermier extends Marche {
         }
         return produitFermierPriorityQueue.remove();
     }
+    public ProduitFermier getProduitMoinsChereByTypeAndPrice(String type, Double prixMax)
+    {
+
+        Comparator<ProduitFermier> produitFermierComparator = (s1, s2) -> (int) (s1.getPrix()/s1.getPoids() - s2.getPrix()/s2.getPoids());
+        PriorityQueue<ProduitFermier> produitFermierPriorityQueue = new PriorityQueue<>(produitFermierComparator);
+        for (ProduitFermier produitfermier : this.getProduitsFermier()) {
+            try {
+                if(produitfermier.getClass() == Class.forName(type) && produitfermier.getPoids()/produitfermier.getPrix() <= prixMax){
+                    produitFermierPriorityQueue.add(produitfermier);
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return produitFermierPriorityQueue.remove();
+    }
+
 
     /**
      * renvoie les vendeurs du marché
