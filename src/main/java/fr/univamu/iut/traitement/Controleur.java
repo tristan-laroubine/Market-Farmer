@@ -1,7 +1,7 @@
 package fr.univamu.iut.traitement;
 
 import fr.univamu.iut.traitement.Acteur.Proprietaire;
-import fr.univamu.iut.traitement.Marché.OffreAchat;
+import fr.univamu.iut.traitement.Marche.OffreAchat;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
 import java.util.PriorityQueue;

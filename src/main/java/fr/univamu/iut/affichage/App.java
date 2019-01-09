@@ -15,7 +15,7 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("iu.fxml"));
         Controller controller = loader.getController();
         Parent root = loader.load();
-        primaryStage.setTitle("Marché");
+        primaryStage.setTitle("Marche");
         Scene scene = new Scene(root, 1000, 600);
         scene.getStylesheets().add("http://ivax.alwaysdata.net/css/style.css");
         primaryStage.setScene(scene);

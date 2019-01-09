@@ -3,14 +3,11 @@ import fr.univamu.iut.traitement.Acteur.CentraleAchat;
 import fr.univamu.iut.traitement.Acteur.Grossiste;
 import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.Controleur;
-import fr.univamu.iut.traitement.Marché.Marche;
-import fr.univamu.iut.traitement.Marché.MarcheFermier;
-import fr.univamu.iut.traitement.Marché.OffreAchat;
+import fr.univamu.iut.traitement.Marche.MarcheFermier;
 import fr.univamu.iut.traitement.Producteur.ProducteurDeViande;
 import fr.univamu.iut.traitement.Producteur.ProducteurLaitier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
-import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Cochon;
-import fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache;
+
 import static org.junit.Assert.*;
 
 import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProduction;
@@ -18,7 +15,6 @@ import fr.univamu.iut.traitement.UniteDeProduction.UniteDeProductionDeViande;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class ActeurTest {

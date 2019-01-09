@@ -1,6 +1,6 @@
 package fr.univamu.iut.traitement.Acteur;
 
-import fr.univamu.iut.traitement.Marché.MarcheFermier;
+import fr.univamu.iut.traitement.Marche.MarcheFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
 import java.util.Comparator;

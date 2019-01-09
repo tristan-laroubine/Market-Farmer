@@ -1,12 +1,10 @@
 package fr.univamu.iut.traitement.Acteur;
 
-import fr.univamu.iut.traitement.Marché.Marche;
-import fr.univamu.iut.traitement.Marché.MarcheFermier;
-import fr.univamu.iut.traitement.Marché.OffreAchat;
+import fr.univamu.iut.traitement.Marche.Marche;
+import fr.univamu.iut.traitement.Marche.MarcheFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class CentraleAchat extends Proprietaire {
 

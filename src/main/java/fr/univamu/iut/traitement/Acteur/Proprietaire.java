@@ -1,8 +1,8 @@
 package fr.univamu.iut.traitement.Acteur;
 
-import fr.univamu.iut.traitement.Marché.MarcheFermier;
+import fr.univamu.iut.traitement.Marche.MarcheFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
-import fr.univamu.iut.traitement.Marché.OffreAchat;
+import fr.univamu.iut.traitement.Marche.OffreAchat;
 
 import java.util.ArrayList;
 import java.util.List;

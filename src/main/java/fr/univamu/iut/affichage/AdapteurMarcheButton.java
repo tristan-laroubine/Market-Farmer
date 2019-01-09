@@ -1,6 +1,6 @@
 package fr.univamu.iut.affichage;
 
-import fr.univamu.iut.traitement.Marché.Marche;
+import fr.univamu.iut.traitement.Marche.Marche;
 import javafx.scene.control.Button;
 
 public class AdapteurMarcheButton extends Button {

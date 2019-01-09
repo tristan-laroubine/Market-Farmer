@@ -1,0 +1,13 @@
+fr.univamu.iut.affichage
+fr.univamu.iut.test
+fr.univamu.iut.traitement
+fr.univamu.iut.traitement.Acteur
+fr.univamu.iut.traitement.Marche
+fr.univamu.iut.traitement.Producteur
+fr.univamu.iut.traitement.ProduitFermier
+fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur
+fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur
+fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier
+fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur
+fr.univamu.iut.traitement.ProduitFermier.ProduitViande
+fr.univamu.iut.traitement.UniteDeProduction

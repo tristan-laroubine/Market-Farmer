@@ -1,11 +1,10 @@
 package fr.univamu.iut.traitement.Acteur;
 
-import fr.univamu.iut.traitement.Marché.Marche;
-import fr.univamu.iut.traitement.Marché.MarcheFermier;
+import fr.univamu.iut.traitement.Marche.Marche;
+import fr.univamu.iut.traitement.Marche.MarcheFermier;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.PriorityQueue;
 
 public class Tradeur extends Proprietaire implements Observateur {
