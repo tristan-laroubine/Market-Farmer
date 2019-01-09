@@ -188,11 +188,11 @@ public class Controller implements Initializable {
 
             if(produitfermier instanceof ProduitPeremption) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
-                produit.setText(labelType.getText() + "\n" + "Poids : " + labelPoids.getText() + "\n"+ "Prix : " + labelPrix.getText() + "\n" + "Péremption : " + formatter.format(((ProduitPeremption) produitfermier).getDatePeremption()));
+                produit.setText(labelType.getText() + "\n" + "Poids : " + labelPoids.getText() + " kg"+"\n"+ "Prix : " + labelPrix.getText() +" €"+ "\n" + "Péremption : " + formatter.format(((ProduitPeremption) produitfermier).getDatePeremption()));
             }
             else
             {
-                produit.setText(labelType.getText() + "\n" + "Poids : " + labelPoids.getText() + "\n"+ "Prix : " + labelPrix.getText());
+                produit.setText(labelType.getText() + "\n" + "Poids : " + labelPoids.getText() +" kg"+ "\n"+ "Prix : " + labelPrix.getText() + " €");
             }
             AdapteurProduitFermierButton vendreButton = new AdapteurProduitFermierButton();
             vendreButton.setText("Vendre");
