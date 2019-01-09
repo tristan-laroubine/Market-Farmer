@@ -7,6 +7,12 @@ import java.util.PriorityQueue;
 
 public class Controleur {
 
+    /**
+     * Choisi le premier acheteur du produit passé en paramétre
+     * @param offreAchats correspond à l'offre d'achat
+     * @param produitFermier correspond au produit dont on veut le prmier acheteur
+     * @return OffreAchat
+     */
     public OffreAchat choisirAcheteur(PriorityQueue<OffreAchat> offreAchats, ProduitFermier produitFermier){
         for (OffreAchat offreAchat : offreAchats) {
             if(offreAchat.getProduitFermier() == produitFermier )
@@ -16,6 +22,12 @@ public class Controleur {
         }
         return null;
     }
+
+    /**
+     * Valide la vente
+     * @param offreAchat correspond à l'offre d'achat avant la vente
+     * @return boolean
+     */
     public boolean valide(OffreAchat offreAchat)
     {
         return true;

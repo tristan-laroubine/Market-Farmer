@@ -13,28 +13,70 @@ import java.util.*;
 public class MarcheFermier extends Marche {
 
 
+    /**
+     * constructeur par rapport aux attributs de la classe mère marché
+     */
     public MarcheFermier()
     {
         super();
     }
+
+    /**
+     * liste des vendeurs sur le marché
+     */
     private TreeSet<Producteur> vendeurs = new TreeSet<>();
+
+    /**
+     * liste des acheteurs sur le marché
+     */
     private PriorityQueue <Proprietaire>  acheteurs = new PriorityQueue<>();
+
+    /**
+     * liste des produits/offres de vente dans le marché
+     */
     private PriorityQueue<ProduitFermier> produitsFermier = new PriorityQueue<>();
+
+    /**
+     * liste des offres d'achats dans le marché
+     */
+    private PriorityQueue<OffreAchat> offreAchats = new PriorityQueue<>();
+
+    /**
+     * renvoie les offres d'achats dans le marché
+     * @return PriorityQueue<OffreAchat>
+     */
     public PriorityQueue<OffreAchat> getOffreAchats() {
         return offreAchats;
     }
-    private PriorityQueue<OffreAchat> offreAchats = new PriorityQueue<>();
 
+    /**
+     * Modifie la liste des offres d'achats dans le marché
+     * @param offreAchats correspond à la nouvelle liste d'offres d'achats
+     */
     public void setOffreAchats(PriorityQueue<OffreAchat> offreAchats) {
         this.offreAchats = offreAchats;
     }
 
+    /**
+     * constructeur du marché fermier à partir des attributs suivants issus de la classe mère marché
+     * @param nom
+     * @param region
+     * @param controleur
+     */
     public MarcheFermier(String nom, String region, Controleur controleur)
     {
         super.nom = nom;
         super.region = region;
         super.controleur = controleur;
     }
+
+    /**
+     * constructeur du marché fermier à partir des attributs suivants issus de la classe mère marché
+     * @param nom
+     * @param region
+     * @param controleur
+     * @param historique
+     */
     public MarcheFermier(String nom, String region, Controleur controleur, Historique historique)
     {
         super.nom = nom;
@@ -44,15 +86,16 @@ public class MarcheFermier extends Marche {
     }
 
     /**
-     *
+     *Regarde si il ya une offre d'achat pour chaque produit, et effectue la vente
+     * (transaction du produit et mises à jour des soldes)
      */
     public void checkOffreAchatVente(){
-        for (ProduitFermier produifermier: produitsFermier
+        for (ProduitFermier produitfermier: produitsFermier
              ) {
-            if(controleur.choisirAcheteur(offreAchats,produifermier) != null){
-                transaction(produifermier,controleur.choisirAcheteur(offreAchats,produifermier).getAcheteur());
-                removeOffreToOffreAchats(controleur.choisirAcheteur(offreAchats,produifermier));
-                removeProduitFermier(produifermier);
+            if(controleur.choisirAcheteur(offreAchats,produitfermier) != null){
+                transaction(produitfermier,controleur.choisirAcheteur(offreAchats,produitfermier).getAcheteur());
+                removeOffreToOffreAchats(controleur.choisirAcheteur(offreAchats,produitfermier));
+                removeProduitFermier(produitfermier);
                 checkOffreAchatVente();
             }
         }
@@ -105,6 +148,12 @@ public class MarcheFermier extends Marche {
         produitsFermier.remove(produitFermier);
         notifier();
     }
+
+    /**
+     *  Cherche si un produit est présent dans la liste des ofres de vente
+     * @param produitFermier correspond à la liste des offres de ventes
+     * @return boolean
+     */
     public boolean findProduitInProduits(ProduitFermier produitFermier)
     {
         for (ProduitFermier produitFermier1 : produitsFermier)
@@ -159,23 +208,43 @@ public class MarcheFermier extends Marche {
         return produitFermierPriorityQueue.remove();
     }
 
+    /**
+     * renvoie les vendeurs du marché
+     * @return TreeSet<Producteur>
+     */
     public TreeSet<Producteur> getVendeurs() {
         return vendeurs;
     }
 
-    public PriorityQueue <Proprietaire> getAcheteurs() {
+    /**
+     * renvoie les acheteurs du marché
+     * @return PriorityQueue<Proprietaire>
+     */
+    public PriorityQueue<Proprietaire> getAcheteurs() {
         return acheteurs;
     }
 
+    /**
+     * renvoie la liste des offres de ventes
+     * @return PriorityQueue<ProduitFermier>
+     */
     public PriorityQueue<ProduitFermier> getProduitsFermier() {
         return produitsFermier;
     }
 
+    /**
+     * Modifie les vendeurs du marché
+     * @param vendeurs correspond à la nouvelle liste dew vendeurs
+     */
     public void setVendeurs(TreeSet<Producteur> vendeurs) {
         this.vendeurs = vendeurs;
         notifier();
     }
 
+    /**
+     * Modifie la liste des acheteurs du marché
+     * @param acheteurs correspond à la nouvelle liste des acheuteurs
+     */
     public void setAcheteurs(PriorityQueue <Proprietaire> acheteurs) {
         this.acheteurs = acheteurs;
         notifier();
@@ -188,7 +257,7 @@ public class MarcheFermier extends Marche {
 
     /**
      * ajoute un vendeur à la liste des vendeurs du marché
-     * @param p correpond au vendeur à ajouté
+     * @param p correpond au vendeur à ajouter
      */
     public void addVendeur(Producteur p)
     {
@@ -198,7 +267,7 @@ public class MarcheFermier extends Marche {
 
     /**
      * ajoute une liste de vendeurs à la liste des vendeurs du marché
-     * @param ListVendeurs correspond à la liste à ajouter
+     * @param ListVendeurs correspond à la liste à des vendeurs à ajouter
      */
 
     public void addVendeurs(List<Producteur> ListVendeurs)
@@ -248,7 +317,7 @@ public class MarcheFermier extends Marche {
 
     /**
      * ajoute une liste offre de vente à la liste acuelle des offres du marché
-     * @param ListProduitFermiers correspond à la liste de prosuits a ajouter
+     * @param ListProduitFermiers correspond à la liste de produits a ajouter
      */
 
     public void addProduits(List<ProduitFermier> ListProduitFermiers)
@@ -257,6 +326,11 @@ public class MarcheFermier extends Marche {
         notifier();
     }
 
+    /**
+     *
+     * @param proprietaires
+     * @param produitFermier
+     */
     public void notifierProprietaires(ArrayList<Proprietaire> proprietaires, ProduitFermier produitFermier)
     {
         for (Proprietaire proprietaire : proprietaires)

@@ -37,8 +37,6 @@ public class Lait extends ProduitLaitier {
         this.prix = prix;
     }
 
-
-
     /**
      * Force la conversion en String de la classe
      * @return le nom de la classe est les informations
@@ -50,7 +48,7 @@ public class Lait extends ProduitLaitier {
 
     /**
      * Genere une date de peremption, date d'aujourd'hui + 7 jours
-     * @return
+     * @return LocalDate
      */
     @Override
     protected LocalDate generateDatePeremption() {
