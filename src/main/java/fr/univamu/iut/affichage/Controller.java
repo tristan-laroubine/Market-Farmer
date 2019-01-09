@@ -155,6 +155,7 @@ public class Controller implements Initializable {
                                    {
                                        MarcheFermier castMarche = (MarcheFermier) marche;
                                        castMarche.addProprietaireInAbonne(proprietaire);
+                                       proprietaires.add(proprietaire);
 
                                    }
                                    pannelProprietaire(proprietaire);
@@ -347,6 +348,8 @@ public class Controller implements Initializable {
             pane.getChildren().add(offreEnMasse);
 
         }
+        Label label = new Label("Abonnement :");
+        pane.getChildren().add(label);
         ComboBox<String> typeProduitAbo = new ComboBox<>();
         typeProduitAbo.getItems().addAll(
                 "Vache",
