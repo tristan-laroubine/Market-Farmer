@@ -5,10 +5,20 @@ import java.util.List;
 
 public class Lait extends ProduitLaitier {
 
+    /**
+     * Constructeur avec datePeremption
+     * @param datePeremption
+     */
     public Lait(LocalDate datePeremption) {
         this.datePeremption = datePeremption;
     }
 
+    /**
+     * Constructeur avec label, poids et prix
+     * @param labels
+     * @param poids
+     * @param prix
+     */
     public Lait(List<String> labels, Integer poids, Double prix) {
         this.labels = labels;
         this.datePeremption = generateDatePeremption();
@@ -16,6 +26,11 @@ public class Lait extends ProduitLaitier {
         this.prix = prix;
     }
 
+    /**
+     * Constructeur poids et prix
+     * @param poids
+     * @param prix
+     */
     public Lait(Integer poids, Double prix) {
         this.datePeremption = generateDatePeremption();
         this.poids = poids;
@@ -33,7 +48,10 @@ public class Lait extends ProduitLaitier {
         return "Lait";
     }
 
-
+    /**
+     * Genere une date de peremption, date d'aujourd'hui + 7 jours
+     * @return
+     */
     @Override
     protected LocalDate generateDatePeremption() {
         return LocalDate.now().plusDays(7);
