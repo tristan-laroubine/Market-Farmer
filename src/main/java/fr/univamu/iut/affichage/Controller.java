@@ -232,7 +232,11 @@ public class Controller implements Initializable {
             ComboBox<String> typeC = new ComboBox<>();
             typeC.getItems().addAll(
                     "Vache",
-                    "Cochon"
+                    "Cochon",
+                    "Miel",
+                    "Pomme",
+                    "Lait",
+                    "Pomme de Terre"
             );
             typeC.setValue("Vache");
             Slider prixMax = new Slider();
