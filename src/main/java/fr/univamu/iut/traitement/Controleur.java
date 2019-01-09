@@ -1,5 +1,6 @@
 package fr.univamu.iut.traitement;
 
+import fr.univamu.iut.traitement.Acteur.Proprietaire;
 import fr.univamu.iut.traitement.Marché.OffreAchat;
 import fr.univamu.iut.traitement.ProduitFermier.ProduitFermier;
 
@@ -33,5 +34,9 @@ public class Controleur {
         return true;
     }
 
+    public void sanction(Proprietaire proprietaire)
+    {
+        proprietaire.crediter(-100);
+    }
 
 }
