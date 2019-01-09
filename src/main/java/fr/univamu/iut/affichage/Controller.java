@@ -275,6 +275,22 @@ public class Controller implements Initializable {
                     case "Vache":
                         typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitViande.Vache";
                         break;
+
+                    case "Miel":
+                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitApiculteur.Miel";
+                        break;
+
+                    case "Pomme":
+                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitArboriculteur.Pomme";
+                        break;
+
+                    case "Lait":
+                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitLaitier.Lait";
+                        break;
+
+                    case "Pomme de Terre":
+                        typeProduit[0] = "fr.univamu.iut.traitement.ProduitFermier.ProduitOrticulteur.PommeDeTerre";
+                        break;
                 }
                     }
             );
