@@ -49,7 +49,7 @@ public class Miel extends ProduitApiculteur{
 
     /**
      * Genere une date de peremption de la date actuel plus 64 jours
-     * @return
+     * @return LocalDate
      */
     @Override
     protected LocalDate generateDatePeremption() {

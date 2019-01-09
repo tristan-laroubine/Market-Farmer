@@ -36,7 +36,6 @@ public abstract class ProduitFermier implements Comparable, Cloneable{
     }
     /**
      * Setter du proprietaire
-     * @return le propriétaire
      */
     public void setProprietaire(Proprietaire proprietaire) {
         this.proprietaire = proprietaire;
@@ -129,7 +128,7 @@ public abstract class ProduitFermier implements Comparable, Cloneable{
 
     /**
      * Récupere l'instance à renvoyer par l'appel de la méthode super.clone()
-     * @return
+     * @return Object
      */
     public Object clone() {
         Object o = null;
@@ -150,7 +149,7 @@ public abstract class ProduitFermier implements Comparable, Cloneable{
      * Divise le produit fermier , c'est-a-dire la quantité et le prix par rapport au
      * parametre number
      * @param number
-     * @return
+     * @return Object
      */
     public Object divideBy(int number) {
         ProduitFermier o = null;

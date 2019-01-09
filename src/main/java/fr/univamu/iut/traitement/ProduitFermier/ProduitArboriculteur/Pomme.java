@@ -48,7 +48,7 @@ public class Pomme extends ProduitArboriculteur{
 
     /**
      * Genere une date de peremption, date d'aujourd'hui + 64 jours
-     * @return
+     * @return LocalDate
      */
     @Override
     protected LocalDate generateDatePeremption() {
